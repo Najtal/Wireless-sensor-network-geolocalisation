@@ -31,7 +31,7 @@ The project comprises several sub‐phases:
 - [ ] Sending alternative data from moving mote to complete data structure
 
 #### Dashboard code
-- [ ] Main, error handler, properties reader, model saver.
+- [x] Main, error handler, properties reader, model saver.
 - [ ] Interfacing with command line
 - [ ] Design the raw data model
 - [ ] Design the analyzes data model
