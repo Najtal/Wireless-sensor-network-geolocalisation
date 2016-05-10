@@ -1,9 +1,11 @@
 package app;
 
 import gui.Frame;
+import javafx.stage.Stage;
 import model.AnalyzeModel;
 import model.RawModel;
 import dataReader.MoteReader;
+import sample.FxGui;
 import util.Log;
 
 
@@ -36,6 +38,11 @@ public class Pgm {
 		Log.logInfo("Init CLI reader ok");
 
 		this.frame = new Frame();
+		try {
+			 FxGui.create();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		Log.logInfo("Frame gui init ok");
 	}
 
