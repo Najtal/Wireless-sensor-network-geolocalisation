@@ -32,7 +32,7 @@ public class Pgm {
 		this.analyzeModel = AnalyzeModel.getInstance();
 		Log.logInfo("Init models ok");
 
-		this.moteReader = new MoteReader();
+		this.moteReader = new MoteReader(rawModel);
 		Log.logInfo("Init CLI reader ok");
 
 		this.frame = new Frame();
