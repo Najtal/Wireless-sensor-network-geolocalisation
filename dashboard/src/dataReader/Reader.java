@@ -3,7 +3,6 @@ package dataReader;
 import exception.FatalException;
 import exception.MoteReaderException;
 import model.RawModel;
-import util.Log;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -27,7 +26,7 @@ public class Reader extends Thread {
         try {
             while ((line = input.readLine()) != null) {
                 String[] data = CliParser.parseIncomingLine(line);
-                rawModel.fetchNewData(data);
+                CliParser.handleData(data);
             }
             input.close();
 

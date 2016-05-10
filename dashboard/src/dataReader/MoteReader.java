@@ -22,7 +22,7 @@ public class MoteReader {
     private Process serialDumpProcess;
     private Reader reader;
 
-    private MoteReader(RawModel rawModel) {
+    public MoteReader(RawModel rawModel) {
 
         // Init context variables
         this.rawModel = rawModel;

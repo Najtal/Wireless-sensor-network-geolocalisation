@@ -1,5 +1,6 @@
 package model;
 
+import bizz.Rssi;
 import com.sun.xml.internal.bind.v2.TODO;
 
 import java.util.Random;
@@ -33,12 +34,12 @@ public class RawModel {
 
 
     /**
-     * This way we add new data in the model.
-     * @param data
+     * add new RSSI to the model.
+     * @param nRssi a computed RSSI
      */
-    public void fetchNewData(String[] data) {
+    public void addNewRssi(Rssi nRssi) {
 
-        // TODO save the data in a data structure defined depending on how data are printed out from the Gateway mote
+        // TODO Must register that RSSI into the data structure
 
     }
 }
