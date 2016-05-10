@@ -32,7 +32,7 @@ The project comprises several sub‐phases:
 
 #### Dashboard code
 - [x] Main, error handler, properties reader, model saver.
-- [ ] Interfacing with command line
+- [x] Interfacing with command line
 - [ ] Design the raw data model
 - [ ] Design the analyzes data model
 - [ ] Making spatial calculations from raw data model to analyzed data model
