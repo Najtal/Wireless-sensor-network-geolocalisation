@@ -6,7 +6,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 <?import java.net.URL?>
-<VBox fx:controller="sample.SampleController"
+<VBox fx:controller="gui.jfx.SampleController"
       prefHeight="800.0"
       prefWidth="1200.0"
       xmlns="http://javafx.com/javafx/8"

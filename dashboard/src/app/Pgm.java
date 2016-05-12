@@ -1,11 +1,10 @@
 package app;
 
-import gui.Frame;
-import javafx.stage.Stage;
+import gui.swing.Frame;
 import model.AnalyzeModel;
 import model.RawModel;
 import dataReader.MoteReader;
-import sample.FxGui;
+import gui.jfx.FxGui;
 import util.Log;
 
 
