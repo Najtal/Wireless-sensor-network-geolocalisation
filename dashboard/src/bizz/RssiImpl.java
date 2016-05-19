@@ -18,13 +18,12 @@ public class RssiImpl extends BizzObjectImpl implements Rssi {
 
 	/**
 	 *
-	 * @param version the version
 	 * @param from which mote was the transmitter
 	 * @param to which mote received it
      * @param rssi at what strength did the receiver mote get the message
      */
-	public RssiImpl(int version, final int from, final int to, final int rssi, final int sequenceNo, RssiType type) {
-		super(version);
+	public RssiImpl(final int from, final int to, final int rssi, final int sequenceNo, RssiType type) {
+		super();
 		this.from = from;
 		this.to = to;
 		this.rssi = rssi;
@@ -37,6 +36,7 @@ public class RssiImpl extends BizzObjectImpl implements Rssi {
 	 * Constructeur vide
 	 */
 	public RssiImpl() {
+		super();
 		this.rssi = 1;
 		this.distanceMeters = -1;
 		this.type = RssiType.UNDEFINED;
@@ -96,6 +96,10 @@ public class RssiImpl extends BizzObjectImpl implements Rssi {
 
 	public int getDistanceMeters() {
 		return distanceMeters;
+	}
+
+	public int getVersion() {
+		return version;
 	}
 
 }

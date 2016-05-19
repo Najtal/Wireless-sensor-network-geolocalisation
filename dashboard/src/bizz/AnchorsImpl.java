@@ -4,21 +4,18 @@ package bizz;
  */
 public class AnchorsImpl extends BizzObjectImpl implements Anchors {
 
-	private int version;
 	private int id;
 	private int posx;
 	private int posy;
 	private int batteryLvl;
 
 
-	public AnchorsImpl(final int version, final int id, final int posx, final int posy, final int batteryLvl) {
-		super(version);
-
-		this.version = version;
+	public AnchorsImpl(final int id, final int posx, final int posy) {
+		super();
 		this.id = id;
 		this.posx = posx;
 		this.posy = posy;
-		this.batteryLvl = batteryLvl;
+		this.batteryLvl = -1;
 	}
 
 	/**

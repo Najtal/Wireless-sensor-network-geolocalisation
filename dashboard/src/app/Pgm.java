@@ -28,14 +28,20 @@ public class Pgm {
 
 		Log.logInfo("Program started all good");
 
-
+		// Initialize the models
 		this.rawModel = RawModel.getInstance();
 		this.analyzeModel = AnalyzeModel.getInstance();
 		Log.logInfo("Init models ok");
 
+		// Init the reader : read the CLI, create RSSI & fills up the RawModel
 		this.moteReader = new MoteReader(rawModel);
 		Log.logInfo("Init CLI reader ok");
 
+		// Init initializer : Is trigged by the RawModel, if sequence data filled,
+		// 		It analyze the raw data to the Analyzed model
+		// TODO
+
+		// The gui : listen to the analyzed model, when new sequence data received from the initializer, update
 		this.frame = new Frame();
 		try {
 			 FxGui.create();

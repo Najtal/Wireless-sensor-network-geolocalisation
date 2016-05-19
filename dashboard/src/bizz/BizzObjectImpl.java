@@ -4,21 +4,13 @@ package bizz;
  */
 public abstract class BizzObjectImpl implements BizzObject {
 	
-	private int version;
+	protected int version;
 
 	/**
 	 * BizzObject constructor
-	 * @param version		version number
-	 */
-	public BizzObjectImpl(final int version) {
-		this.version = version;
-	}
-		
-	/**
-	 * empty constructor
 	 */
 	public BizzObjectImpl() {
-		super();
+		this.version = 1;
 	}
 
 

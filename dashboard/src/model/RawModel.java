@@ -1,9 +1,10 @@
 package model;
 
-import bizz.Rssi;
-import com.sun.xml.internal.bind.v2.TODO;
 
-import java.util.Random;
+import ucc.RssiDTO;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by jvdur on 09/05/2016.
@@ -12,6 +13,10 @@ public class RawModel {
 
 
     private static RawModel instance;
+
+    private Map<Integer, RawModelSequence> sequences;
+    private int lastSequenceAnalyzed;
+
 
     /**
      * Model singleton
@@ -27,19 +32,26 @@ public class RawModel {
      * private cconstruuctor
      */
     private RawModel() {
-
-        // TODO
-
+        sequences = new HashMap<Integer, RawModelSequence>();
+        lastSequenceAnalyzed = -1;
     }
 
 
-    /**
-     * add new RSSI to the model.
-     * @param nRssi a computed RSSI
-     */
-    public void addNewRssi(Rssi nRssi) {
+    public void addRssi(RssiDTO rssi) {
 
-        // TODO Must register that RSSI into the data structure
+        int seqNumber = rssi.getSequenceNo();
 
+        // If sequence not exist : we create, or if already past, we throw
+        if (!sequences.containsKey(seqNumber)) {
+            if (seqNumber > lastSequenceAnalyzed) {
+                sequences.put(seqNumber, new RawModelSequence(seqNumber));
+            } else {
+                return;
+            }
+        }
+
+        sequences.get(seqNumber).addRssi(rssi);
     }
+
+
 }

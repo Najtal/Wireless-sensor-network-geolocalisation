@@ -1,6 +1,8 @@
 package bizz;
 
 import constant.RssiType;
+import ucc.AnchorDTO;
+import ucc.RssiDTO;
 
 /**
  * Interface permettant la création d'objets
@@ -13,14 +15,24 @@ public interface BizzFactory {
 
 	/**
 	 * Create an RSSI
-	 * @param version the version
 	 * @param from from who it was
 	 * @param to who caught it
 	 * @param rssi the RSSI value
      * @return
      */
-	Rssi createRssi(int version, int from, int to, int rssi, int sequenceNo, RssiType type);
+	RssiDTO createRssi(int from, int to, int rssi, int sequenceNo, RssiType type);
 
-	Rssi createRssi();
+	RssiDTO createRssi();
+
+	/**
+	 *
+	 * @param id The id of the anchor
+	 * @param posx It's X position
+	 * @param posy It's Y position
+     * @return
+     */
+	AnchorDTO createAnchor(int id, int posx, int posy);
+
+	AnchorDTO createAnchor();
 
 }

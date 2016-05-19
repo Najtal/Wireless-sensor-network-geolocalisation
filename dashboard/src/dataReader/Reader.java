@@ -25,8 +25,11 @@ public class Reader extends Thread {
         String line;
         try {
             while ((line = input.readLine()) != null) {
+                if (!line.startsWith("OUT")) {
+                    continue;
+                }
                 String[] data = CliParser.parseIncomingLine(line);
-                CliParser.handleData(data);
+                CliParser.handleData(data, rawModel);
             }
             input.close();
 
