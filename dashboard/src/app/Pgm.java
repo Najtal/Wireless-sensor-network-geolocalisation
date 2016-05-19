@@ -1,7 +1,9 @@
 package app;
 
+import dataAnalyzer.LinearLeastSquareHandler;
 import gui.swing.Frame;
 import model.AnalyzeModel;
+import model.AnchorModel;
 import model.RawModel;
 import dataReader.MoteReader;
 import gui.jfx.FxGui;
@@ -20,6 +22,8 @@ public class Pgm {
 	private final Frame frame;
 	private final RawModel rawModel;
 	private final AnalyzeModel analyzeModel;
+	private final AnchorModel anchorModel;
+	private final LinearLeastSquareHandler llsh;
 
 	/**
 	 * Constructeur. Crée le modele et la vue, par défaut sur la page de connection
@@ -29,8 +33,9 @@ public class Pgm {
 		Log.logInfo("Program started all good");
 
 		// Initialize the models
-		this.rawModel = RawModel.getInstance();
-		this.analyzeModel = AnalyzeModel.getInstance();
+		this.rawModel = RawModel.INSTANCE;
+		this.analyzeModel = AnalyzeModel.INSTANCE;
+		this.anchorModel = AnchorModel.INSTANCE;
 		Log.logInfo("Init models ok");
 
 		// Init the reader : read the CLI, create RSSI & fills up the RawModel
@@ -39,7 +44,8 @@ public class Pgm {
 
 		// Init initializer : Is trigged by the RawModel, if sequence data filled,
 		// 		It analyze the raw data to the Analyzed model
-		// TODO
+		this.llsh = LinearLeastSquareHandler.INSTANCE;
+		Log.logInfo("Init Linear Least Square Handler ok");
 
 		// The gui : listen to the analyzed model, when new sequence data received from the initializer, update
 		this.frame = new Frame();

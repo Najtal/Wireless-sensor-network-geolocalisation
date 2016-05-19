@@ -12,13 +12,14 @@ import java.util.Map;
  */
 public class AnchorModel {
 
+    public static final AnchorModel INSTANCE = new AnchorModel();
     private List<AnchorDTO> anchors;
     private Map<Integer, AnchorDTO> anchorIdMap;
 
     /**
      * Constructor for AnchorModel
      */
-    public AnchorModel() {
+    private AnchorModel() {
         this.anchors = new ArrayList<>();
         this.anchorIdMap = new HashMap<>();
     }

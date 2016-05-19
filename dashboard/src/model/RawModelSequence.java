@@ -41,6 +41,19 @@ public class RawModelSequence {
         }
     }
 
+    public int getSequenceNo() {
+        return sequenceNo;
+    }
 
+    public List<RssiDTO> getRssiAtoA() {
+        return rssiAtoA;
+    }
 
+    public List<RssiDTO> getRssiAtoB() {
+        return rssiAtoB;
+    }
+
+    public List<RssiDTO> getRssiBtoA() {
+        return rssiBtoA;
+    }
 }
