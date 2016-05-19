@@ -1,12 +1,13 @@
 package ucc;
 
 
+import constant.RssiType;
+
 /**
- * Interface de gestion des tomes
- * @author BOUREZ Philippe, LINS Sébastien, REYNERS Gaetan, STREEL Xavier
- * @version 1.1
  */
 public interface RssiDTO {
+
+    int getVersion();
 
     int getFrom();
 
@@ -19,5 +20,15 @@ public interface RssiDTO {
     int getRssi();
 
     void setRssi(int rssi);
+
+    int getSequenceNo();
+
+    void setSequenceNo(int sequenceNo);
+
+    public RssiType getType();
+
+    public void setType(RssiType type);
+
+    public int getDistanceMeters();
 
 }

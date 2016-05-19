@@ -7,6 +7,4 @@ import ucc.RssiDTO;
  */
 public interface Rssi extends RssiDTO {
 
-
-
 }

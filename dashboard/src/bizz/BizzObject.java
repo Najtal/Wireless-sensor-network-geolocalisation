@@ -13,9 +13,4 @@ public interface BizzObject {
 	 */
 	int getVersion();
 
-	/**
-	 * Set object version
-	 * @param newVersion the new version number
-	 */
-	void setVersion(final int newVersion);
 }

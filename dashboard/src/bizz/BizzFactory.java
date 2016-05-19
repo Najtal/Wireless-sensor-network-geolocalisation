@@ -1,5 +1,7 @@
 package bizz;
 
+import constant.RssiType;
+
 /**
  * Interface permettant la création d'objets
  * @author BOUREZ Philippe, LINS Sébastien, REYNERS Gaetan, STREEL Xavier
@@ -17,7 +19,7 @@ public interface BizzFactory {
 	 * @param rssi the RSSI value
      * @return
      */
-	Rssi createRssi(int version, int from, int to, int rssi);
+	Rssi createRssi(int version, int from, int to, int rssi, int sequenceNo, RssiType type);
 
 	Rssi createRssi();
 

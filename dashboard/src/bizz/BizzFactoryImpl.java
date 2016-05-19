@@ -1,5 +1,7 @@
 package bizz;
 
+import constant.RssiType;
+
 /**
  * Class generating bizz objects
  */
@@ -27,8 +29,8 @@ public class BizzFactoryImpl implements BizzFactory {
 	 * RSSI bizz objects
 	 */
 	@Override
-	public Rssi createRssi(int version, int from, int to, int rssi) {
-		return new RssiImpl(version, from, to, rssi);
+	public Rssi createRssi(int version, int from, int to, int rssi, int sequenceNo, RssiType type) {
+		return new RssiImpl(version, from, to, rssi, sequenceNo, type);
 	}
 
 	@Override

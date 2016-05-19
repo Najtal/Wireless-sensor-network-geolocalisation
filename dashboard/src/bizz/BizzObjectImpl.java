@@ -26,16 +26,15 @@ public abstract class BizzObjectImpl implements BizzObject {
 	 * get object version
 	 * @return le numéro de version
 	 */
-	public final int getVersion() {
+	public int getVersion() {
 		return version;
 	}
-	
+
 	/**
-	 * set the version number
-	 * @param newVersion le nouveau numero de version 
+	 * For every modification on the object increase the version
 	 */
-	public final void setVersion(final int newVersion) {
-		this.version = newVersion;
+	protected void increaseVersion() {
+		this.version++;
 	}
 
 }

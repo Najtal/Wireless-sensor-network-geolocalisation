@@ -1,7 +1,6 @@
 package dataReader;
 
 import app.AppContext;
-import exception.FatalException;
 import exception.MoteReaderException;
 import model.RawModel;
 import util.Log;

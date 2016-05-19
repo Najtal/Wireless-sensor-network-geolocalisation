@@ -1,13 +1,16 @@
 package ucc;
 
 /**
- * Interface de gestion des Use Case concernants les tomes
- * 
- * @author BOUREZ Philippe, LINS Sébastien, REYNERS Gaetan, STREEL Xavier
- * @version 1.1
  */
 public interface RssiUCC {
 	
 	RssiUCC INSTANCE = RssiUCCImpl.getInstance();
 
+    static int getDistanceFromRssi(int rssi) {
+
+        // TODO : convert a RSSI distance (-0 to -100) in a distance (meters)
+
+        return Math.abs(rssi);
+
+    }
 }
