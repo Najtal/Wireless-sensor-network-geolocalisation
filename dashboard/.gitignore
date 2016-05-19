@@ -5,6 +5,8 @@
 /.idea/
 *.iml
 
+# eclipse .project file
+*.project
 
 
 # User-specific stuff:
