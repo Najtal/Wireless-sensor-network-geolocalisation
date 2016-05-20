@@ -23,7 +23,7 @@ public final class Main {
     }
 
     /**
-     * main method
+     * main method !
      *
      * @param args boot arguments
      * @throws UnsupportedLookAndFeelException
