@@ -43,7 +43,7 @@ public class CliParser {
                         Integer.parseInt(data[5].split(":")[1]),
                         RssiType.ANCHOR_TO_ANCHOR);
 
-                RawModel.getInstance().addRssi(rssiAtA);
+                RawModel.INSTANCE.addRssi(rssiAtA);
                 break;
 
             case "DATA_AB" : // Measurement anchor to blind
@@ -54,7 +54,7 @@ public class CliParser {
                         Integer.parseInt(data[5].split(":")[1]),
                         RssiType.ANCHOR_TO_BLIND);
 
-                RawModel.getInstance().addRssi(rssiAtoB);
+                RawModel.INSTANCE.addRssi(rssiAtoB);
                 break;
 
             case "DATA_BA" : // Measurement blind to anchor
@@ -65,7 +65,7 @@ public class CliParser {
                         Integer.parseInt(data[5].split(":")[1]),
                         RssiType.BLIND_TO_ANCHOR);
 
-                RawModel.getInstance().addRssi(rssiBtA);
+                RawModel.INSTANCE.addRssi(rssiBtA);
                 break;
 
             case "SLEEP" :
