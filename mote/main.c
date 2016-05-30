@@ -149,7 +149,7 @@ static void beacon(){
 
 static void sendDataToGW(){
   uint8_t *values;
-  int len = (3 + 4*measurementsAnchor->size + 5*measurementsByBlind->size + 5*measurementsOfBlind->size);
+  int len = (4 + 4*measurementsAnchor->size + 5*measurementsByBlind->size + 5*measurementsOfBlind->size);
   //int len = (3 + 4*measurementsAnchor->size + 5*measurementsByBlind->size /*+  5*measurementsOfBlind->size*/);
   //int len = (4 + 4*measurementsAnchor->size + 5*measurementsByBlind->size + (4+MOVEMENT_SIZE)*measurementsOfBlind->size);
   values = malloc(len*sizeof(uint8_t));
@@ -239,7 +239,7 @@ static void sendFreqChange(){
   uint8_t len = 6;
   last_freq = (last_freq+1) % 3;
   //TODO printf("### TRICKLE ### - sending ACTION_COLLECT_FREQ with seqno: %d\n", broadcast_seqno);
-  printf("CON,type:FREQ,seqno:%d,freq:%d,grace:%d\n", broadcast_seqno, FREQ[last_freq], TIMEOUT_FREQ_TURNOVER);
+  printf("OUT,type:FREQ,seqno:%d,freq:%d,grace:%d\n", broadcast_seqno, FREQ[last_freq], TIMEOUT_FREQ_TURNOVER);
 
   values = malloc(len*sizeof(uint8_t));
   values[0] = PTYPE_ACTION_COLLECT_FREQ;
@@ -269,7 +269,7 @@ static void sendSleep(){
     uint8_t *values;
   uint8_t len = 7;
   //TODO printf("### TRICKLE ### - sending ACTION_SLEEP with seqno: %d\n", broadcast_seqno);
-  printf("CON,type:SLEEP,seqno:%d,duration:%d,grace:%d\n", broadcast_seqno, TIMEOUT_SLEEP_DURATION, TIMEOUT_SLEEP_TURNOVER);
+  printf("OUT,type:SLEEP,seqno:%d,duration:%d,grace:%d\n", broadcast_seqno, TIMEOUT_SLEEP_DURATION, TIMEOUT_SLEEP_TURNOVER);
 
   values = malloc(len*sizeof(uint8_t));
   values[0] = PTYPE_ACTION_SLEEP;
@@ -448,7 +448,6 @@ PROCESS_THREAD(example_broadcast_process, ev, data)
 
   PROCESS_BEGIN();
   SENSORS_ACTIVATE(button_sensor);  
-  SENSORS_ACTIVATE(adxl345); //activate accelerometer
 
   init();
   leds_blink();
@@ -481,6 +480,7 @@ PROCESS_THREAD(example_broadcast_process, ev, data)
         //TODO change address based on HW address
         //printf("### ADDRESS ### - setting rime address[0]: %d\n", node_mac[7]);
         if (mode == MODE_BLIND){
+          SENSORS_ACTIVATE(adxl345); //activate accelerometer only if the mote is blind
           ctimer_set(&ctBeacon, CLOCK_SECOND*(((float)TIMER_BEACON)/1000), beacon, NULL);
         }
         if (mode == MODE_ANCHOR){
