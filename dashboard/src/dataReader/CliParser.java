@@ -15,26 +15,20 @@ public class CliParser {
 
     public static String[] parseIncomingLine(String line) {
 
-        Log.logInfo("GW_MOTE_DATA : " + line);
-
-        if (line == null) {
-            System.err.println("Parsing null line");
-            return null;
-        }
-
         /* Split line into components */
-        return line.split(" ");
+        return line.replace("\n", "").replace("\r", "").split(",");
     }
 
 
-    public static void handleData(String[] data, RawModel rawModel) {
+    public static RssiDTO handleData(String[] data, RawModel rawModel) {
 
-
+        System.out.println("CliParser: |||" + data[1].split(":")[1]+"|||");
 
         switch (data[1].split(":")[1]) {
 
-            // TODO : Parse receiving string, create the appropriate BO, and send it to the rawModel
 
+            // TODO : handle the Anchor-to-anchor data
+            /*
             case "DATA_AA" : // Measurement anchor to anchor
                 RssiDTO rssiAtA = BizzFactory.INSTANCE.createRssi(
                         Integer.parseInt(data[2].split(":")[1]),
@@ -43,45 +37,42 @@ public class CliParser {
                         Integer.parseInt(data[5].split(":")[1]),
                         RssiType.ANCHOR_TO_ANCHOR);
 
+
                 RawModel.INSTANCE.addRssi(rssiAtA);
                 break;
+            */
 
             case "DATA_AB" : // Measurement anchor to blind
-                RssiDTO rssiAtoB = BizzFactory.INSTANCE.createRssi(
+                return BizzFactory.INSTANCE.createRssi(
                         Integer.parseInt(data[2].split(":")[1]),
                         Integer.parseInt(data[3].split(":")[1]),
                         Integer.parseInt(data[4].split(":")[1]),
                         Integer.parseInt(data[5].split(":")[1]),
                         RssiType.ANCHOR_TO_BLIND);
 
-                RawModel.INSTANCE.addRssi(rssiAtoB);
-                break;
-
+            // TODO : handle the Blinf-to-anchor data
+            /*
             case "DATA_BA" : // Measurement blind to anchor
-                RssiDTO rssiBtA = BizzFactory.INSTANCE.createRssi(
+                return BizzFactory.INSTANCE.createRssi(
                         Integer.parseInt(data[2].split(":")[1]),
                         Integer.parseInt(data[3].split(":")[1]),
                         Integer.parseInt(data[4].split(":")[1]),
-                        Integer.parseInt(data[5].split(":")[1]),
+                        Integer.parseInt(data[6].split(":")[1]),
                         RssiType.BLIND_TO_ANCHOR);
-
-                RawModel.INSTANCE.addRssi(rssiBtA);
-                break;
+            */
 
             case "SLEEP" :
-
                 break;
 
             case "FREQ" :
-
                 break;
 
             case "BOOT" :
-
                 break;
 
         }
 
+        return null;
 
     }
 }

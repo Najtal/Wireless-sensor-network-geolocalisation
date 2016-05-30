@@ -29,6 +29,6 @@ public interface RssiDTO {
 
     public void setType(RssiType type);
 
-    public int getDistanceMeters();
+    public double getDistanceMeters();
 
 }

@@ -33,15 +33,15 @@ public final class Main {
      */
     public static void main(final String[] args) {
 
-        try {
+        //try {
             AppContext.INSTANCE.loadAndConfig(AppContext.PRODUCTION);
             new Pgm();
-        } catch (Exception e) {
+        /*} catch (Exception e) {
             String errMsg = "Error while loading the app";
 
             AppContext.INSTANCE.getLogger().log(Level.SEVERE,errMsg + ": "+ e.toString());
             JOptionPane.showMessageDialog(null, errMsg+"\n", "Fatal Error !", JOptionPane.ERROR_MESSAGE);
-        }
+        }*/
     }
 
 }

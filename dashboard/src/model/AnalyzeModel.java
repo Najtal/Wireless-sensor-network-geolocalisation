@@ -1,6 +1,7 @@
 package model;
 
 import util.Position;
+import util.PositionDouble;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,8 +15,8 @@ public class AnalyzeModel {
 
     public final  static AnalyzeModel INSTANCE = new AnalyzeModel();
 
-    private List<Position> blindPositions;
-    private Map<Integer, Position> positionsMap;
+    private List<PositionDouble> blindPositions;
+    private Map<Integer, PositionDouble> positionsMap;
 
     /**
      * constructor
@@ -29,7 +30,7 @@ public class AnalyzeModel {
 
     }
 
-    public void addBlindPosition(Position blindPosition, int sequenceNumber) {
+    public void addBlindPosition(PositionDouble blindPosition, int sequenceNumber) {
         blindPositions.add(blindPosition);
         positionsMap.put(sequenceNumber, blindPosition);
     }

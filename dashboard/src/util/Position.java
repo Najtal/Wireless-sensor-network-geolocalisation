@@ -15,6 +15,13 @@ public class Position {
         this.y = y;
     }
 
+    public Position(double[] xy) {
+        this.x = (int) xy[0];
+        this.y = (int) xy[1];
+    }
+
+
+
     public Position(RealVector rvPosition) throws IllegalAccessException {
         if (rvPosition.getDimension() == 2) {
             this.x = (int) rvPosition.getEntry(0);

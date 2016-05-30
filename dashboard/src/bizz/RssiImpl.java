@@ -14,7 +14,7 @@ public class RssiImpl extends BizzObjectImpl implements Rssi {
 	private int rssi;
 	private int sequenceNo;
 	private RssiType type;
-	private int distanceMeters;
+	private double distanceMeters;
 
 	/**
 	 *
@@ -26,9 +26,9 @@ public class RssiImpl extends BizzObjectImpl implements Rssi {
 		super();
 		this.from = from;
 		this.to = to;
-		this.rssi = rssi;
+		this.rssi = Math.abs(rssi);
 		this.type = type;
-		this.distanceMeters = RssiUCC.getDistanceFromRssi(rssi);
+		this.distanceMeters = RssiUCC.getDistanceFromRssi(this.rssi);
 		this.sequenceNo = sequenceNo;
 	}
 
@@ -72,8 +72,8 @@ public class RssiImpl extends BizzObjectImpl implements Rssi {
 	@Override
 	public void setRssi(int rssi) {
 		increaseVersion();
+		this.rssi = Math.abs(rssi);
 		this.distanceMeters = RssiUCC.getDistanceFromRssi(rssi);
-		this.rssi = rssi;
 	}
 
 	public int getSequenceNo() {
@@ -94,7 +94,7 @@ public class RssiImpl extends BizzObjectImpl implements Rssi {
 		this.type = type;
 	}
 
-	public int getDistanceMeters() {
+	public double getDistanceMeters() {
 		return distanceMeters;
 	}
 

@@ -1,5 +1,6 @@
 package dataAnalyzer;
 
+import app.AppContext;
 import constant.RssiType;
 import model.AnalyzeModel;
 import model.AnchorModel;
@@ -10,7 +11,9 @@ import org.apache.commons.math3.fitting.leastsquares.LevenbergMarquardtOptimizer
 import org.apache.commons.math3.linear.RealVector;
 import ucc.AnchorDTO;
 import ucc.RssiDTO;
+import util.Log;
 import util.Position;
+import util.PositionDouble;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +24,7 @@ import java.util.List;
 public class LinearLeastSquareHandler {
 
     public static final LinearLeastSquareHandler INSTANCE = new LinearLeastSquareHandler();
+    public static final int TIME_TO_WAIT_AT_START = Integer.parseInt(AppContext.INSTANCE.getProperty("waitBeforeAnalyze"));
 
     /**
      * Create a thread that read the raw values and compute the blind position
@@ -39,14 +43,28 @@ public class LinearLeastSquareHandler {
         Thread thread = new Thread(){
             public void run(){
 
+                Log.logInfo("ARD WAIT seqno: " + sequenceNumber);
+
+
+                try {
+                    this.sleep(TIME_TO_WAIT_AT_START);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+
+                Log.logInfo("ARD START seqno: " + sequenceNumber);
+
                 List<RssiDTO> measurements = new ArrayList<>();
                 measurements.addAll(sequence.getRssiAtoB());
                 measurements.addAll(sequence.getRssiBtoA());
-                Position blindPosition = getPositionFromRSSI(anchors, measurements);
+                PositionDouble blindPosition = getPositionFromRSSI(anchors, measurements);
 
                 am.addBlindPosition(blindPosition, sequenceNumber);
 
                 rm.removeSequence(sequenceNumber);
+
+                Log.logInfo("ARD DONE seqno: " + sequenceNumber + " POS: " + blindPosition.getX()+"x"+blindPosition.getY());
             }
         };
 
@@ -59,7 +77,7 @@ public class LinearLeastSquareHandler {
      * @param measurements All measurements from ANCHOR to BLIND and BLIND to ANCHOR
      * @return the optimum position of the BLIND
      */
-    private static Position getPositionFromRSSI(AnchorModel anchors, List<RssiDTO> measurements) {
+    private static PositionDouble getPositionFromRSSI(AnchorModel anchors, List<RssiDTO> measurements) {
 
         int inc = 0;
 
@@ -73,13 +91,13 @@ public class LinearLeastSquareHandler {
             if (rssi.getType() == RssiType.ANCHOR_TO_BLIND) {
                 aTmp = anchors.getAnchorById(rssi.getFrom());
                 rssiPosAnchorX.add(inc, (double)aTmp.getPosx());
-                rssiPosAnchorX.add(inc, (double)aTmp.getPosy());
+                rssiPosAnchorY.add(inc, (double)aTmp.getPosy());
                 rssiDistToBlind.add(inc, (double)rssi.getDistanceMeters());
                 inc++;
             } else if (rssi.getType() == RssiType.BLIND_TO_ANCHOR) {
                 aTmp = anchors.getAnchorById(rssi.getTo());
                 rssiPosAnchorX.add(inc, (double)aTmp.getPosx());
-                rssiPosAnchorX.add(inc, (double)aTmp.getPosy());
+                rssiPosAnchorY.add(inc, (double)aTmp.getPosy());
                 rssiDistToBlind.add(inc, (double)rssi.getDistanceMeters());
                 inc++;
             }
@@ -95,16 +113,17 @@ public class LinearLeastSquareHandler {
         }
 
         TrilaterationFunction trilaterationFunction = new TrilaterationFunction(positions, distances);
-        LinearLeastSquaresSolver lSolver = new LinearLeastSquaresSolver(trilaterationFunction);
-        //NonLinearLeastSquaresSolver nlSolver = new NonLinearLeastSquaresSolver(trilaterationFunction, new LevenbergMarquardtOptimizer());
+        //LinearLeastSquaresSolver lSolver = new LinearLeastSquaresSolver(trilaterationFunction);
+        NonLinearLeastSquaresSolver nlSolver = new NonLinearLeastSquaresSolver(trilaterationFunction, new LevenbergMarquardtOptimizer());
 
-        RealVector rvPosition = lSolver.solve();
-        //LeastSquaresOptimizer.Optimum optimum = nlSolver.solve();
+        PositionDouble position = null;
 
-        Position position = null;
         try {
-            position = new Position(rvPosition);
-        } catch (IllegalAccessException e) {
+            double[] centroid = nlSolver.solve().getPoint().toArray();
+            position = new PositionDouble(centroid);
+
+        } catch (Exception e) {
+            System.out.println("Error while computing the position");
             e.printStackTrace();
         }
 

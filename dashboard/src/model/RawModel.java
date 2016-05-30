@@ -3,6 +3,7 @@ package model;
 
 import dataAnalyzer.LinearLeastSquareHandler;
 import ucc.RssiDTO;
+import util.Log;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -33,16 +34,30 @@ public class RawModel {
 
         int seqNumber = rssi.getSequenceNo();
 
+        Log.logInfo("new RSSI : seqno=" + seqNumber + ", from="+rssi.getFrom()+ ", to="+rssi.getTo()+", rssi="+rssi.getRssi());
+        System.out.println("new RSSI : seqno=" + seqNumber + ", from="+rssi.getFrom()+ ", to="+rssi.getTo()+", rssi="+rssi.getRssi());
+
         // If sequence not exist : we create, or if already past, we throw
         if (!sequences.containsKey(seqNumber) && seqNumber > lastSequenceAnalyzed) {
                 sequences.put(seqNumber, new RawModelSequence(seqNumber));
-        } else if (seqNumber < lastSequenceAnalyzed) {
+
+                LinearLeastSquareHandler.INSTANCE.analyzeSequenceRawData(
+                        sequences.get(seqNumber),
+                        this,
+                        AnalyzeModel.INSTANCE,
+                        AnchorModel.INSTANCE,
+                        seqNumber);
+
+                lastSequenceAnalyzed++;
+
+        } /*else if (seqNumber < lastSequenceAnalyzed) {
             // if seq number already analyzed, we throw
             return;
-        }
+        } */
 
         sequences.get(seqNumber).addRssi(rssi);
 
+        /*
         if (seqNumber > lastSequenceAnalyzed +1) {
             LinearLeastSquareHandler.INSTANCE.analyzeSequenceRawData(
                     sequences.get(lastSequenceAnalyzed+1), this,
@@ -51,8 +66,8 @@ public class RawModel {
                     lastSequenceAnalyzed+1);
 
             lastSequenceAnalyzed++;
-
         }
+        */
     }
 
 
