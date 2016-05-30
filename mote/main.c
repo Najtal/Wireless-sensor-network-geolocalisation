@@ -19,6 +19,7 @@
 #include "dev/leds.h"
 #include "dev/adxl345.h"
 #include "dev/cc2420/cc2420.c"
+#include "dev/leds.h"
 //#include "platform/z1/contiki-z1-main.c"
 
 #define MAX(x, y) (((x) > (y)) ? (x) : (y))
@@ -143,6 +144,7 @@ static void beacon(){
   broadcast_seqno++;
   ctimer_reset(&ctBeacon);
   free(values);
+  leds_toggle(LEDS_RED);
 }
 
 static void sendDataToGW(){
@@ -212,6 +214,7 @@ static void sendDataToGW(){
   free(values);
   erase();
   ctimer_set(&ctCollect, CLOCK_SECOND*(TIMEOUT_COLLECT_SELF), sendDataToGW, NULL);
+  leds_toggle(LEDS_RED);
 }
 
 static void checkForSending(){
@@ -235,8 +238,8 @@ static void sendFreqChange(){
   uint8_t *values;
   uint8_t len = 6;
   last_freq = (last_freq+1) % 3;
-  printf("### TRICKLE ### - sending ACTION_COLLECT_FREQ with seqno: %d\n", broadcast_seqno);
-  //TODO printf("CON,type:FREQ,seqno:%d,freq:%d,grace:%d\n", broadcast_seqno, FREQ[last_freq], TIMEOUT_FREQ_TURNOVER);
+  //TODO printf("### TRICKLE ### - sending ACTION_COLLECT_FREQ with seqno: %d\n", broadcast_seqno);
+  printf("OUT,type:FREQ,seqno:%d,freq:%d,grace:%d\n", broadcast_seqno, FREQ[last_freq], TIMEOUT_FREQ_TURNOVER);
 
   values = malloc(len*sizeof(uint8_t));
   values[0] = PTYPE_ACTION_COLLECT_FREQ;
@@ -259,13 +262,14 @@ static void sendFreqChange(){
   ctimer_set(&ctFreq, CLOCK_SECOND*(((float)TIMEOUT_FREQ_TURNOVER)/1000), changeFrequency, FREQ[last_freq]); //set timer for next frequency change sending
   ctimer_set(&ctFreqFlood, CLOCK_SECOND*(((float)TIMER_FREQ)/1000), sendFreqChange, NULL); //set timer to change the frequency
   free(values);
+  leds_toggle(LEDS_RED);
 }
 
 static void sendSleep(){
     uint8_t *values;
   uint8_t len = 7;
-  printf("### TRICKLE ### - sending ACTION_SLEEP with seqno: %d\n", broadcast_seqno);
-  //TODO printf("CON,type:SLEEP,seqno:%d,duration:%d,grace:%d\n", broadcast_seqno, TIMEOUT_SLEEP_DURATION, TIMEOUT_SLEEP_TURNOVER);
+  //TODO printf("### TRICKLE ### - sending ACTION_SLEEP with seqno: %d\n", broadcast_seqno);
+  printf("OUT,type:SLEEP,seqno:%d,duration:%d,grace:%d\n", broadcast_seqno, TIMEOUT_SLEEP_DURATION, TIMEOUT_SLEEP_TURNOVER);
 
   values = malloc(len*sizeof(uint8_t));
   values[0] = PTYPE_ACTION_SLEEP;
@@ -293,6 +297,7 @@ static void sendSleep(){
   ctimer_set(&ctFreqFlood, CLOCK_SECOND*((((float)TIMER_FREQ+TIMEOUT_SLEEP_TURNOVER)/1000)+TIMEOUT_SLEEP_DURATION), sendFreqChange, NULL); //set timeout for sending the freq change 
 
   free(values);
+  leds_toggle(LEDS_RED);
 }
 
 /*######################################################################################################################*/
@@ -327,6 +332,7 @@ static void broadcast_recv(struct broadcast_conn *c, const linkaddr_t *from){
 
   }
   free(copy);
+  leds_toggle(LEDS_GREEN);
 }
 
 
@@ -347,8 +353,8 @@ static void collect_recv(const linkaddr_t *originator, uint8_t seqno_collect, ui
     int8_t rssi = copy[++i];
     uint16_t seqno = (((uint8_t) copy[++i]) << 8) | ((uint8_t) copy[++i]);
 
-    printf("### COLLECT ### - received Anchor->Anchor from: %d to: %d rssi: %d seqno: %d\n", tx, originator->u8[0], rssi, seqno);
-    //TODO printf("OUT,type:DATA_AA,tx:%d,rx:%d,rssi:%d,seqno:%d\n", tx, originator->u8[0], rssi, seqno);
+    //TODOprintf("### COLLECT ### - received Anchor->Anchor from: %d to: %d rssi: %d seqno: %d\n", tx, originator->u8[0], rssi, seqno);
+     printf("OUT,type:DATA_AA,tx:%d,rx:%d,rssi:%d,seqno:%d\n", tx, originator->u8[0], rssi, seqno);
   }
   if (copy[++i] == 0 && copy[i+1] == 0){
     printf("### COLLECT ### - NO blind seen\n");
@@ -372,10 +378,11 @@ static void collect_recv(const linkaddr_t *originator, uint8_t seqno_collect, ui
     int8_t rssi = copy[++i];
     uint16_t seqno = (((uint8_t) copy[++i]) << 8) | ((uint8_t) copy[++i]);
 
-    printf("### COLLECT ### - received Blind->Anchor from: %d to: %d rssi: %d movement: %d seqno: %d\n", tx, originator->u8[0], rssi, movement, seqno);
-    //TODO printf("OUT,type:DATA_BA,tx:%d,rx:%d,rssi:%d,movement:%d,seqno:%d\n", tx, originator->u8[0], rssi, movement, seqno);
+    //TODOprintf("### COLLECT ### - received Blind->Anchor from: %d to: %d rssi: %d movement: %d seqno: %d\n", tx, originator->u8[0], rssi, movement, seqno);
+    printf("OUT,type:DATA_BA,tx:%d,rx:%d,rssi:%d,movement:%d,seqno:%d\n", tx, originator->u8[0], rssi, movement, seqno);
   }
-  free(copy); 
+  free(copy);
+  leds_toggle(LEDS_BLUE);
 }
 
 static void trickle_recv(struct trickle_conn *c)
@@ -411,6 +418,7 @@ static void trickle_recv(struct trickle_conn *c)
     printf("### TRICKLE ### - received ACTION_SLEEP with seqno: %d, sleepTime: %d\n", seqno, sleepTime);
   }
   free(copy);
+  leds_toggle(LEDS_BLUE);
 }
 
 static void trickle_rssi(int8_t rssi, uint8_t from, uint8_t seqno){
@@ -440,14 +448,13 @@ PROCESS_THREAD(example_broadcast_process, ev, data)
 
   PROCESS_BEGIN();
   SENSORS_ACTIVATE(button_sensor);  
-  SENSORS_ACTIVATE(adxl345); //activate accelerometer
 
   init();
+  leds_blink();
   etimer_set(&etBoot, CLOCK_SECOND*TIMEOUT_BOOT);
 
   broadcast_open(&broadcast, 129, &broadcast_call);
   trickle_open(&trickle, CLOCK_SECOND, 145, &trickle_call);
-
   PROCESS_WAIT_EVENT();
   while(1) {
     if (ev == sensors_event && data == &button_sensor && state == STATE_BOOT){
@@ -455,8 +462,9 @@ PROCESS_THREAD(example_broadcast_process, ev, data)
       printf ("### MODE ### - changing mode to: %d\n", mode);
     }
     if (etimer_expired(&etBoot)){ //timeout for pressing the buttons and changing modes has expired
+      leds_blink();
       state = STATE_RUNNING; //change state (used for button pressing limitations - so it cant be pressed later)
-      //TODO printf("OUT,type:BOOT,mode:%d\n", mode);
+      printf("OUT,type:BOOT,mode:%d\n", mode);
       if (mode == MODE_GW){
         linkaddr_t addr;
         addr.u8[0] = 1;
@@ -472,6 +480,7 @@ PROCESS_THREAD(example_broadcast_process, ev, data)
         //TODO change address based on HW address
         //printf("### ADDRESS ### - setting rime address[0]: %d\n", node_mac[7]);
         if (mode == MODE_BLIND){
+          SENSORS_ACTIVATE(adxl345); //activate accelerometer only if the mote is blind
           ctimer_set(&ctBeacon, CLOCK_SECOND*(((float)TIMER_BEACON)/1000), beacon, NULL);
         }
         if (mode == MODE_ANCHOR){
@@ -548,7 +557,7 @@ void saveMeasurementAnchor(uint8_t tx, int8_t rssi, uint16_t seqno){
     addlistItem(measurementsAnchor, measurement);
     printf("### MEASUREMENT ### - saved anchor->anchor from: %d rssi: %d seqno: %d\n", tx, rssi, seqno);
   } else {
-    //TODO printf("OUT,type:DATA_AA,tx:%d,rx:1,rssi:%d,seqno:%d\n", tx, rssi, seqno);
+    printf("OUT,type:DATA_AA,tx:%d,rx:1,rssi:%d,seqno:%d\n", tx, rssi, seqno);
   }
 }
 
@@ -577,8 +586,8 @@ void saveMeasurementByBlind(uint8_t tx, uint8_t rx, int8_t rssi, uint16_t seqno)
     addlistItem(measurementsByBlind, measurement);
     printf("### MEASUREMENT ### - saved anchor->blind from:%d to:%d rssi:%d seqno: %d\n", tx, rx, rssi, seqno);
   } else {
-    printf("### COLLECT ### - received Anchor->Blind from: %d to: %d rssi: %d seqno: %d\n", tx, rx, rssi, seqno);
-    //TODO printf("OUT,type:DATA_AB,tx:%d,rx:%d,rssi:%d,seqno:%d\n", tx, rx, rssi, seqno);
+    //TODO printf("### COLLECT ### - received Anchor->Blind from: %d to: %d rssi: %d seqno: %d\n", tx, rx, rssi, seqno);
+    printf("OUT,type:DATA_AB,tx:%d,rx:%d,rssi:%d,seqno:%d\n", tx, rx, rssi, seqno);
   }
 }
 
@@ -595,6 +604,6 @@ void saveMeasurementOfBlind(uint8_t tx, uint8_t movement, int8_t rssi, uint16_t 
     addlistItem(measurementsOfBlind, measurement);
     printf("### MEASUREMENT ### - saved blind->anchor from: %d movement: %d rssi: %d seqno: %d\n", tx, movement, rssi, seqno);
   } else {
-    //TODO printf("OUT,type:DATA_BA,tx:%d,rx:1,rssi:%d,movement:%d,seqno:%d\n", tx, rssi, movement, seqno);
+    printf("OUT,type:DATA_BA,tx:%d,rx:1,rssi:%d,movement:%d,seqno:%d\n", tx, rssi, movement, seqno);
   }
 }

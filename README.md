@@ -25,9 +25,9 @@ The project comprises several sub‐phases:
 - [x] Moving mote beaconing
 - [x] Concatenate data on collecting data
 - [x] Collecting RSSI measurements to GateWay
-- [ ] Printing out properly all data on GateWay
-- [ ] Changing frequency between actions
-- [ ] Sending movement velocity information from moving mote
+- [x] Printing out properly all data on GateWay
+- [x] Changing frequency between actions
+- [x] Sending movement velocity information from moving mote
 - [ ] Sending alternative data from moving mote to complete data structure
 
 #### Dashboard code
