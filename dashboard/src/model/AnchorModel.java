@@ -43,4 +43,8 @@ public class AnchorModel {
         return anchorIdMap.get(id);
     }
 
+    public List<AnchorDTO> getAnchorBy() {
+        return anchors;
+    }
+
 }

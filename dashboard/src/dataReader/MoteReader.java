@@ -29,7 +29,6 @@ public class MoteReader {
         } else {
             Reader readerThread = new Reader(rawModel);
             readerThread.start();
-
         }
 
 
@@ -37,15 +36,65 @@ public class MoteReader {
 
     private void mockupRSSI() {
 
-        System.out.println("MOCKUP RSSI");
+        Thread t = new Thread()
+        {
+            public void run() {
 
-        AnchorModel.INSTANCE.addAnchor(BizzFactory.INSTANCE.createAnchor(0, 0, 0));
-        AnchorModel.INSTANCE.addAnchor(BizzFactory.INSTANCE.createAnchor(1, 10, 0));
-        AnchorModel.INSTANCE.addAnchor(BizzFactory.INSTANCE.createAnchor(2, 10, 10));
+                try {
+                    this.sleep(5000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
 
-        RawModel.INSTANCE.addRssi(BizzFactory.INSTANCE.createRssi(0,3,-14,1, RssiType.ANCHOR_TO_BLIND));
-        RawModel.INSTANCE.addRssi(BizzFactory.INSTANCE.createRssi(1,3,-20,1, RssiType.ANCHOR_TO_BLIND));
-        RawModel.INSTANCE.addRssi(BizzFactory.INSTANCE.createRssi(2,3,-14,1, RssiType.ANCHOR_TO_BLIND));
+                Log.logInfo("Mockup RSSI START 1");
+
+                RawModel.INSTANCE.addRssi(BizzFactory.INSTANCE.createRssi(0,6,-14,1, RssiType.ANCHOR_TO_BLIND));
+                RawModel.INSTANCE.addRssi(BizzFactory.INSTANCE.createRssi(1,6,-20,1, RssiType.ANCHOR_TO_BLIND));
+                RawModel.INSTANCE.addRssi(BizzFactory.INSTANCE.createRssi(2,6,-14,1, RssiType.ANCHOR_TO_BLIND));
+
+                try {
+                    this.sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                Log.logInfo("Mockup RSSI START 2");
+
+                RawModel.INSTANCE.addRssi(BizzFactory.INSTANCE.createRssi(3,6,-14,2, RssiType.ANCHOR_TO_BLIND));
+                RawModel.INSTANCE.addRssi(BizzFactory.INSTANCE.createRssi(4,6,-20,2, RssiType.ANCHOR_TO_BLIND));
+                RawModel.INSTANCE.addRssi(BizzFactory.INSTANCE.createRssi(2,6,-14,2, RssiType.ANCHOR_TO_BLIND));
+
+                try {
+                    this.sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                Log.logInfo("Mockup RSSI START 3");
+
+                RawModel.INSTANCE.addRssi(BizzFactory.INSTANCE.createRssi(1,6,-14,3, RssiType.ANCHOR_TO_BLIND));
+                RawModel.INSTANCE.addRssi(BizzFactory.INSTANCE.createRssi(3,6,-20,3, RssiType.ANCHOR_TO_BLIND));
+                RawModel.INSTANCE.addRssi(BizzFactory.INSTANCE.createRssi(5,6,-14,3, RssiType.ANCHOR_TO_BLIND));
+
+
+                try {
+                    this.sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                Log.logInfo("Mockup RSSI START 3");
+
+                RawModel.INSTANCE.addRssi(BizzFactory.INSTANCE.createRssi(0,6,-14,4, RssiType.ANCHOR_TO_BLIND));
+                RawModel.INSTANCE.addRssi(BizzFactory.INSTANCE.createRssi(1,6,-20,4, RssiType.ANCHOR_TO_BLIND));
+                RawModel.INSTANCE.addRssi(BizzFactory.INSTANCE.createRssi(2,6,-14,4, RssiType.ANCHOR_TO_BLIND));
+
+            }
+        };
+
+        t.start();
+
+
 
 
     }

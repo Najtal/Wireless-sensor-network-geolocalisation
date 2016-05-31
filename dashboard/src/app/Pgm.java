@@ -1,12 +1,14 @@
 package app;
 
 import dataAnalyzer.LinearLeastSquareHandler;
-import gui.swing.Frame;
+import gui.CustomTableModel;
+import gui.Frame;
+import gui.GuiModel;
 import model.AnalyzeModel;
 import model.AnchorModel;
 import model.RawModel;
 import dataReader.MoteReader;
-import gui.jfx.FxGui;
+import util.AnchorReader;
 import util.Log;
 
 
@@ -36,25 +38,25 @@ public class Pgm {
 		this.rawModel = RawModel.INSTANCE;
 		this.analyzeModel = AnalyzeModel.INSTANCE;
 		this.anchorModel = AnchorModel.INSTANCE;
-		Log.logInfo("Init models ok");
+		Log.logFine("Init models ok");
+
+		// The gui : listen to the analyzed model, when new sequence data received from the initializer, update
+		AnchorReader.loadAnchorsToModel(AnchorModel.INSTANCE);
+		GuiModel gModel = new GuiModel(AnchorModel.INSTANCE);
+		this.frame = new Frame(gModel);
+		Log.logFine("Frame gui init ok");
 
 		// Init the reader : read the CLI, create RSSI & fills up the RawModel
 		this.moteReader = new MoteReader(rawModel);
-		Log.logInfo("Init CLI reader ok");
+		Log.logFine("Init CLI reader ok");
 
 		// Init initializer : Is trigged by the RawModel, if sequence data filled,
 		// 		It analyze the raw data to the Analyzed model
 		this.llsh = LinearLeastSquareHandler.INSTANCE;
-		Log.logInfo("Init Linear Least Square Handler ok");
+		Log.logFine("Init Linear Least Square Handler ok");
 
-		// The gui : listen to the analyzed model, when new sequence data received from the initializer, update
-		this.frame = new Frame();
-		try {
-			 FxGui.create();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		Log.logInfo("Frame gui init ok");
+		// Set frame visible when everything is launched
+		this.frame.setVisible(true);
 	}
 
 }
