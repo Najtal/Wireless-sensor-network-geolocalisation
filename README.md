@@ -33,13 +33,86 @@ The project comprises several sub‐phases:
 #### Dashboard code
 - [x] Main, error handler, properties reader, model saver.
 - [x] Interfacing with command line
-- [ ] Design the raw data model
-- [ ] Design the analyzes data model
-- [ ] Making spatial calculations from raw data model to analyzed data model
+- [x] Design the raw data model
+- [x] Design the analyzes data model
+- [x] Making spatial calculations from raw data model to analyzed data model
 - [ ] Gui - anchors settings
 - [ ] Gui - raw output display
 - [ ] Gui - anchor map visualization
 - [ ] Gui - moving mote vizualisation
 
 ## Usage
-To come ;)
+
+### If not compiled
+
+Set path
+```
+set path=%path%;"C:\Program Files\Java\jdk1.8.0_60\bin"
+```
+compile app
+```
+javac Main.java
+```
+
+### Config property file
+If the System.in is a cmd line, then the reader should be while(true), otherwise you should better limit it :).
+
+* GUI parameters
+guiTitle=WSN GeoLoc Dashboard
+guiSizeWidth=800
+guiSizeHeight=600
+guiSizeMinimumWidth=600
+guiSizeMinimumHeight=300
+
+* mockupRSSI : If you want to mockup RSSI
+* waitBeforeAnalyze : seconds to wait before analyzing a new sequence
+* receivedRssiAt1m : The received Rssi at 1 meter (should be negative)
+* propagationCstOfPathLossExp : The propagation constant of path loss exp (=2 in open space)
+
+### Configuration to run mote
+
+Before starting, you have to replace the trickle.c and trickle.h file in the Contiki system !
+
+give access to device
+```
+sudo chmod 777 /dev/ttyUSB*
+```
+
+make the program
+```
+make TARGET=z1 main
+```
+
+make file and upload to device
+```
+make TARGET=z1 main.upload
+```
+
+### Launch app
+
+It has been tested with a Zolertia Z1-mote and cooja (see mote code) installed in it.
+there will be three different type of motes :
+When starting a mote, you have 5 seconds to define the mote mode by clicking on the main button. This time lap starts and ends when the red led blinks.
+0. The Anchors : Starting motes are by default anchor. Thereby just start them, you don't have to push the button.
+0. The GateWay / Sync : To set a mote as a sync, push the main button once within the five first seconds. There may be only one GW per network.
+The gateway should be started with the below commands to link the dashboard to the network properly.
+0. The Blind : The blind mote need 2 pressures on the button within the 5 seconds.
+
+Then the network will build, start communicating and looking for a blind mote. The process can take up to two minutes before showing an output.
+
+
+Launch program with file saved outputs
+```
+java Main -cp/commons-math3-3.6.1.jar:. < cjout.txt
+```
+
+Launch program by using a mote in a real network
+```
+java Main -cp/commons-math3-3.6.1.jar:. < ~/contiki/tools/sky/serialdump-linux -b115200 /dev/ttyUSB0
+```
+
+
+## Credits
+
+Crafted with love by
+[JV](https://github.com/jvdurieu), [Matej](https://github.com/DanicMa) and [Goga](https://github.com/gogickaa)
