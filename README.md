@@ -36,10 +36,10 @@ The project comprises several sub‐phases:
 - [x] Design the raw data model
 - [x] Design the analyzes data model
 - [x] Making spatial calculations from raw data model to analyzed data model
-- [ ] Gui - anchors settings
-- [ ] Gui - raw output display
-- [ ] Gui - anchor map visualization
-- [ ] Gui - moving mote vizualisation
+- [x] Gui - anchors settings
+- [x] Gui - raw output display
+- [x] Gui - anchor map visualization
+- [x] Gui - moving mote vizualisation
 
 ## Usage
 
