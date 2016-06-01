@@ -6,6 +6,7 @@ import util.PositionDouble;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Map;
 
 /**
  * Created by jvdur on 31/05/2016.
@@ -107,13 +108,26 @@ public class Canvas extends JPanel {
 
         }
 
-        // Paint moving mote
+        // Draw mote shifting
         g.setColor(gm.getBnColor());
+        PositionDouble lastPos = null;
+        Map<Integer, PositionDouble> posMap = AnalyzeModel.INSTANCE.getPositionsMap();
+        for (Integer i : AnalyzeModel.INSTANCE.getRegSequences() ) {
+            PositionDouble blindPos = posMap.get(i);
+
+            if (lastPos != null) {
+                g.drawLine((int)(originPosX+lastPos.getX()*zoom), (int)(originPosY+lastPos.getY()*zoom),(int)(originPosX+blindPos.getX()*zoom), (int)(originPosX+blindPos.getY()*zoom));
+            }
+            lastPos = blindPos;
+        }
+
+
+        // Paint moving mote
         PositionDouble bpd = AnalyzeModel.INSTANCE.getLastPosition();
         if (bpd != null) {
             g.setColor(gm.getBnColor());
-            g.fillOval(originPosX+((int)(bpd.getX()*zoom))-printBlindShift, originPosY+((int)((-1*bpd.getY())*zoom))-printBlindShift, ((int) (gm.getBnSize()*zoom)), ((int) (gm.getBnSize()*zoom)));
-            g.drawOval(originPosX+(int)((bpd.getX()*zoom)-(gm.getMoteRadius()*zoom)), originPosY+(int)(((-1*bpd.getY())*zoom)-(gm.getMoteRadius()*zoom)), (int)(gm.getMoteRadius()*2*zoom), (int)(gm.getMoteRadius()*2*zoom));
+            g.fillOval(originPosX+((int)((bpd.getX()*zoom)-printBlindShift)), originPosY+((int)((-1*bpd.getY())*zoom))-printBlindShift, ((int) (gm.getBnSize()*zoom)), ((int) (gm.getBnSize()*zoom)));
+            g.drawOval(originPosX+((int)((bpd.getX()*zoom)-(gm.getMoteRadius()*zoom))), originPosY+(int)(((-1*bpd.getY())*zoom)-(gm.getMoteRadius()*zoom)), (int)(gm.getMoteRadius()*2*zoom), (int)(gm.getMoteRadius()*2*zoom));
 
         }
 

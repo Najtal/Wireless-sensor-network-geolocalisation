@@ -22,8 +22,6 @@ public class CliParser {
 
     public static RssiDTO handleData(String[] data, RawModel rawModel) {
 
-        System.out.println("CliParser: |||" + data[1].split(":")[1]+"|||");
-
         switch (data[1].split(":")[1]) {
 
 
@@ -42,6 +40,7 @@ public class CliParser {
                 break;
             */
 
+            /*
             case "DATA_AB" : // Measurement anchor to blind
                 return BizzFactory.INSTANCE.createRssi(
                         Integer.parseInt(data[2].split(":")[1]),
@@ -49,17 +48,23 @@ public class CliParser {
                         Integer.parseInt(data[4].split(":")[1]),
                         Integer.parseInt(data[5].split(":")[1]),
                         RssiType.ANCHOR_TO_BLIND);
-
+            */
             // TODO : handle the Blinf-to-anchor data
-            /*
+
             case "DATA_BA" : // Measurement blind to anchor
-                return BizzFactory.INSTANCE.createRssi(
+                /*return BizzFactory.INSTANCE.createRssi(
                         Integer.parseInt(data[2].split(":")[1]),
                         Integer.parseInt(data[3].split(":")[1]),
                         Integer.parseInt(data[4].split(":")[1]),
                         Integer.parseInt(data[6].split(":")[1]),
-                        RssiType.BLIND_TO_ANCHOR);
-            */
+                        RssiType.BLIND_TO_ANCHOR);*/
+                return BizzFactory.INSTANCE.createRssi(
+                        Integer.parseInt(data[3].split(":")[1]),
+                        Integer.parseInt(data[2].split(":")[1]),
+                        Integer.parseInt(data[4].split(":")[1])+45,
+                        Integer.parseInt(data[6].split(":")[1]),
+                        RssiType.ANCHOR_TO_BLIND);
+
 
             case "SLEEP" :
                 break;
