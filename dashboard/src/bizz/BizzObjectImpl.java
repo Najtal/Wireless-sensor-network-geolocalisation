@@ -25,7 +25,7 @@ public abstract class BizzObjectImpl implements BizzObject {
 	/**
 	 * For every modification on the object increase the version
 	 */
-	protected void increaseVersion() {
+	public void increaseVersion() {
 		this.version++;
 	}
 

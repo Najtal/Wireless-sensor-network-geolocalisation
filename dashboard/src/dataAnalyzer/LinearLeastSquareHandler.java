@@ -23,8 +23,8 @@ import java.util.List;
  */
 public class LinearLeastSquareHandler {
 
-    public static final LinearLeastSquareHandler INSTANCE = new LinearLeastSquareHandler();
-    public static final int TIME_TO_WAIT_AT_START = Integer.parseInt(AppContext.INSTANCE.getProperty("waitBeforeAnalyze"));
+    //public static final LinearLeastSquareHandler INSTANCE = new LinearLeastSquareHandler();
+    public static final int TIME_TO_WAIT_AT_START = 1000*Integer.parseInt(AppContext.INSTANCE.getProperty("waitBeforeAnalyze"));
 
     /**
      * Create a thread that read the raw values and compute the blind position
@@ -88,6 +88,9 @@ public class LinearLeastSquareHandler {
         AnchorDTO aTmp;
 
         for (RssiDTO rssi : measurements) {
+
+            Log.logInfo("ANALYZE - FROM:" + rssi.getFrom() + " TO:" + rssi.getTo() + " RSSI:"+rssi.getRssi() );
+
             if (rssi.getType() == RssiType.ANCHOR_TO_BLIND) {
                 aTmp = anchors.getAnchorById(rssi.getFrom());
                 rssiPosAnchorX.add(inc, (double)aTmp.getPosx());

@@ -76,6 +76,11 @@ public class RssiImpl extends BizzObjectImpl implements Rssi {
 		this.distanceMeters = RssiUCC.getDistanceFromRssi(rssi);
 	}
 
+	@Override
+	public void increaseVersion() {
+		this.version++;
+	}
+
 	public int getSequenceNo() {
 		return sequenceNo;
 	}

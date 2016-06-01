@@ -33,6 +33,15 @@ public class RawModelSequence {
     public void addRssi(RssiDTO rssi) {
 
         if (rssi.getType() == RssiType.ANCHOR_TO_BLIND) {
+            for (RssiDTO rdto: rssiAtoB) {
+                if (rdto.getFrom() == rssi.getFrom()) {  // !!! add : && rdto.getTo() == rssi.getTo()
+                    int nb = rdto.getVersion();
+                    int newAvgRssi = ((rdto.getRssi()*nb)+rssi.getRssi())/(nb+1);
+                    rdto.increaseVersion();
+                    rdto.setRssi(newAvgRssi);
+                    return;
+                }
+            }
             rssiAtoB.add(rssi);
         } else if (rssi.getType() == RssiType.ANCHOR_TO_ANCHOR) {
             rssiAtoA.add(rssi);

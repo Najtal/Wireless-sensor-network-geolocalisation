@@ -1,6 +1,7 @@
 package ucc;
 
 
+import bizz.BizzObjectImpl;
 import constant.RssiType;
 
 /**
@@ -30,5 +31,7 @@ public interface RssiDTO {
     public void setType(RssiType type);
 
     public double getDistanceMeters();
+
+    void increaseVersion();
 
 }

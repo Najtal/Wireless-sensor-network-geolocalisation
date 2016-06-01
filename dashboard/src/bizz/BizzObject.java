@@ -13,4 +13,6 @@ public interface BizzObject {
 	 */
 	int getVersion();
 
+	void increaseVersion();
+
 }

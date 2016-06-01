@@ -41,7 +41,7 @@ public class RawModel {
         if (!sequences.containsKey(seqNumber) && seqNumber > lastSequenceAnalyzed) {
                 sequences.put(seqNumber, new RawModelSequence(seqNumber));
 
-                LinearLeastSquareHandler.INSTANCE.analyzeSequenceRawData(
+                new LinearLeastSquareHandler().analyzeSequenceRawData(
                         sequences.get(seqNumber),
                         this,
                         AnalyzeModel.INSTANCE,
@@ -50,24 +50,9 @@ public class RawModel {
 
                 lastSequenceAnalyzed++;
 
-        } /*else if (seqNumber < lastSequenceAnalyzed) {
-            // if seq number already analyzed, we throw
-            return;
-        } */
+        }
 
         sequences.get(seqNumber).addRssi(rssi);
-
-        /*
-        if (seqNumber > lastSequenceAnalyzed +1) {
-            LinearLeastSquareHandler.INSTANCE.analyzeSequenceRawData(
-                    sequences.get(lastSequenceAnalyzed+1), this,
-                    AnalyzeModel.INSTANCE,
-                    AnchorModel.INSTANCE,
-                    lastSequenceAnalyzed+1);
-
-            lastSequenceAnalyzed++;
-        }
-        */
     }
 
 

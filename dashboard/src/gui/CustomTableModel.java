@@ -54,7 +54,7 @@ public class CustomTableModel extends AbstractTableModel {
 	// Returns the value of each cell
 	public Object getValueAt(int row, int col) {
 
-		AnchorDTO anchor = anchorModel.getAnchorById(row);
+		AnchorDTO anchor = anchorModel.getAnchorById(row+1);
 
 		TableColumn tableColumn = TableColumn.fromIndex(col);
 		switch (tableColumn) {

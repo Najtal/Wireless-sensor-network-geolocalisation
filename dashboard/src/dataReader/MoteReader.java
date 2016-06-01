@@ -23,11 +23,19 @@ public class MoteReader {
 
         // Init context variables
         this.rawModel = rawModel;
+        int mode = Integer.parseInt(AppContext.INSTANCE.getProperty("mockupRSSI"));
 
-        if (Integer.parseInt(AppContext.INSTANCE.getProperty("mockupRSSI")) == 1) {
+        /*
+         * IF MODE = 0 : Read from cmd line (LIVE)
+         * IF MODE = 1 : Generate mockup RSSI from scratch
+         * IF MODE = 2 : Read saved RSSI from file as system input
+         */
+
+        if (mode == 1) {
+            // Generate RSSI values from scratch
             mockupRSSI();
         } else {
-            Reader readerThread = new Reader(rawModel);
+            Reader readerThread = new Reader(rawModel, mode);
             readerThread.start();
         }
 
@@ -98,6 +106,5 @@ public class MoteReader {
 
 
     }
-
 
 }

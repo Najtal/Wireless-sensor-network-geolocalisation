@@ -25,14 +25,14 @@ public class Pgm {
 	private final RawModel rawModel;
 	private final AnalyzeModel analyzeModel;
 	private final AnchorModel anchorModel;
-	private final LinearLeastSquareHandler llsh;
+	//private final LinearLeastSquareHandler llsh;
 
 	/**
 	 * Constructeur. Crée le modele et la vue, par défaut sur la page de connection
 	 */
 	public Pgm() {
 
-		Log.logInfo("Program started all good");
+		Log.logInfo("Program starting...");
 
 		// Initialize the models
 		this.rawModel = RawModel.INSTANCE;
@@ -50,10 +50,12 @@ public class Pgm {
 		this.moteReader = new MoteReader(rawModel);
 		Log.logFine("Init CLI reader ok");
 
+		/*
 		// Init initializer : Is trigged by the RawModel, if sequence data filled,
 		// 		It analyze the raw data to the Analyzed model
 		this.llsh = LinearLeastSquareHandler.INSTANCE;
 		Log.logFine("Init Linear Least Square Handler ok");
+		*/
 
 		// Set frame visible when everything is launched
 		this.frame.setVisible(true);

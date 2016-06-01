@@ -16,10 +16,14 @@ import java.io.InputStreamReader;
 public class Reader extends Thread {
 
     private final RawModel rawModel;
+    private int mode;
+    private int lastTimeStampInMilli;
 
-    Reader(RawModel rawModel) {
+    Reader(RawModel rawModel, int mode) {
         super("MyThread");
         this.rawModel = rawModel;
+        this.mode = mode;
+        this.lastTimeStampInMilli = 0;
     }
 
     public void run() {
@@ -42,6 +46,30 @@ public class Reader extends Thread {
                 } while( ch != '\n');
                 //String line = reader.readLine();
 
+                if (mode == 2) {
+                    // Take of the time and sleep
+                    String time = line.split(" ")[0];
+                    line = line.split(" ")[1];
+
+                    String minute = time.split(":")[0];
+                    String second = time.split(":")[1];
+
+                    int minutes = Integer.parseInt(minute);
+                    double seconds = Double.parseDouble(second);
+                    int timeStampInMilli = (int) (1000*((minutes*60)+seconds));
+
+                    int diff = timeStampInMilli - lastTimeStampInMilli;
+                    lastTimeStampInMilli = timeStampInMilli;
+
+                    try {
+                        this.sleep(diff);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+
+                }
+
                 if (!line.startsWith("OUT")) continue;
 
                 System.out.print("Line: " + line + "\t");
@@ -61,25 +89,6 @@ public class Reader extends Thread {
             e.printStackTrace();
         }
 
-
-        /*
-        String line;
-        try {
-            while ((line = input.readLine()) != null) {
-                if (!line.startsWith("OUT")) {
-                    continue;
-                }
-                String[] data = CliParser.parseIncomingLine(line);
-                CliParser.handleData(data, rawModel);
-            }
-            input.close();
-
-        } catch (IOException e) {
-            throw new MoteReaderException("Mote Reader Exception when reading from serialdump");
-        }
-
-        throw new FatalException("Mote Reader Serialdump process shut down, exiting");
-        */
     }
 
 }
