@@ -36,7 +36,6 @@ The project comprises several sub‐phases:
 - [x] Design the raw data model
 - [x] Design the analyzes data model
 - [x] Making spatial calculations from raw data model to analyzed data model
-- [x] Gui - anchors settings
 - [x] Gui - raw output display
 - [x] Gui - anchor map visualization
 - [x] Gui - moving mote vizualisation
@@ -102,12 +101,17 @@ Then the network will build, start communicating and looking for a blind mote. T
 
 
 Launch program with file saved outputs
+
 ```
+java -jar dashboard.jar < in_sx.txt
+or
 java Main -cp/commons-math3-3.6.1.jar:. < cjout.txt
 ```
 
 Launch program by using a mote in a real network
 ```
+java -jar dashboard.jar < ~/contiki/tools/sky/serialdump-linux -b115200 /dev/ttyUSB0
+or
 java Main -cp/commons-math3-3.6.1.jar:. < ~/contiki/tools/sky/serialdump-linux -b115200 /dev/ttyUSB0
 ```
 
