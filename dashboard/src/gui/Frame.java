@@ -139,16 +139,24 @@ public class Frame extends JFrame implements ChangeListener, ActionListener {
         // Init panes
         sideOptionPane = new JPanel(new BorderLayout());
         menuPane = new JPanel(new GridLayout(2, 2));
+        menuPane.setBorder(BorderFactory.createEmptyBorder(5,20,5,20));
+        menuPane.setAlignmentX(Component.RIGHT_ALIGNMENT);
 
         // Table
         anchorPane = new JTable(model.getTableModel());
         JScrollPane jscTable = new JScrollPane(anchorPane);
 
         // Options
+        Border labelBorder = BorderFactory.createEmptyBorder(2,0,2,20);
+
         JLabel jlShowGrid = new JLabel("Show grid");
+        jlShowGrid.setHorizontalAlignment(SwingConstants.RIGHT);
+        jlShowGrid.setBorder(labelBorder);
         jcbShowGrid = new JCheckBox();
         jcbShowGrid.addActionListener(this);
         JLabel jlShowRadius = new JLabel("Show radius");
+        jlShowRadius.setHorizontalAlignment(SwingConstants.RIGHT);
+        jlShowRadius.setBorder(labelBorder);
         jcbShowRadius = new JCheckBox();
         jcbShowRadius.addActionListener(this);
 
