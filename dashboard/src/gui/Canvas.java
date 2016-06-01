@@ -40,7 +40,15 @@ public class Canvas extends JPanel {
 
     }
 
+    /*
+    @Override
+    public Dimension getPreferredSize() {
+        return new Dimension(gm.getEnvWidth(), gm.getEnvHeight());
+    }
+    */
+
     public void paintComponent (Graphics g) {
+        super.paintComponent(g);
 
         Graphics2D g2;
         g2 = (Graphics2D) g;
@@ -52,7 +60,7 @@ public class Canvas extends JPanel {
 
         // Draw Grid
         int grid = gm.getGuiGrid();
-        if (grid > 0) {
+        if (grid > 0 && gm.isShowGrid()) {
             g.setColor(new Color(240,240,240));
 
             int gridShift = (int)(grid*zoom);
@@ -68,12 +76,13 @@ public class Canvas extends JPanel {
             }
 
             // Horizontal top of GW
-            for(int i=originPosY%grid ; i>=0 ; i-- ) {
-                g.drawLine(0, originPosY-(i*gridShift), (int)(gm.getEnvWidth()*zoom), originPosY-(i*gridShift));
+
+            for(int i=0 ; i<((gm.getEnvHeight()-(gm.getEnvHeight()-originPosY))%grid)-1 ; i++ ) {
+                    g.drawLine(0, originPosY-(i*gridShift), (int)(gm.getEnvWidth()*zoom), originPosY-(i*gridShift));
             }
 
             // Horizontal bottom of GW
-            for(int i=0 ; i<(gm.getEnvHeight()%grid)-1 ; i++ ) {
+            for(int i=0 ; i<((gm.getEnvHeight()*zoom-originPosY)%grid) ; i++ ) {
                 g.drawLine(0, originPosY+(i*gridShift), (int)(gm.getEnvWidth()*zoom), originPosY+(i*gridShift));
             }
         }
@@ -83,22 +92,23 @@ public class Canvas extends JPanel {
         for (AnchorDTO anchor : gm.getAm().getAnchorBy()) {
 
             if (anchor.getPosx() == 0 && anchor.getPosy() == 0) {
-                g.setColor(gm.getAnchorColor());
+                g.setColor(gm.getGwColor());
                 g.fillRect(originPosX-printGwShift, originPosY-printGwShift, ((int)(gm.getGwSize()*zoom)),((int)(gm.getGwSize()*zoom)));
             } else {
-                g.setColor(gm.getGwColor());
+                g.setColor(gm.getAnchorColor());
                 g.fillOval(originPosX+((int)(anchor.getPosx()*zoom))-printAnShift, originPosY+((int)((-1*anchor.getPosy())*zoom))-printAnShift, ((int) (gm.getAnchorSize()*zoom)), ((int) (gm.getAnchorSize()*zoom)));
             }
 
-            g.setColor(Color.lightGray);
-            g.drawOval(originPosX+(int)((anchor.getPosx()*zoom)-(gm.getMoteRadius()*zoom)), originPosY+(int)(((-1*anchor.getPosy())*zoom)-(gm.getMoteRadius()*zoom)), (int)(gm.getMoteRadius()*2*zoom), (int)(gm.getMoteRadius()*2*zoom));
+            // draw radius
+            if (gm.isShowRadius()) {
+                g.setColor(Color.lightGray);
+                g.drawOval(originPosX+(int)((anchor.getPosx()*zoom)-(gm.getMoteRadius()*zoom)), originPosY+(int)(((-1*anchor.getPosy())*zoom)-(gm.getMoteRadius()*zoom)), (int)(gm.getMoteRadius()*2*zoom), (int)(gm.getMoteRadius()*2*zoom));
+            }
 
         }
 
-
         // Paint moving mote
         g.setColor(gm.getBnColor());
-
         PositionDouble bpd = AnalyzeModel.INSTANCE.getLastPosition();
         if (bpd != null) {
             g.setColor(gm.getBnColor());

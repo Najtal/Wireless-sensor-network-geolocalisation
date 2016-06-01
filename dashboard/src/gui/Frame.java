@@ -30,6 +30,8 @@ public class Frame extends JFrame implements ChangeListener, ActionListener {
     private JPanel sideOptionPane;
     private JPanel menuPane;
     private JTable anchorPane;
+    private JCheckBox jcbShowGrid;
+    private JCheckBox jcbShowRadius;
 
     // South console
     private JPanel southConsole;
@@ -57,7 +59,6 @@ public class Frame extends JFrame implements ChangeListener, ActionListener {
 
         AnalyzeModel.INSTANCE.setALGui(this);
         Log.registerLog(this);
-
     }
 
 
@@ -133,27 +134,31 @@ public class Frame extends JFrame implements ChangeListener, ActionListener {
         this.add(jspV);
     }
 
-
     private void initSideOptionPane() {
 
         // Init panes
         sideOptionPane = new JPanel(new BorderLayout());
-        menuPane = new JPanel(new FlowLayout(FlowLayout.LEFT, 10,10));
+        menuPane = new JPanel(new GridLayout(2, 2));
 
+        // Table
         anchorPane = new JTable(model.getTableModel());
         JScrollPane jscTable = new JScrollPane(anchorPane);
 
-        // Init fields
-        JTextField jbOpAddAnchor = new JTextField("Add anchor");
-        JTextField jbOpSetGateway = new JTextField("Set gateway");
-        JTextField jbOpConfig = new JTextField("Configure");
-        JTextField jbOpStartStop = new JTextField("Start");
+        // Options
+        JLabel jlShowGrid = new JLabel("Show grid");
+        jcbShowGrid = new JCheckBox();
+        jcbShowGrid.addActionListener(this);
+        JLabel jlShowRadius = new JLabel("Show radius");
+        jcbShowRadius = new JCheckBox();
+        jcbShowRadius.addActionListener(this);
 
-        // Add fields
-        menuPane.add(jbOpAddAnchor);
-        menuPane.add(jbOpSetGateway);
-        menuPane.add(jbOpConfig);
-        menuPane.add(jbOpStartStop);
+        menuPane.add(jlShowGrid);
+        menuPane.add(jcbShowGrid);
+        menuPane.add(jlShowRadius);
+        menuPane.add(jcbShowRadius);
+
+        jcbShowGrid.setSelected(model.isShowGrid());
+        jcbShowRadius.setSelected(model.isShowRadius());
 
         // Compose Panes
         sideOptionPane.add(jscTable, BorderLayout.CENTER);
@@ -202,6 +207,18 @@ public class Frame extends JFrame implements ChangeListener, ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+
+        if (e != null) {
+            if (e.getSource() == jcbShowGrid) {
+                model.setShowGrid(!model.isShowGrid());
+                jcbShowGrid.setSelected(model.isShowGrid());
+            } else if (e.getSource() == jcbShowRadius) {
+                model.setShowRadius(!model.isShowRadius());
+                jcbShowRadius.setSelected(model.isShowRadius());
+            }
+        }
+
         repaint();
+
     }
 }

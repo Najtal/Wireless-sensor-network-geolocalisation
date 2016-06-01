@@ -40,6 +40,8 @@ public class GuiModel {
     private Color bnColor;
 
     private int guiGrid = Integer.parseInt(AppContext.INSTANCE.getProperty("guiGrid"));
+    private boolean showGrid;
+    private boolean showRadius;
 
     public GuiModel(AnchorModel am) {
         this.am = am;
@@ -49,6 +51,8 @@ public class GuiModel {
         this.gwColor = new Color(gwColorR, gwColorG, gwColorB);
         this.bnColor = new Color(bnColorR, bnColorG, bnColorB);
 
+        this.showGrid = (guiGrid == 0) ? false : true;
+        this.showRadius = true;
     }
 
     public AnchorModel getAm() {
@@ -125,5 +129,21 @@ public class GuiModel {
 
     public int getGuiGrid() {
         return guiGrid;
+    }
+
+    public boolean isShowGrid() {
+        return showGrid;
+    }
+
+    public void setShowGrid(boolean showGrid) {
+        this.showGrid = showGrid;
+    }
+
+    public boolean isShowRadius() {
+        return showRadius;
+    }
+
+    public void setShowRadius(boolean showRadius) {
+        this.showRadius = showRadius;
     }
 }
