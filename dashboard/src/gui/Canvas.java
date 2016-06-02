@@ -2,6 +2,7 @@ package gui;
 
 import model.AnalyzeModel;
 import ucc.AnchorDTO;
+import util.Log;
 import util.PositionDouble;
 
 import javax.swing.*;
@@ -106,20 +107,31 @@ public class Canvas extends JPanel {
                 g.drawOval(originPosX+(int)((anchor.getPosx()*zoom)-(gm.getMoteRadius()*zoom)), originPosY+(int)(((-1*anchor.getPosy())*zoom)-(gm.getMoteRadius()*zoom)), (int)(gm.getMoteRadius()*2*zoom), (int)(gm.getMoteRadius()*2*zoom));
             }
 
+            // Draw Anchor names
+            if (gm.isShowID()) {
+                g.setColor(Color.DARK_GRAY);
+                g.drawString("ID:"+anchor.getId(), originPosX+(int)(anchor.getPosx()*zoom+printAnShift+2+zoom), originPosY+(int)((-1*anchor.getPosy()*zoom)+printAnShift+2+zoom));
+            }
+
         }
+
 
         // Draw mote shifting
-        g.setColor(gm.getBnColor());
-        PositionDouble lastPos = null;
-        Map<Integer, PositionDouble> posMap = AnalyzeModel.INSTANCE.getPositionsMap();
-        for (Integer i : AnalyzeModel.INSTANCE.getRegSequences() ) {
-            PositionDouble blindPos = posMap.get(i);
+        if (gm.isShowPath()) {
+            g.setColor(gm.getBnColor());
 
-            if (lastPos != null) {
-                g.drawLine((int)(originPosX+lastPos.getX()*zoom), (int)(originPosY+lastPos.getY()*zoom),(int)(originPosX+blindPos.getX()*zoom), (int)(originPosX+blindPos.getY()*zoom));
+            PositionDouble lastPos = null;
+            PositionDouble blindPos;
+            Map<Integer, PositionDouble> posMap = AnalyzeModel.INSTANCE.getPositionsMap();
+            for (Integer i : AnalyzeModel.INSTANCE.getRegSequences() ) {
+                blindPos = posMap.get(i);
+                if (lastPos != null) {
+                    g.drawLine((int)(originPosX+(lastPos.getX()*zoom)), (int)(originPosY+(-1*lastPos.getY()*zoom)),(int)(originPosX+(blindPos.getX()*zoom)), (int)(originPosY+(-1*blindPos.getY()*zoom)));
+                }
+                lastPos = blindPos;
             }
-            lastPos = blindPos;
         }
+
 
 
         // Paint moving mote
@@ -128,7 +140,6 @@ public class Canvas extends JPanel {
             g.setColor(gm.getBnColor());
             g.fillOval(originPosX+((int)((bpd.getX()*zoom)-printBlindShift)), originPosY+((int)((-1*bpd.getY())*zoom))-printBlindShift, ((int) (gm.getBnSize()*zoom)), ((int) (gm.getBnSize()*zoom)));
             g.drawOval(originPosX+((int)((bpd.getX()*zoom)-(gm.getMoteRadius()*zoom))), originPosY+(int)(((-1*bpd.getY())*zoom)-(gm.getMoteRadius()*zoom)), (int)(gm.getMoteRadius()*2*zoom), (int)(gm.getMoteRadius()*2*zoom));
-
         }
 
     }

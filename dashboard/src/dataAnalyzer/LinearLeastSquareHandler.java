@@ -58,6 +58,9 @@ public class LinearLeastSquareHandler {
                 List<RssiDTO> measurements = new ArrayList<>();
                 measurements.addAll(sequence.getRssiAtoB());
                 measurements.addAll(sequence.getRssiBtoA());
+                if (measurements.size() < 3) {
+                    return;
+                }
                 PositionDouble blindPosition = getPositionFromRSSI(anchors, measurements);
 
                 am.addBlindPosition(blindPosition, sequenceNumber);

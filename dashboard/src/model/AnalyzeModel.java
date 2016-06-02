@@ -16,6 +16,7 @@ public class AnalyzeModel {
 
     private Map<Integer, PositionDouble> positionsMap;
     private ArrayList<Integer> regSequences;
+    private int lastPositionIndex;
 
     private ActionListener alGui;
 
@@ -25,18 +26,22 @@ public class AnalyzeModel {
     private AnalyzeModel() {
         this.positionsMap = new HashMap<>();
         this.regSequences = new ArrayList<>();
+        this.lastPositionIndex = -1;
     }
 
     public void addBlindPosition(PositionDouble blindPosition, int sequenceNumber) {
         positionsMap.put(sequenceNumber, blindPosition);
         regSequences.add(sequenceNumber);
         Collections.sort(regSequences);
+        if (sequenceNumber > lastPositionIndex || sequenceNumber < 20 && lastPositionIndex > 200) {
+            lastPositionIndex = sequenceNumber;
+        }
         triggerGui();
     }
 
     public PositionDouble getLastPosition() {
-        if (regSequences.size() > 0)
-            return positionsMap.get(regSequences.size()-1);
+        if (lastPositionIndex >= 0)
+            return positionsMap.get(lastPositionIndex);
         return null;
     }
 

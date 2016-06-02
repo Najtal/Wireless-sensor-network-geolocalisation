@@ -32,6 +32,8 @@ public class Frame extends JFrame implements ChangeListener, ActionListener {
     private JTable anchorPane;
     private JCheckBox jcbShowGrid;
     private JCheckBox jcbShowRadius;
+    private JCheckBox jcbShowPath;
+    private JCheckBox jcbShowID;
 
     // South console
     private JPanel southConsole;
@@ -138,7 +140,7 @@ public class Frame extends JFrame implements ChangeListener, ActionListener {
 
         // Init panes
         sideOptionPane = new JPanel(new BorderLayout());
-        menuPane = new JPanel(new GridLayout(2, 2));
+        menuPane = new JPanel(new GridLayout(2, 4));
         menuPane.setBorder(BorderFactory.createEmptyBorder(5,20,5,20));
         menuPane.setAlignmentX(Component.RIGHT_ALIGNMENT);
 
@@ -154,19 +156,38 @@ public class Frame extends JFrame implements ChangeListener, ActionListener {
         jlShowGrid.setBorder(labelBorder);
         jcbShowGrid = new JCheckBox();
         jcbShowGrid.addActionListener(this);
+
         JLabel jlShowRadius = new JLabel("Show radius");
         jlShowRadius.setHorizontalAlignment(SwingConstants.RIGHT);
         jlShowRadius.setBorder(labelBorder);
         jcbShowRadius = new JCheckBox();
         jcbShowRadius.addActionListener(this);
 
+        JLabel jlShowPath = new JLabel("Show blind path");
+        jlShowPath.setHorizontalAlignment(SwingConstants.RIGHT);
+        jlShowPath.setBorder(labelBorder);
+        jcbShowPath = new JCheckBox();
+        jcbShowPath.addActionListener(this);
+
+        JLabel jlShowID = new JLabel("Show anchors ID");
+        jlShowID.setHorizontalAlignment(SwingConstants.RIGHT);
+        jlShowID.setBorder(labelBorder);
+        jcbShowID = new JCheckBox();
+        jcbShowID.addActionListener(this);
+
         menuPane.add(jlShowGrid);
         menuPane.add(jcbShowGrid);
         menuPane.add(jlShowRadius);
         menuPane.add(jcbShowRadius);
+        menuPane.add(jlShowPath);
+        menuPane.add(jcbShowPath);
+        menuPane.add(jlShowID);
+        menuPane.add(jcbShowID);
 
         jcbShowGrid.setSelected(model.isShowGrid());
         jcbShowRadius.setSelected(model.isShowRadius());
+        jcbShowPath.setSelected(model.isShowPath());
+        jcbShowID.setSelected(model.isShowID());
 
         // Compose Panes
         sideOptionPane.add(jscTable, BorderLayout.CENTER);
@@ -223,6 +244,12 @@ public class Frame extends JFrame implements ChangeListener, ActionListener {
             } else if (e.getSource() == jcbShowRadius) {
                 model.setShowRadius(!model.isShowRadius());
                 jcbShowRadius.setSelected(model.isShowRadius());
+            } else if (e.getSource() == jcbShowPath) {
+                model.setShowPath(!model.isShowPath());
+                jcbShowPath.setSelected(model.isShowPath());
+            } else if (e.getSource() == jcbShowID) {
+                model.setShowID(!model.isShowID());
+                jcbShowID.setSelected(model.isShowID());
             }
         }
 

@@ -42,6 +42,8 @@ public class GuiModel {
     private int guiGrid = Integer.parseInt(AppContext.INSTANCE.getProperty("guiGrid"));
     private boolean showGrid;
     private boolean showRadius;
+    private boolean showPath;
+    private boolean showID;
 
     public GuiModel(AnchorModel am) {
         this.am = am;
@@ -53,6 +55,8 @@ public class GuiModel {
 
         this.showGrid = (guiGrid == 0) ? false : true;
         this.showRadius = true;
+        this.showPath = true;
+        this.showID = true;
     }
 
     public AnchorModel getAm() {
@@ -145,5 +149,21 @@ public class GuiModel {
 
     public void setShowRadius(boolean showRadius) {
         this.showRadius = showRadius;
+    }
+
+    public boolean isShowPath() {
+        return showPath;
+    }
+
+    public void setShowPath(boolean showPath) {
+        this.showPath = showPath;
+    }
+
+    public boolean isShowID() {
+        return showID;
+    }
+
+    public void setShowID(boolean showID) {
+        this.showID = showID;
     }
 }
