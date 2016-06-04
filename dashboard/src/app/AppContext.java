@@ -8,9 +8,8 @@ import java.util.logging.Logger;
 public interface AppContext {
 	
 	AppContext INSTANCE = new AppContextImpl();
-	
-	String PRODUCTION = "prod.properties";
-	String TESTS = "test.properties";
+
+	String PROP_DEFAULT = "prod.properties";
 
 	/**
 	 *  Load application context

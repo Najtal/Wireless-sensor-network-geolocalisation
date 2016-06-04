@@ -16,6 +16,8 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 public final class Main {
 
+
+
     /**
      * private and empty constructor
      */
@@ -33,15 +35,22 @@ public final class Main {
      */
     public static void main(final String[] args) {
 
-        //try {
-            AppContext.INSTANCE.loadAndConfig(AppContext.PRODUCTION);
-            new Pgm();
-        /*} catch (Exception e) {
-            String errMsg = "Error while loading the app";
+        try {
 
-            AppContext.INSTANCE.getLogger().log(Level.SEVERE,errMsg + ": "+ e.toString());
+            String propFile;
+            if (args.length >= 1) {
+                propFile = args[0];
+            } else {
+                propFile = AppContext.PROP_DEFAULT;
+            }
+
+            AppContext.INSTANCE.loadAndConfig(propFile);
+            new Pgm();
+        } catch (Exception e) {
+            String errMsg = "Error while loading the app";
             JOptionPane.showMessageDialog(null, errMsg+"\n", "Fatal Error !", JOptionPane.ERROR_MESSAGE);
-        }*/
+            AppContext.INSTANCE.getLogger().log(Level.SEVERE,errMsg + ": "+ e.toString());
+        }
     }
 
 }
