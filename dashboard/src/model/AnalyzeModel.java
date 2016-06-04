@@ -1,10 +1,9 @@
 package model;
 
-import util.Position;
+import app.AppContext;
 import util.PositionDouble;
 
 import java.awt.event.ActionListener;
-import java.lang.reflect.Array;
 import java.util.*;
 
 /**
@@ -14,9 +13,11 @@ public class AnalyzeModel {
 
     public final  static AnalyzeModel INSTANCE = new AnalyzeModel();
 
-    private Map<Integer, PositionDouble> positionsMap;
-    private ArrayList<Integer> regSequences;
-    private int lastPositionIndex;
+    private final static int AVG_POSITIONS = Integer.parseInt(AppContext.INSTANCE.getProperty("avgPosition"));
+
+    private Map<Long, PositionDouble> positionsMap;
+    private ArrayList<Long> regTimePositions;
+    private PositionDouble lastPosition;
 
     private ActionListener alGui;
 
@@ -25,24 +26,20 @@ public class AnalyzeModel {
      */
     private AnalyzeModel() {
         this.positionsMap = new HashMap<>();
-        this.regSequences = new ArrayList<>();
-        this.lastPositionIndex = -1;
+        this.regTimePositions = new ArrayList<>();
     }
 
     public synchronized void addBlindPosition(PositionDouble blindPosition, int sequenceNumber) {
-        positionsMap.put(sequenceNumber, blindPosition);
-        regSequences.add(sequenceNumber);
-        Collections.sort(regSequences);
-        if (sequenceNumber > lastPositionIndex || sequenceNumber < 20 && lastPositionIndex > 200) {
-            lastPositionIndex = sequenceNumber;
-        }
+        Long nanoTime = System.nanoTime();
+        positionsMap.put(nanoTime, blindPosition);
+        regTimePositions.add(nanoTime);
+        Collections.sort(regTimePositions);
+        lastPosition = blindPosition;
         triggerGui();
     }
 
     public PositionDouble getLastPosition() {
-        if (lastPositionIndex >= 0)
-            return positionsMap.get(lastPositionIndex);
-        return null;
+        return lastPosition;
     }
 
     public void setALGui(ActionListener alGui) {
@@ -54,11 +51,24 @@ public class AnalyzeModel {
             alGui.actionPerformed(null);
     }
 
-    public Map<Integer, PositionDouble> getPositionsMap() {
+    public Map<Long, PositionDouble> getPositionsMap() {
         return positionsMap;
     }
 
-    public ArrayList<Integer> getRegSequences() {
-        return regSequences;
+    public ArrayList<Long> getRegTimePositions() {
+        return regTimePositions;
+    }
+
+    public synchronized PositionDouble getAvgPosition() {
+        double avgPosX = 0, avgPosY = 0;
+        int nbPos = regTimePositions.size();
+
+        for (int i=Math.max(nbPos-AVG_POSITIONS,0) ; i<nbPos ; i++) {
+            avgPosX += positionsMap.get(regTimePositions.get(i)).getX();
+            avgPosY += positionsMap.get(regTimePositions.get(i)).getY();
+        }
+
+        int devider = Math.min(nbPos, AVG_POSITIONS);
+        return  new PositionDouble(avgPosX / devider, avgPosY / devider);
     }
 }

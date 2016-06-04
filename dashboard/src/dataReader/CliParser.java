@@ -13,6 +13,10 @@ import util.Log;
  */
 public class CliParser {
 
+    private static final int OFFSET = Integer.parseInt(AppContext.INSTANCE.getProperty("offset"));
+    private static final boolean USE_BA_RSSI = Boolean.parseBoolean(AppContext.INSTANCE.getProperty("useBArssi"));
+    private static final boolean USE_AB_RSSI = Boolean.parseBoolean(AppContext.INSTANCE.getProperty("useABrssi"));
+
     public static String[] parseIncomingLine(String line) {
 
         /* Split line into components */
@@ -40,32 +44,31 @@ public class CliParser {
                 break;
             */
 
-            /*
+
             case "DATA_AB" : // Measurement anchor to blind
+                if (!USE_AB_RSSI) return null;
                 return BizzFactory.INSTANCE.createRssi(
                         Integer.parseInt(data[2].split(":")[1]),
                         Integer.parseInt(data[3].split(":")[1]),
-                        Integer.parseInt(data[4].split(":")[1]),
+                        Integer.parseInt(data[4].split(":")[1])+OFFSET,
                         Integer.parseInt(data[5].split(":")[1]),
                         RssiType.ANCHOR_TO_BLIND);
-            */
-            // TODO : handle the Blinf-to-anchor data
 
             case "DATA_BA" : // Measurement blind to anchor
+                if (!USE_BA_RSSI) return null;
+                return BizzFactory.INSTANCE.createRssi(
+                        Integer.parseInt(data[3].split(":")[1]),
+                        Integer.parseInt(data[2].split(":")[1]),
+                        Integer.parseInt(data[4].split(":")[1])+OFFSET,
+                        Integer.parseInt(data[6].split(":")[1]),
+                        RssiType.ANCHOR_TO_BLIND);
+
                 /*return BizzFactory.INSTANCE.createRssi(
                         Integer.parseInt(data[2].split(":")[1]),
                         Integer.parseInt(data[3].split(":")[1]),
-                        Integer.parseInt(data[4].split(":")[1]),
+                        Integer.parseInt(data[4].split(":")[1])+OFFSET,
                         Integer.parseInt(data[6].split(":")[1]),
                         RssiType.BLIND_TO_ANCHOR);*/
-
-                RssiDTO r = BizzFactory.INSTANCE.createRssi(
-                        Integer.parseInt(data[3].split(":")[1]),
-                        Integer.parseInt(data[2].split(":")[1]),
-                        Integer.parseInt(data[4].split(":")[1])+45,
-                        Integer.parseInt(data[6].split(":")[1]),
-                        RssiType.ANCHOR_TO_BLIND);
-                return r;
 
             case "SLEEP" :
                 break;

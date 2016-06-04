@@ -2,7 +2,6 @@ package gui;
 
 import model.AnalyzeModel;
 import ucc.AnchorDTO;
-import util.Log;
 import util.PositionDouble;
 
 import javax.swing.*;
@@ -122,8 +121,8 @@ public class Canvas extends JPanel {
 
             PositionDouble lastPos = null;
             PositionDouble blindPos;
-            Map<Integer, PositionDouble> posMap = AnalyzeModel.INSTANCE.getPositionsMap();
-            for (Integer i : AnalyzeModel.INSTANCE.getRegSequences() ) {
+            Map<Long, PositionDouble> posMap = AnalyzeModel.INSTANCE.getPositionsMap();
+            for (Long i : AnalyzeModel.INSTANCE.getRegTimePositions() ) {
                 blindPos = posMap.get(i);
                 if (lastPos != null) {
                     g.drawLine((int)(originPosX+(lastPos.getX()*zoom)), (int)(originPosY+(-1*lastPos.getY()*zoom)),(int)(originPosX+(blindPos.getX()*zoom)), (int)(originPosY+(-1*blindPos.getY()*zoom)));
@@ -132,15 +131,19 @@ public class Canvas extends JPanel {
             }
         }
 
-
-
+        PositionDouble bpd = null;
         // Paint moving mote
-        PositionDouble bpd = AnalyzeModel.INSTANCE.getLastPosition();
+        if (gm.isShowAvg()) {
+            bpd = AnalyzeModel.INSTANCE.getAvgPosition();
+        } else {
+            bpd = AnalyzeModel.INSTANCE.getLastPosition();
+        }
         if (bpd != null) {
             g.setColor(gm.getBnColor());
             g.fillOval(originPosX+((int)((bpd.getX()*zoom)-printBlindShift)), originPosY+((int)((-1*bpd.getY())*zoom))-printBlindShift, ((int) (gm.getBnSize()*zoom)), ((int) (gm.getBnSize()*zoom)));
             g.drawOval(originPosX+((int)((bpd.getX()*zoom)-(gm.getMoteRadius()*zoom))), originPosY+(int)(((-1*bpd.getY())*zoom)-(gm.getMoteRadius()*zoom)), (int)(gm.getMoteRadius()*2*zoom), (int)(gm.getMoteRadius()*2*zoom));
         }
+
 
     }
 

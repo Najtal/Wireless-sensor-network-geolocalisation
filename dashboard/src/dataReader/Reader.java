@@ -43,8 +43,12 @@ public class Reader extends Thread {
                 char ch;
                 if (Integer.parseInt(AppContext.INSTANCE.getProperty("mockupRSSI")) == 0) {
                     line = reader.readLine();
-                    if (line == null)
+                    if (line == null) {
+                        reader.close();
+                        reader = new BufferedReader(new InputStreamReader(System.in));
                         continue;
+                    }
+
                 } else {
                     do {
                         ch = (char) reader.read();
@@ -59,9 +63,11 @@ public class Reader extends Thread {
 
                     String minute = time.split(":")[0];
                     String second = time.split(":")[1];
+                    String mSec = time.split("\\.")[1];
 
                     int minutes = Integer.parseInt(minute);
                     double seconds = Double.parseDouble(second);
+                    int mSecs = Integer.parseInt(mSec);
                     int timeStampInMilli = (int) (1000*((minutes*60)+seconds));
 
                     int diff = timeStampInMilli - lastTimeStampInMilli;

@@ -30,7 +30,7 @@ public class RawModelSequence {
     /*
      * add new RSSI to the model.
      */
-    public void addRssi(RssiDTO rssi) {
+    public synchronized void addRssi(RssiDTO rssi) {
 
         if (rssi.getType() == RssiType.ANCHOR_TO_BLIND) {
             for (RssiDTO rdto: rssiAtoB) {

@@ -43,6 +43,10 @@ public class AnchorModel {
         return anchorIdMap.get(id);
     }
 
+    public AnchorDTO getAnchorByPositionFirstToLast(int pos) {
+        return anchors.get(pos);
+    }
+
     public List<AnchorDTO> getAnchorBy() {
         return anchors;
     }

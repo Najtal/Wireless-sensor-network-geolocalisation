@@ -34,6 +34,7 @@ public class Frame extends JFrame implements ChangeListener, ActionListener {
     private JCheckBox jcbShowRadius;
     private JCheckBox jcbShowPath;
     private JCheckBox jcbShowID;
+    private JCheckBox jcbShowAvg;
 
     // South console
     private JPanel southConsole;
@@ -77,10 +78,8 @@ public class Frame extends JFrame implements ChangeListener, ActionListener {
                 Integer.parseInt(AppContext.INSTANCE.getProperty("guiSizeMinimumWidth")),
                 Integer.parseInt(AppContext.INSTANCE.getProperty("guiSizeMinimumHeight"))));
 
-        /* TODO add icon image
         ImageIcon icon = new ImageIcon(getClass().getResource("/icon.png"));
         this.setIconImage(icon.getImage());
-        */
         this.setLocationRelativeTo(null);
 
         // Close operations
@@ -140,7 +139,7 @@ public class Frame extends JFrame implements ChangeListener, ActionListener {
 
         // Init panes
         sideOptionPane = new JPanel(new BorderLayout());
-        menuPane = new JPanel(new GridLayout(2, 4));
+        menuPane = new JPanel(new GridLayout(3, 4));
         menuPane.setBorder(BorderFactory.createEmptyBorder(5,20,5,20));
         menuPane.setAlignmentX(Component.RIGHT_ALIGNMENT);
 
@@ -175,6 +174,12 @@ public class Frame extends JFrame implements ChangeListener, ActionListener {
         jcbShowID = new JCheckBox();
         jcbShowID.addActionListener(this);
 
+        JLabel jlShowAvg = new JLabel("Show average position");
+        jlShowAvg.setHorizontalAlignment(SwingConstants.RIGHT);
+        jlShowAvg.setBorder(labelBorder);
+        jcbShowAvg = new JCheckBox();
+        jcbShowAvg.addActionListener(this);
+
         menuPane.add(jlShowGrid);
         menuPane.add(jcbShowGrid);
         menuPane.add(jlShowRadius);
@@ -183,11 +188,14 @@ public class Frame extends JFrame implements ChangeListener, ActionListener {
         menuPane.add(jcbShowPath);
         menuPane.add(jlShowID);
         menuPane.add(jcbShowID);
+        menuPane.add(jlShowAvg);
+        menuPane.add(jcbShowAvg);
 
         jcbShowGrid.setSelected(model.isShowGrid());
         jcbShowRadius.setSelected(model.isShowRadius());
         jcbShowPath.setSelected(model.isShowPath());
         jcbShowID.setSelected(model.isShowID());
+        jcbShowAvg.setSelected(model.isShowAvg());
 
         // Compose Panes
         sideOptionPane.add(jscTable, BorderLayout.CENTER);
@@ -250,6 +258,9 @@ public class Frame extends JFrame implements ChangeListener, ActionListener {
             } else if (e.getSource() == jcbShowID) {
                 model.setShowID(!model.isShowID());
                 jcbShowID.setSelected(model.isShowID());
+            } else if (e.getSource() == jcbShowAvg) {
+                model.setShowAvg(!model.isShowAvg());
+                jcbShowAvg.setSelected(model.isShowAvg());
             }
         }
 

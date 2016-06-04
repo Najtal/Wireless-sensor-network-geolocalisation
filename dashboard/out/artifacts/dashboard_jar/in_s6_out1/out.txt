@@ -1,0 +1,658 @@
+
+Program starting...
+Init models ok
+Frame gui init ok
+Init CLI reader ok
+new RSSI : seqno=233, from=1, to=7, rssi=17, distance=1.5848931924611136
+ARD WAIT seqno: 233
+new RSSI : seqno=234, from=1, to=7, rssi=20, distance=3.1622776601683795
+ARD WAIT seqno: 234
+new RSSI : seqno=235, from=1, to=7, rssi=19, distance=2.51188643150958
+ARD WAIT seqno: 235
+new RSSI : seqno=232, from=21, to=7, rssi=18, distance=1.9952623149688795
+ARD WAIT seqno: 232
+new RSSI : seqno=233, from=21, to=7, rssi=20, distance=3.1622776601683795
+new RSSI : seqno=234, from=21, to=7, rssi=19, distance=2.51188643150958
+new RSSI : seqno=235, from=21, to=7, rssi=18, distance=1.9952623149688795
+new RSSI : seqno=232, from=27, to=7, rssi=25, distance=10.0
+new RSSI : seqno=233, from=27, to=7, rssi=25, distance=10.0
+new RSSI : seqno=234, from=27, to=7, rssi=22, distance=5.011872336272722
+new RSSI : seqno=235, from=27, to=7, rssi=23, distance=6.309573444801933
+new RSSI : seqno=232, from=32, to=7, rssi=27, distance=15.848931924611133
+new RSSI : seqno=233, from=32, to=7, rssi=27, distance=15.848931924611133
+new RSSI : seqno=234, from=32, to=7, rssi=29, distance=25.118864315095795
+new RSSI : seqno=235, from=32, to=7, rssi=30, distance=31.622776601683793
+new RSSI : seqno=236, from=1, to=7, rssi=20, distance=3.1622776601683795
+ARD WAIT seqno: 236
+new RSSI : seqno=237, from=1, to=7, rssi=19, distance=2.51188643150958
+ARD WAIT seqno: 237
+new RSSI : seqno=236, from=21, to=7, rssi=20, distance=3.1622776601683795
+new RSSI : seqno=237, from=21, to=7, rssi=20, distance=3.1622776601683795
+new RSSI : seqno=236, from=27, to=7, rssi=24, distance=7.943282347242816
+new RSSI : seqno=237, from=27, to=7, rssi=23, distance=6.309573444801933
+new RSSI : seqno=236, from=32, to=7, rssi=31, distance=39.810717055349734
+new RSSI : seqno=237, from=32, to=7, rssi=28, distance=19.952623149688797
+ARD START seqno: 233
+ANALYZE - FROM:1 TO:7 RSSI:17
+ANALYZE - FROM:21 TO:7 RSSI:20
+ANALYZE - FROM:27 TO:7 RSSI:25
+ANALYZE - FROM:32 TO:7 RSSI:27
+new RSSI : seqno=238, from=1, to=7, rssi=17, distance=1.5848931924611136
+ARD DONE seqno: 233 POS: 19.07731357631701x-8.201982053601839
+ARD WAIT seqno: 238
+ARD START seqno: 234
+ANALYZE - FROM:1 TO:7 RSSI:20
+ANALYZE - FROM:21 TO:7 RSSI:19
+ANALYZE - FROM:27 TO:7 RSSI:22
+ANALYZE - FROM:32 TO:7 RSSI:29
+ARD DONE seqno: 234 POS: 13.222497881094952x-1.4172016038048354
+new RSSI : seqno=239, from=1, to=7, rssi=16, distance=1.2589254117941673
+ARD WAIT seqno: 239
+ARD START seqno: 235
+ANALYZE - FROM:1 TO:7 RSSI:19
+ANALYZE - FROM:21 TO:7 RSSI:18
+ANALYZE - FROM:27 TO:7 RSSI:23
+ANALYZE - FROM:32 TO:7 RSSI:30
+ARD DONE seqno: 235 POS: 13.622693231754479x6.925379838071805
+new RSSI : seqno=240, from=1, to=7, rssi=17, distance=1.5848931924611136
+ARD WAIT seqno: 240
+ARD START seqno: 232
+ANALYZE - FROM:21 TO:7 RSSI:18
+ANALYZE - FROM:27 TO:7 RSSI:25
+ANALYZE - FROM:32 TO:7 RSSI:27
+ARD DONE seqno: 232 POS: 20.420915349236367x-7.320845462355853
+ARD START seqno: 236
+ANALYZE - FROM:1 TO:7 RSSI:20
+ANALYZE - FROM:21 TO:7 RSSI:20
+ANALYZE - FROM:27 TO:7 RSSI:24
+ANALYZE - FROM:32 TO:7 RSSI:31
+ARD DONE seqno: 236 POS: 9.536999553219339x13.89303862868556
+new RSSI : seqno=241, from=1, to=7, rssi=17, distance=1.5848931924611136
+ARD WAIT seqno: 241
+new RSSI : seqno=238, from=21, to=7, rssi=17, distance=1.5848931924611136
+new RSSI : seqno=239, from=21, to=7, rssi=19, distance=2.51188643150958
+new RSSI : seqno=240, from=21, to=7, rssi=19, distance=2.51188643150958
+new RSSI : seqno=241, from=21, to=7, rssi=18, distance=1.9952623149688795
+new RSSI : seqno=238, from=27, to=7, rssi=23, distance=6.309573444801933
+new RSSI : seqno=239, from=27, to=7, rssi=25, distance=10.0
+new RSSI : seqno=240, from=27, to=7, rssi=25, distance=10.0
+new RSSI : seqno=241, from=27, to=7, rssi=27, distance=15.848931924611133
+new RSSI : seqno=238, from=32, to=7, rssi=29, distance=25.118864315095795
+new RSSI : seqno=239, from=32, to=7, rssi=28, distance=19.952623149688797
+new RSSI : seqno=240, from=32, to=7, rssi=27, distance=15.848931924611133
+new RSSI : seqno=241, from=32, to=7, rssi=31, distance=39.810717055349734
+ARD START seqno: 237
+ANALYZE - FROM:1 TO:7 RSSI:19
+ANALYZE - FROM:21 TO:7 RSSI:20
+ANALYZE - FROM:27 TO:7 RSSI:23
+ANALYZE - FROM:32 TO:7 RSSI:28
+ARD DONE seqno: 237 POS: 15.964575268964532x-5.866375083641472
+new RSSI : seqno=242, from=1, to=7, rssi=17, distance=1.5848931924611136
+ARD WAIT seqno: 242
+ARD START seqno: 238
+ANALYZE - FROM:1 TO:7 RSSI:17
+ANALYZE - FROM:21 TO:7 RSSI:17
+ANALYZE - FROM:27 TO:7 RSSI:23
+ANALYZE - FROM:32 TO:7 RSSI:29
+ARD DONE seqno: 238 POS: 16.781526215805627x1.2774856822222629
+ARD START seqno: 239
+new RSSI : seqno=244, from=1, to=7, rssi=17, distance=1.5848931924611136
+ANALYZE - FROM:1 TO:7 RSSI:16
+ARD WAIT seqno: 244
+ANALYZE - FROM:21 TO:7 RSSI:19
+ANALYZE - FROM:27 TO:7 RSSI:25
+ANALYZE - FROM:32 TO:7 RSSI:28
+ARD DONE seqno: 239 POS: 17.695682757756355x-4.399539765611212
+ARD START seqno: 240
+ANALYZE - FROM:1 TO:7 RSSI:17
+ANALYZE - FROM:21 TO:7 RSSI:19
+ANALYZE - FROM:27 TO:7 RSSI:25
+ANALYZE - FROM:32 TO:7 RSSI:27
+ARD DONE seqno: 240 POS: 19.624715641458486x-7.74853383322838
+new RSSI : seqno=245, from=1, to=7, rssi=19, distance=2.51188643150958
+ARD WAIT seqno: 245
+new RSSI : seqno=242, from=21, to=7, rssi=19, distance=2.51188643150958
+new RSSI : seqno=243, from=21, to=7, rssi=19, distance=2.51188643150958
+ARD WAIT seqno: 243
+new RSSI : seqno=244, from=21, to=7, rssi=20, distance=3.1622776601683795
+new RSSI : seqno=245, from=21, to=7, rssi=20, distance=3.1622776601683795
+new RSSI : seqno=242, from=32, to=7, rssi=27, distance=15.848931924611133
+new RSSI : seqno=243, from=32, to=7, rssi=29, distance=25.118864315095795
+new RSSI : seqno=244, from=32, to=7, rssi=27, distance=15.848931924611133
+new RSSI : seqno=245, from=32, to=7, rssi=31, distance=39.810717055349734
+new RSSI : seqno=242, from=27, to=7, rssi=27, distance=15.848931924611133
+new RSSI : seqno=243, from=27, to=7, rssi=25, distance=10.0
+new RSSI : seqno=244, from=27, to=7, rssi=27, distance=15.848931924611133
+new RSSI : seqno=245, from=27, to=7, rssi=26, distance=12.589254117941675
+ARD START seqno: 241
+new RSSI : seqno=246, from=1, to=7, rssi=17, distance=1.5848931924611136
+ANALYZE - FROM:1 TO:7 RSSI:17
+ANALYZE - FROM:21 TO:7 RSSI:18
+ANALYZE - FROM:27 TO:7 RSSI:27
+ANALYZE - FROM:32 TO:7 RSSI:31
+ARD WAIT seqno: 246
+ARD DONE seqno: 241 POS: 19.467778503466434x18.139330139116613
+ARD START seqno: 242
+ANALYZE - FROM:1 TO:7 RSSI:17
+ANALYZE - FROM:21 TO:7 RSSI:19
+ANALYZE - FROM:32 TO:7 RSSI:27
+ANALYZE - FROM:27 TO:7 RSSI:27
+ARD DONE seqno: 242 POS: 17.32622504809279x-10.134560128128996
+new RSSI : seqno=247, from=1, to=7, rssi=17, distance=1.5848931924611136
+ARD WAIT seqno: 247
+new RSSI : seqno=248, from=1, to=7, rssi=19, distance=2.51188643150958
+ARD WAIT seqno: 248
+ARD START seqno: 244
+ANALYZE - FROM:1 TO:7 RSSI:17
+ANALYZE - FROM:21 TO:7 RSSI:20
+ANALYZE - FROM:32 TO:7 RSSI:27
+ANALYZE - FROM:27 TO:7 RSSI:27
+ARD DONE seqno: 244 POS: 17.194734910602385x-10.25118254910996
+new RSSI : seqno=249, from=1, to=7, rssi=17, distance=1.5848931924611136
+ARD WAIT seqno: 249
+new RSSI : seqno=246, from=21, to=7, rssi=18, distance=1.9952623149688795
+new RSSI : seqno=247, from=21, to=7, rssi=19, distance=2.51188643150958
+new RSSI : seqno=248, from=21, to=7, rssi=21, distance=3.9810717055349722
+new RSSI : seqno=249, from=21, to=7, rssi=19, distance=2.51188643150958
+new RSSI : seqno=246, from=32, to=7, rssi=29, distance=25.118864315095795
+new RSSI : seqno=247, from=32, to=7, rssi=27, distance=15.848931924611133
+new RSSI : seqno=248, from=32, to=7, rssi=31, distance=39.810717055349734
+new RSSI : seqno=249, from=32, to=7, rssi=30, distance=31.622776601683793
+new RSSI : seqno=246, from=27, to=7, rssi=26, distance=12.589254117941675
+new RSSI : seqno=247, from=27, to=7, rssi=26, distance=12.589254117941675
+new RSSI : seqno=248, from=27, to=7, rssi=23, distance=6.309573444801933
+new RSSI : seqno=249, from=27, to=7, rssi=26, distance=12.589254117941675
+ARD START seqno: 245
+ANALYZE - FROM:1 TO:7 RSSI:19
+ANALYZE - FROM:21 TO:7 RSSI:20
+ANALYZE - FROM:32 TO:7 RSSI:31
+ANALYZE - FROM:27 TO:7 RSSI:26
+ARD DONE seqno: 245 POS: 13.937498295880577x16.06654842373376
+new RSSI : seqno=250, from=1, to=7, rssi=20, distance=3.1622776601683795
+ARD WAIT seqno: 250
+ARD START seqno: 243
+ANALYZE - FROM:21 TO:7 RSSI:19
+ANALYZE - FROM:32 TO:7 RSSI:29
+ANALYZE - FROM:27 TO:7 RSSI:25
+ARD DONE seqno: 243 POS: 16.039076687760915x0.7059808393770379
+ARD START seqno: 246
+ANALYZE - FROM:1 TO:7 RSSI:17
+ANALYZE - FROM:21 TO:7 RSSI:18
+ANALYZE - FROM:32 TO:7 RSSI:29
+ANALYZE - FROM:27 TO:7 RSSI:26
+ARD DONE seqno: 246 POS: 15.862254331896542x0.6510487220551018
+new RSSI : seqno=251, from=1, to=7, rssi=19, distance=2.51188643150958
+ARD WAIT seqno: 251
+ARD START seqno: 247
+ANALYZE - FROM:1 TO:7 RSSI:17
+ANALYZE - FROM:21 TO:7 RSSI:19
+ANALYZE - FROM:32 TO:7 RSSI:27
+ANALYZE - FROM:27 TO:7 RSSI:26
+ARD DONE seqno: 247 POS: 18.925385165034548x-8.379904282180346
+new RSSI : seqno=252, from=1, to=7, rssi=20, distance=3.1622776601683795
+ARD WAIT seqno: 252
+new RSSI : seqno=250, from=21, to=7, rssi=17, distance=1.5848931924611136
+new RSSI : seqno=251, from=21, to=7, rssi=21, distance=3.9810717055349722
+new RSSI : seqno=252, from=21, to=7, rssi=19, distance=2.51188643150958
+new RSSI : seqno=250, from=27, to=7, rssi=23, distance=6.309573444801933
+new RSSI : seqno=251, from=27, to=7, rssi=23, distance=6.309573444801933
+new RSSI : seqno=252, from=27, to=7, rssi=26, distance=12.589254117941675
+new RSSI : seqno=250, from=32, to=7, rssi=29, distance=25.118864315095795
+new RSSI : seqno=251, from=32, to=7, rssi=27, distance=15.848931924611133
+new RSSI : seqno=252, from=32, to=7, rssi=27, distance=15.848931924611133
+ARD START seqno: 248
+ANALYZE - FROM:1 TO:7 RSSI:19
+ANALYZE - FROM:21 TO:7 RSSI:21
+ANALYZE - FROM:32 TO:7 RSSI:31
+ANALYZE - FROM:27 TO:7 RSSI:23
+ARD DONE seqno: 248 POS: 4.8657813090221715x10.616903105031536
+new RSSI : seqno=253, from=1, to=7, rssi=16, distance=1.2589254117941673
+ARD WAIT seqno: 253
+ARD START seqno: 249
+ANALYZE - FROM:1 TO:7 RSSI:17
+ANALYZE - FROM:21 TO:7 RSSI:19
+ANALYZE - FROM:32 TO:7 RSSI:30
+ANALYZE - FROM:27 TO:7 RSSI:26
+ARD DONE seqno: 249 POS: 15.221721379488224x7.745546697199162
+new RSSI : seqno=254, from=1, to=7, rssi=17, distance=1.5848931924611136
+ARD WAIT seqno: 254
+new RSSI : seqno=255, from=1, to=7, rssi=17, distance=1.5848931924611136
+ARD WAIT seqno: 255
+ARD START seqno: 250
+ANALYZE - FROM:1 TO:7 RSSI:20
+ANALYZE - FROM:21 TO:7 RSSI:17
+ANALYZE - FROM:27 TO:7 RSSI:23
+ANALYZE - FROM:32 TO:7 RSSI:29
+ARD DONE seqno: 250 POS: 15.77654147176878x0.6287822086943881
+new RSSI : seqno=253, from=21, to=7, rssi=18, distance=1.9952623149688795
+new RSSI : seqno=254, from=21, to=7, rssi=19, distance=2.51188643150958
+new RSSI : seqno=255, from=21, to=7, rssi=20, distance=3.1622776601683795
+new RSSI : seqno=253, from=32, to=7, rssi=27, distance=15.848931924611133
+new RSSI : seqno=254, from=32, to=7, rssi=28, distance=19.952623149688797
+new RSSI : seqno=255, from=32, to=7, rssi=27, distance=15.848931924611133
+new RSSI : seqno=253, from=27, to=7, rssi=25, distance=10.0
+new RSSI : seqno=254, from=27, to=7, rssi=26, distance=12.589254117941675
+new RSSI : seqno=255, from=27, to=7, rssi=25, distance=10.0
+ARD START seqno: 251
+ANALYZE - FROM:1 TO:7 RSSI:19
+ANALYZE - FROM:21 TO:7 RSSI:21
+ANALYZE - FROM:27 TO:7 RSSI:23
+ANALYZE - FROM:32 TO:7 RSSI:27
+ARD DONE seqno: 251 POS: 17.430212081983974x-9.604695103826595
+new RSSI : seqno=256, from=1, to=7, rssi=17, distance=1.5848931924611136
+ARD WAIT seqno: 256
+ARD START seqno: 252
+ANALYZE - FROM:1 TO:7 RSSI:20
+ANALYZE - FROM:21 TO:7 RSSI:19
+ANALYZE - FROM:27 TO:7 RSSI:26
+ANALYZE - FROM:32 TO:7 RSSI:27
+ARD DONE seqno: 252 POS: 18.50619014389012x-8.282409813323813
+new RSSI : seqno=257, from=1, to=7, rssi=20, distance=3.1622776601683795
+ARD WAIT seqno: 257
+ARD START seqno: 253
+ANALYZE - FROM:1 TO:7 RSSI:16
+ANALYZE - FROM:21 TO:7 RSSI:18
+ANALYZE - FROM:32 TO:7 RSSI:27
+ANALYZE - FROM:27 TO:7 RSSI:25
+ARD DONE seqno: 253 POS: 20.20276147034749x-7.365795178235147
+new RSSI : seqno=258, from=1, to=7, rssi=17, distance=1.5848931924611136
+ARD WAIT seqno: 258
+ARD START seqno: 254
+ANALYZE - FROM:1 TO:7 RSSI:17
+ANALYZE - FROM:21 TO:7 RSSI:19
+ANALYZE - FROM:32 TO:7 RSSI:28
+ANALYZE - FROM:27 TO:7 RSSI:26
+ARD DONE seqno: 254 POS: 16.911525799781536x-5.015973214588071
+new RSSI : seqno=259, from=1, to=7, rssi=18, distance=1.9952623149688795
+ARD WAIT seqno: 259
+new RSSI : seqno=256, from=32, to=7, rssi=30, distance=31.622776601683793
+new RSSI : seqno=257, from=32, to=7, rssi=29, distance=25.118864315095795
+new RSSI : seqno=258, from=32, to=7, rssi=31, distance=39.810717055349734
+new RSSI : seqno=259, from=32, to=7, rssi=30, distance=31.622776601683793
+new RSSI : seqno=256, from=27, to=7, rssi=25, distance=10.0
+new RSSI : seqno=257, from=27, to=7, rssi=26, distance=12.589254117941675
+new RSSI : seqno=258, from=27, to=7, rssi=27, distance=15.848931924611133
+new RSSI : seqno=259, from=27, to=7, rssi=23, distance=6.309573444801933
+new RSSI : seqno=256, from=21, to=7, rssi=19, distance=2.51188643150958
+new RSSI : seqno=257, from=21, to=7, rssi=20, distance=3.1622776601683795
+new RSSI : seqno=258, from=21, to=7, rssi=19, distance=2.51188643150958
+new RSSI : seqno=259, from=21, to=7, rssi=21, distance=3.9810717055349722
+new RSSI : seqno=260, from=1, to=7, rssi=17, distance=1.5848931924611136
+ARD WAIT seqno: 260
+ARD START seqno: 255
+ANALYZE - FROM:1 TO:7 RSSI:17
+ANALYZE - FROM:21 TO:7 RSSI:20
+ANALYZE - FROM:32 TO:7 RSSI:27
+ANALYZE - FROM:27 TO:7 RSSI:25
+ARD DONE seqno: 255 POS: 19.077313576317014x-8.201982053601837
+ARD START seqno: 256
+ANALYZE - FROM:1 TO:7 RSSI:17
+ANALYZE - FROM:32 TO:7 RSSI:30
+ANALYZE - FROM:27 TO:7 RSSI:25
+ANALYZE - FROM:21 TO:7 RSSI:19
+ARD DONE seqno: 256 POS: 14.991423161633369x7.627692250419598
+new RSSI : seqno=261, from=1, to=7, rssi=19, distance=2.51188643150958
+ARD WAIT seqno: 261
+new RSSI : seqno=262, from=1, to=7, rssi=19, distance=2.51188643150958
+ARD WAIT seqno: 262
+ARD START seqno: 257
+ANALYZE - FROM:1 TO:7 RSSI:20
+ANALYZE - FROM:32 TO:7 RSSI:29
+ANALYZE - FROM:27 TO:7 RSSI:26
+ANALYZE - FROM:21 TO:7 RSSI:20
+ARD DONE seqno: 257 POS: 14.5240769063337x-0.4365451373838922
+ARD START seqno: 258
+ANALYZE - FROM:1 TO:7 RSSI:17
+ANALYZE - FROM:32 TO:7 RSSI:31
+ANALYZE - FROM:27 TO:7 RSSI:27
+ANALYZE - FROM:21 TO:7 RSSI:19
+ARD DONE seqno: 258 POS: 17.426553926820787x17.468802268635166
+new RSSI : seqno=263, from=1, to=7, rssi=19, distance=2.51188643150958
+ARD WAIT seqno: 263
+new RSSI : seqno=260, from=27, to=7, rssi=25, distance=10.0
+new RSSI : seqno=261, from=27, to=7, rssi=23, distance=6.309573444801933
+new RSSI : seqno=262, from=27, to=7, rssi=24, distance=7.943282347242816
+new RSSI : seqno=263, from=27, to=7, rssi=27, distance=15.848931924611133
+new RSSI : seqno=260, from=32, to=7, rssi=32, distance=50.11872336272722
+new RSSI : seqno=261, from=32, to=7, rssi=28, distance=19.952623149688797
+new RSSI : seqno=262, from=32, to=7, rssi=31, distance=39.810717055349734
+new RSSI : seqno=263, from=32, to=7, rssi=29, distance=25.118864315095795
+new RSSI : seqno=260, from=21, to=7, rssi=21, distance=3.9810717055349722
+new RSSI : seqno=261, from=21, to=7, rssi=20, distance=3.1622776601683795
+new RSSI : seqno=262, from=21, to=7, rssi=18, distance=1.9952623149688795
+new RSSI : seqno=263, from=21, to=7, rssi=19, distance=2.51188643150958
+ARD START seqno: 259
+ANALYZE - FROM:1 TO:7 RSSI:18
+ANALYZE - FROM:32 TO:7 RSSI:30
+ANALYZE - FROM:27 TO:7 RSSI:23
+ANALYZE - FROM:21 TO:7 RSSI:21
+ARD DONE seqno: 259 POS: 8.997625637981846x3.383206172782837
+new RSSI : seqno=264, from=1, to=7, rssi=19, distance=2.51188643150958
+ARD WAIT seqno: 264
+ARD START seqno: 260
+ANALYZE - FROM:1 TO:7 RSSI:17
+ANALYZE - FROM:27 TO:7 RSSI:25
+ANALYZE - FROM:32 TO:7 RSSI:32
+ANALYZE - FROM:21 TO:7 RSSI:21
+ARD DONE seqno: 260 POS: 7.744153068669265x24.514904419728072
+new RSSI : seqno=265, from=1, to=7, rssi=17, distance=1.5848931924611136
+ARD WAIT seqno: 265
+ARD START seqno: 261
+ANALYZE - FROM:1 TO:7 RSSI:19
+ANALYZE - FROM:27 TO:7 RSSI:23
+ANALYZE - FROM:32 TO:7 RSSI:28
+ANALYZE - FROM:21 TO:7 RSSI:20
+ARD DONE seqno: 261 POS: 15.964575268964534x-5.866375083641472
+new RSSI : seqno=266, from=1, to=7, rssi=20, distance=3.1622776601683795
+ARD WAIT seqno: 266
+ARD START seqno: 262
+ANALYZE - FROM:1 TO:7 RSSI:19
+ANALYZE - FROM:27 TO:7 RSSI:24
+ANALYZE - FROM:32 TO:7 RSSI:31
+ANALYZE - FROM:21 TO:7 RSSI:18
+ARD DONE seqno: 262 POS: 14.323321525489293x16.418955912575427
+new RSSI : seqno=267, from=1, to=7, rssi=17, distance=1.5848931924611136
+ARD WAIT seqno: 267
+new RSSI : seqno=264, from=21, to=7, rssi=18, distance=1.9952623149688795
+new RSSI : seqno=265, from=21, to=7, rssi=18, distance=1.9952623149688795
+new RSSI : seqno=266, from=21, to=7, rssi=19, distance=2.51188643150958
+new RSSI : seqno=267, from=21, to=7, rssi=20, distance=3.1622776601683795
+new RSSI : seqno=264, from=32, to=7, rssi=27, distance=15.848931924611133
+new RSSI : seqno=265, from=32, to=7, rssi=28, distance=19.952623149688797
+new RSSI : seqno=266, from=32, to=7, rssi=27, distance=15.848931924611133
+new RSSI : seqno=267, from=32, to=7, rssi=31, distance=39.810717055349734
+new RSSI : seqno=264, from=27, to=7, rssi=27, distance=15.848931924611133
+new RSSI : seqno=265, from=27, to=7, rssi=26, distance=12.589254117941675
+new RSSI : seqno=266, from=27, to=7, rssi=25, distance=10.0
+new RSSI : seqno=267, from=27, to=7, rssi=26, distance=12.589254117941675
+ARD START seqno: 263
+ANALYZE - FROM:1 TO:7 RSSI:19
+ANALYZE - FROM:27 TO:7 RSSI:27
+ANALYZE - FROM:32 TO:7 RSSI:29
+ANALYZE - FROM:21 TO:7 RSSI:19
+ARD DONE seqno: 263 POS: 13.415481467804591x-1.2529057662258465
+new RSSI : seqno=268, from=1, to=7, rssi=17, distance=1.5848931924611136
+ARD WAIT seqno: 268
+ARD START seqno: 264
+ANALYZE - FROM:1 TO:7 RSSI:19
+ANALYZE - FROM:21 TO:7 RSSI:18
+ANALYZE - FROM:32 TO:7 RSSI:27
+ANALYZE - FROM:27 TO:7 RSSI:27
+ARD DONE seqno: 264 POS: 17.268704989943355x-9.91938539492347
+new RSSI : seqno=269, from=1, to=7, rssi=19, distance=2.51188643150958
+ARD WAIT seqno: 269
+ARD START seqno: 265
+ANALYZE - FROM:1 TO:7 RSSI:17
+ANALYZE - FROM:21 TO:7 RSSI:18
+ANALYZE - FROM:32 TO:7 RSSI:28
+ANALYZE - FROM:27 TO:7 RSSI:26
+ARD DONE seqno: 265 POS: 17.20569787378702x-4.7298176274327135
+new RSSI : seqno=270, from=1, to=7, rssi=19, distance=2.51188643150958
+ARD WAIT seqno: 270
+new RSSI : seqno=268, from=21, to=7, rssi=20, distance=3.1622776601683795
+new RSSI : seqno=269, from=21, to=7, rssi=20, distance=3.1622776601683795
+new RSSI : seqno=270, from=21, to=7, rssi=19, distance=2.51188643150958
+new RSSI : seqno=268, from=27, to=7, rssi=25, distance=10.0
+new RSSI : seqno=269, from=27, to=7, rssi=27, distance=15.848931924611133
+new RSSI : seqno=270, from=27, to=7, rssi=23, distance=6.309573444801933
+new RSSI : seqno=268, from=32, to=7, rssi=32, distance=50.11872336272722
+new RSSI : seqno=269, from=32, to=7, rssi=32, distance=50.11872336272722
+new RSSI : seqno=270, from=32, to=7, rssi=31, distance=39.810717055349734
+ARD START seqno: 266
+ANALYZE - FROM:1 TO:7 RSSI:20
+ANALYZE - FROM:21 TO:7 RSSI:19
+ANALYZE - FROM:32 TO:7 RSSI:27
+ANALYZE - FROM:27 TO:7 RSSI:25
+ARD DONE seqno: 266 POS: 19.03163378442711x-7.78519416981148
+new RSSI : seqno=271, from=1, to=7, rssi=19, distance=2.51188643150958
+ARD WAIT seqno: 271
+ARD START seqno: 267
+ANALYZE - FROM:1 TO:7 RSSI:17
+ANALYZE - FROM:21 TO:7 RSSI:20
+ANALYZE - FROM:32 TO:7 RSSI:31
+ANALYZE - FROM:27 TO:7 RSSI:26
+ARD DONE seqno: 267 POS: 14.369703501407223x16.263025191791822
+new RSSI : seqno=272, from=1, to=7, rssi=19, distance=2.51188643150958
+ARD WAIT seqno: 272
+ARD START seqno: 268
+ANALYZE - FROM:1 TO:7 RSSI:17
+ANALYZE - FROM:21 TO:7 RSSI:20
+ANALYZE - FROM:27 TO:7 RSSI:25
+ANALYZE - FROM:32 TO:7 RSSI:32
+ARD DONE seqno: 268 POS: 11.765801530758376x26.355978785006805
+new RSSI : seqno=273, from=1, to=7, rssi=17, distance=1.5848931924611136
+ARD WAIT seqno: 273
+new RSSI : seqno=271, from=21, to=7, rssi=19, distance=2.51188643150958
+new RSSI : seqno=272, from=21, to=7, rssi=20, distance=3.1622776601683795
+new RSSI : seqno=273, from=21, to=7, rssi=20, distance=3.1622776601683795
+new RSSI : seqno=271, from=32, to=7, rssi=28, distance=19.952623149688797
+new RSSI : seqno=272, from=32, to=7, rssi=29, distance=25.118864315095795
+new RSSI : seqno=273, from=32, to=7, rssi=28, distance=19.952623149688797
+new RSSI : seqno=271, from=27, to=7, rssi=23, distance=6.309573444801933
+new RSSI : seqno=272, from=27, to=7, rssi=23, distance=6.309573444801933
+new RSSI : seqno=273, from=27, to=7, rssi=24, distance=7.943282347242816
+new RSSI : seqno=274, from=1, to=7, rssi=17, distance=1.5848931924611136
+ARD WAIT seqno: 274
+ARD START seqno: 269
+ANALYZE - FROM:1 TO:7 RSSI:19
+ANALYZE - FROM:21 TO:7 RSSI:20
+ANALYZE - FROM:27 TO:7 RSSI:27
+ANALYZE - FROM:32 TO:7 RSSI:32
+ARD DONE seqno: 269 POS: 17.099024925358997x27.88823976132784
+ARD START seqno: 270
+ANALYZE - FROM:1 TO:7 RSSI:19
+ANALYZE - FROM:21 TO:7 RSSI:19
+ANALYZE - FROM:27 TO:7 RSSI:23
+ANALYZE - FROM:32 TO:7 RSSI:31
+ARD DONE seqno: 270 POS: 9.732119684061765x14.098903424978008
+new RSSI : seqno=275, from=1, to=7, rssi=19, distance=2.51188643150958
+ARD WAIT seqno: 275
+ARD START seqno: 271
+ANALYZE - FROM:1 TO:7 RSSI:19
+ANALYZE - FROM:21 TO:7 RSSI:19
+ANALYZE - FROM:32 TO:7 RSSI:28
+ANALYZE - FROM:27 TO:7 RSSI:23
+ARD DONE seqno: 271 POS: 16.7067508531373x-5.13867019719331
+new RSSI : seqno=276, from=1, to=7, rssi=18, distance=1.9952623149688795
+ARD WAIT seqno: 276
+ARD START seqno: 272
+ANALYZE - FROM:1 TO:7 RSSI:19
+ANALYZE - FROM:21 TO:7 RSSI:20
+ANALYZE - FROM:32 TO:7 RSSI:29
+ANALYZE - FROM:27 TO:7 RSSI:23
+ARD DONE seqno: 272 POS: 13.389584001584883x-1.343656950486162
+new RSSI : seqno=277, from=1, to=7, rssi=17, distance=1.5848931924611136
+ARD WAIT seqno: 277
+new RSSI : seqno=274, from=21, to=7, rssi=21, distance=3.9810717055349722
+new RSSI : seqno=275, from=21, to=7, rssi=21, distance=3.9810717055349722
+new RSSI : seqno=276, from=21, to=7, rssi=19, distance=2.51188643150958
+new RSSI : seqno=277, from=21, to=7, rssi=18, distance=1.9952623149688795
+new RSSI : seqno=274, from=32, to=7, rssi=32, distance=50.11872336272722
+new RSSI : seqno=275, from=32, to=7, rssi=29, distance=25.118864315095795
+new RSSI : seqno=276, from=32, to=7, rssi=29, distance=25.118864315095795
+new RSSI : seqno=277, from=32, to=7, rssi=27, distance=15.848931924611133
+new RSSI : seqno=274, from=27, to=7, rssi=25, distance=10.0
+new RSSI : seqno=275, from=27, to=7, rssi=24, distance=7.943282347242816
+new RSSI : seqno=276, from=27, to=7, rssi=27, distance=15.848931924611133
+new RSSI : seqno=277, from=27, to=7, rssi=25, distance=10.0
+ARD START seqno: 273
+ANALYZE - FROM:1 TO:7 RSSI:17
+ANALYZE - FROM:21 TO:7 RSSI:20
+ANALYZE - FROM:32 TO:7 RSSI:28
+ANALYZE - FROM:27 TO:7 RSSI:24
+ARD DONE seqno: 273 POS: 16.773269179088807x-5.193503621438084
+new RSSI : seqno=278, from=1, to=7, rssi=17, distance=1.5848931924611136
+ARD WAIT seqno: 278
+ARD START seqno: 274
+ANALYZE - FROM:1 TO:7 RSSI:17
+ANALYZE - FROM:21 TO:7 RSSI:21
+ANALYZE - FROM:32 TO:7 RSSI:32
+ANALYZE - FROM:27 TO:7 RSSI:25
+ARD DONE seqno: 274 POS: 7.744153068915032x24.51490441985194
+new RSSI : seqno=279, from=1, to=7, rssi=19, distance=2.51188643150958
+ARD WAIT seqno: 279
+ARD START seqno: 275
+ANALYZE - FROM:1 TO:7 RSSI:19
+ANALYZE - FROM:21 TO:7 RSSI:21
+ANALYZE - FROM:32 TO:7 RSSI:29
+ANALYZE - FROM:27 TO:7 RSSI:24
+ARD DONE seqno: 275 POS: 13.268239603931743x-1.5496145827656111
+new RSSI : seqno=280, from=1, to=7, rssi=19, distance=2.51188643150958
+ARD WAIT seqno: 280
+ARD START seqno: 276
+ANALYZE - FROM:1 TO:7 RSSI:18
+ANALYZE - FROM:21 TO:7 RSSI:19
+ANALYZE - FROM:32 TO:7 RSSI:29
+ANALYZE - FROM:27 TO:7 RSSI:27
+ARD DONE seqno: 276 POS: 13.442698291159623x-1.2314211666409918
+new RSSI : seqno=281, from=1, to=7, rssi=19, distance=2.51188643150958
+ARD WAIT seqno: 281
+new RSSI : seqno=278, from=21, to=7, rssi=19, distance=2.51188643150958
+new RSSI : seqno=279, from=21, to=7, rssi=19, distance=2.51188643150958
+new RSSI : seqno=280, from=21, to=7, rssi=20, distance=3.1622776601683795
+new RSSI : seqno=281, from=21, to=7, rssi=20, distance=3.1622776601683795
+new RSSI : seqno=278, from=27, to=7, rssi=30, distance=31.622776601683793
+new RSSI : seqno=279, from=27, to=7, rssi=27, distance=15.848931924611133
+new RSSI : seqno=280, from=27, to=7, rssi=25, distance=10.0
+new RSSI : seqno=281, from=27, to=7, rssi=29, distance=25.118864315095795
+new RSSI : seqno=278, from=32, to=7, rssi=25, distance=10.0
+new RSSI : seqno=279, from=32, to=7, rssi=25, distance=10.0
+new RSSI : seqno=280, from=32, to=7, rssi=26, distance=12.589254117941675
+new RSSI : seqno=281, from=32, to=7, rssi=27, distance=15.848931924611133
+ARD START seqno: 277
+ANALYZE - FROM:1 TO:7 RSSI:17
+ANALYZE - FROM:21 TO:7 RSSI:18
+ANALYZE - FROM:32 TO:7 RSSI:27
+ANALYZE - FROM:27 TO:7 RSSI:25
+ARD DONE seqno: 277 POS: 20.08746146488156x-7.38780299984178
+new RSSI : seqno=282, from=1, to=7, rssi=21, distance=3.9810717055349722
+ARD WAIT seqno: 282
+new RSSI : seqno=283, from=1, to=7, rssi=17, distance=1.5848931924611136
+ARD WAIT seqno: 283
+ARD START seqno: 278
+ANALYZE - FROM:1 TO:7 RSSI:17
+ANALYZE - FROM:21 TO:7 RSSI:19
+ANALYZE - FROM:27 TO:7 RSSI:30
+ANALYZE - FROM:32 TO:7 RSSI:25
+ARD DONE seqno: 278 POS: 17.000787398921968x-28.690954344199003
+ARD START seqno: 279
+ANALYZE - FROM:1 TO:7 RSSI:19
+ANALYZE - FROM:21 TO:7 RSSI:19
+ANALYZE - FROM:27 TO:7 RSSI:27
+ANALYZE - FROM:32 TO:7 RSSI:25
+ARD DONE seqno: 279 POS: 19.298069186509412x-12.226613773911476
+new RSSI : seqno=284, from=1, to=7, rssi=18, distance=1.9952623149688795
+ARD WAIT seqno: 284
+ARD START seqno: 280
+ANALYZE - FROM:1 TO:7 RSSI:19
+ANALYZE - FROM:21 TO:7 RSSI:20
+ANALYZE - FROM:27 TO:7 RSSI:25
+ANALYZE - FROM:32 TO:7 RSSI:26
+ARD DONE seqno: 280 POS: 20.087760911437332x-9.783192946252365
+new RSSI : seqno=285, from=1, to=7, rssi=19, distance=2.51188643150958
+ARD WAIT seqno: 285
+new RSSI : seqno=282, from=21, to=7, rssi=21, distance=3.9810717055349722
+new RSSI : seqno=283, from=21, to=7, rssi=18, distance=1.9952623149688795
+new RSSI : seqno=284, from=21, to=7, rssi=18, distance=1.9952623149688795
+new RSSI : seqno=285, from=21, to=7, rssi=21, distance=3.9810717055349722
+new RSSI : seqno=282, from=32, to=7, rssi=27, distance=15.848931924611133
+new RSSI : seqno=283, from=32, to=7, rssi=29, distance=25.118864315095795
+new RSSI : seqno=284, from=32, to=7, rssi=27, distance=15.848931924611133
+new RSSI : seqno=285, from=32, to=7, rssi=26, distance=12.589254117941675
+new RSSI : seqno=282, from=27, to=7, rssi=25, distance=10.0
+new RSSI : seqno=283, from=27, to=7, rssi=29, distance=25.118864315095795
+new RSSI : seqno=284, from=27, to=7, rssi=25, distance=10.0
+new RSSI : seqno=285, from=27, to=7, rssi=25, distance=10.0
+ARD START seqno: 281
+ANALYZE - FROM:1 TO:7 RSSI:19
+ANALYZE - FROM:21 TO:7 RSSI:20
+ANALYZE - FROM:27 TO:7 RSSI:29
+ANALYZE - FROM:32 TO:7 RSSI:27
+ARD DONE seqno: 281 POS: 13.37503121177463x-18.715201655441003
+new RSSI : seqno=286, from=1, to=7, rssi=19, distance=2.51188643150958
+ARD WAIT seqno: 286
+ARD START seqno: 282
+ANALYZE - FROM:1 TO:7 RSSI:21
+ANALYZE - FROM:21 TO:7 RSSI:21
+ANALYZE - FROM:32 TO:7 RSSI:27
+ANALYZE - FROM:27 TO:7 RSSI:25
+ARD DONE seqno: 282 POS: 17.850960235195753x-8.581470858559461
+new RSSI : seqno=287, from=1, to=7, rssi=20, distance=3.1622776601683795
+ARD WAIT seqno: 287
+ARD START seqno: 283
+ANALYZE - FROM:1 TO:7 RSSI:17
+ANALYZE - FROM:21 TO:7 RSSI:18
+ANALYZE - FROM:32 TO:7 RSSI:29
+ANALYZE - FROM:27 TO:7 RSSI:29
+ARD DONE seqno: 283 POS: 6.952610343478565x-10.008175477964313
+new RSSI : seqno=288, from=1, to=7, rssi=21, distance=3.9810717055349722
+ARD WAIT seqno: 288
+ARD START seqno: 284
+ANALYZE - FROM:1 TO:7 RSSI:18
+ANALYZE - FROM:21 TO:7 RSSI:18
+ANALYZE - FROM:32 TO:7 RSSI:27
+ANALYZE - FROM:27 TO:7 RSSI:25
+ARD DONE seqno: 284 POS: 19.91969684047965x-7.417597771865178
+new RSSI : seqno=289, from=1, to=7, rssi=19, distance=2.51188643150958
+ARD WAIT seqno: 289
+new RSSI : seqno=286, from=21, to=7, rssi=21, distance=3.9810717055349722
+new RSSI : seqno=287, from=21, to=7, rssi=21, distance=3.9810717055349722
+new RSSI : seqno=288, from=21, to=7, rssi=22, distance=5.011872336272722
+new RSSI : seqno=286, from=32, to=7, rssi=29, distance=25.118864315095795
+new RSSI : seqno=287, from=32, to=7, rssi=27, distance=15.848931924611133
+new RSSI : seqno=288, from=32, to=7, rssi=31, distance=39.810717055349734
+new RSSI : seqno=286, from=27, to=7, rssi=25, distance=10.0
+new RSSI : seqno=287, from=27, to=7, rssi=25, distance=10.0
+new RSSI : seqno=288, from=27, to=7, rssi=23, distance=6.309573444801933
+ARD START seqno: 285
+ANALYZE - FROM:1 TO:7 RSSI:19
+ANALYZE - FROM:21 TO:7 RSSI:21
+ANALYZE - FROM:32 TO:7 RSSI:26
+ANALYZE - FROM:27 TO:7 RSSI:25
+ARD DONE seqno: 285 POS: 19.486188140034162x-10.182700975250572
+new RSSI : seqno=290, from=1, to=7, rssi=21, distance=3.9810717055349722
+ARD WAIT seqno: 290
+ARD START seqno: 286
+ANALYZE - FROM:1 TO:7 RSSI:19
+ANALYZE - FROM:21 TO:7 RSSI:21
+ANALYZE - FROM:32 TO:7 RSSI:29
+new RSSI : seqno=291, from=1, to=7, rssi=23, distance=6.309573444801933
+ANALYZE - FROM:27 TO:7 RSSI:25
+ARD DONE seqno: 286 POS: 13.911007107330851x-1.0246300750291373
+ARD WAIT seqno: 291
+new RSSI : seqno=289, from=21, to=7, rssi=20, distance=3.1622776601683795
+new RSSI : seqno=290, from=21, to=7, rssi=21, distance=3.9810717055349722
+new RSSI : seqno=291, from=21, to=7, rssi=21, distance=3.9810717055349722
+new RSSI : seqno=289, from=27, to=7, rssi=24, distance=7.943282347242816
+new RSSI : seqno=290, from=27, to=7, rssi=25, distance=10.0
+new RSSI : seqno=291, from=27, to=7, rssi=24, distance=7.943282347242816
+ARD START seqno: 287
+ANALYZE - FROM:1 TO:7 RSSI:20
+ANALYZE - FROM:21 TO:7 RSSI:21
+ANALYZE - FROM:32 TO:7 RSSI:27
+ANALYZE - FROM:27 TO:7 RSSI:25
+ARD DONE seqno: 287 POS: 18.09109417419395x-8.648658673640455
+new RSSI : seqno=292, from=1, to=7, rssi=22, distance=5.011872336272722
+ARD WAIT seqno: 292
+ARD START seqno: 288
+ANALYZE - FROM:1 TO:7 RSSI:21
+ANALYZE - FROM:21 TO:7 RSSI:22
+ANALYZE - FROM:32 TO:7 RSSI:31
+ANALYZE - FROM:27 TO:7 RSSI:23
+ARD DONE seqno: 288 POS: 2.4964926530747356x8.45780091692838
+ARD START seqno: 289
+ANALYZE - FROM:1 TO:7 RSSI:19
+ANALYZE - FROM:21 TO:7 RSSI:20
+ANALYZE - FROM:27 TO:7 RSSI:24
+ARD DONE seqno: 289 POS: 17.047175818889585x-6.054469182045511
+ARD START seqno: 290
+ANALYZE - FROM:1 TO:7 RSSI:21
+ANALYZE - FROM:21 TO:7 RSSI:21
+ANALYZE - FROM:27 TO:7 RSSI:25
+ARD DONE seqno: 290 POS: 15.993321692939x-5.7722085274787895
+ARD START seqno: 291
+ANALYZE - FROM:1 TO:7 RSSI:23
+ANALYZE - FROM:21 TO:7 RSSI:21
+ANALYZE - FROM:27 TO:7 RSSI:24
+ARD DONE seqno: 291 POS: 14.341889557259028x-4.880689352897896
+ARD START seqno: 292

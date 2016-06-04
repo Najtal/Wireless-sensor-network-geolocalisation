@@ -44,6 +44,7 @@ public class GuiModel {
     private boolean showRadius;
     private boolean showPath;
     private boolean showID;
+    private boolean showAvg;
 
     public GuiModel(AnchorModel am) {
         this.am = am;
@@ -57,6 +58,7 @@ public class GuiModel {
         this.showRadius = true;
         this.showPath = true;
         this.showID = true;
+        this.showAvg = false;
     }
 
     public AnchorModel getAm() {
@@ -165,5 +167,14 @@ public class GuiModel {
 
     public void setShowID(boolean showID) {
         this.showID = showID;
+    }
+
+
+    public boolean isShowAvg() {
+        return showAvg;
+    }
+
+    public void setShowAvg(boolean showAvg) {
+        this.showAvg = showAvg;
     }
 }
