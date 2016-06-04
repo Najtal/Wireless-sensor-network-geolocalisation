@@ -39,12 +39,16 @@ public class Reader extends Thread {
             while(i > 0 || i==-1) {
 
                 String line = "";
-                char ch;
+                /*char ch;
                 do {
                     ch = (char) reader.read();
                     line += ch;//String.valueOf(ch);
                 } while( ch != '\n');
-                //String line = reader.readLine();
+                */
+
+                line = reader.readLine();
+                if (line == null)
+                    continue;
 
                 if (mode == 2) {
                     // Take of the time and sleep
@@ -72,7 +76,6 @@ public class Reader extends Thread {
 
                 if (!line.startsWith("OUT")) continue;
 
-                System.out.print("Line: " + line + "\t");
                 String[] data = CliParser.parseIncomingLine(line);
 
                 RssiDTO rssi = CliParser.handleData(data);
