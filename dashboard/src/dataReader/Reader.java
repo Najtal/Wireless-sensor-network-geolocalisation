@@ -39,16 +39,18 @@ public class Reader extends Thread {
             while(i > 0 || i==-1) {
 
                 String line = "";
-                /*char ch;
-                do {
-                    ch = (char) reader.read();
-                    line += ch;//String.valueOf(ch);
-                } while( ch != '\n');
-                */
 
-                line = reader.readLine();
-                if (line == null)
-                    continue;
+                char ch;
+                if (Integer.parseInt(AppContext.INSTANCE.getProperty("mockupRSSI")) == 0) {
+                    line = reader.readLine();
+                    if (line == null)
+                        continue;
+                } else {
+                    do {
+                        ch = (char) reader.read();
+                        line += ch;//String.valueOf(ch);
+                    } while( ch != '\n');
+                }
 
                 if (mode == 2) {
                     // Take of the time and sleep
