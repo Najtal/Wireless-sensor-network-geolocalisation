@@ -80,7 +80,7 @@ public class LinearLeastSquareHandler {
      * @param measurements All measurements from ANCHOR to BLIND and BLIND to ANCHOR
      * @return the optimum position of the BLIND
      */
-    private static PositionDouble getPositionFromRSSI(AnchorModel anchors, List<RssiDTO> measurements) {
+    private synchronized static PositionDouble getPositionFromRSSI(AnchorModel anchors, List<RssiDTO> measurements) {
 
         int inc = 0;
 

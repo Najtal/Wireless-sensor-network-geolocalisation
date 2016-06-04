@@ -20,7 +20,7 @@ public class CliParser {
     }
 
 
-    public static RssiDTO handleData(String[] data, RawModel rawModel) {
+    public static RssiDTO handleData(String[] data) {
 
         switch (data[1].split(":")[1]) {
 
@@ -58,13 +58,14 @@ public class CliParser {
                         Integer.parseInt(data[4].split(":")[1]),
                         Integer.parseInt(data[6].split(":")[1]),
                         RssiType.BLIND_TO_ANCHOR);*/
-                return BizzFactory.INSTANCE.createRssi(
+
+                RssiDTO r = BizzFactory.INSTANCE.createRssi(
                         Integer.parseInt(data[3].split(":")[1]),
                         Integer.parseInt(data[2].split(":")[1]),
                         Integer.parseInt(data[4].split(":")[1])+45,
                         Integer.parseInt(data[6].split(":")[1]),
                         RssiType.ANCHOR_TO_BLIND);
-
+                return r;
 
             case "SLEEP" :
                 break;

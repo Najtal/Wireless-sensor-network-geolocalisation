@@ -34,11 +34,10 @@ public class RawModel {
 
         int seqNumber = rssi.getSequenceNo();
 
-        Log.logInfo("new RSSI : seqno=" + seqNumber + ", from="+rssi.getFrom()+ ", to="+rssi.getTo()+", rssi="+rssi.getRssi());
-        System.out.println("new RSSI : seqno=" + seqNumber + ", from="+rssi.getFrom()+ ", to="+rssi.getTo()+", rssi="+rssi.getRssi());
+        Log.logInfo("new RSSI : seqno=" + seqNumber + ", from="+rssi.getFrom()+ ", to="+rssi.getTo()+", rssi="+rssi.getRssi() + ", distance=" + rssi.getDistanceMeters());
 
         // If sequence not exist : we create, or if already past, we throw
-        if (!sequences.containsKey(seqNumber) && seqNumber > lastSequenceAnalyzed) {
+        if (!sequences.containsKey(seqNumber) ) {  //&& seqNumber > lastSequenceAnalyzed) {
                 sequences.put(seqNumber, new RawModelSequence(seqNumber));
 
                 new LinearLeastSquareHandler().analyzeSequenceRawData(
@@ -47,16 +46,14 @@ public class RawModel {
                         AnalyzeModel.INSTANCE,
                         AnchorModel.INSTANCE,
                         seqNumber);
-
                 lastSequenceAnalyzed++;
-
         }
 
         sequences.get(seqNumber).addRssi(rssi);
     }
 
 
-    public void removeSequence(int sequenceNumber) {
+    public synchronized void removeSequence(int sequenceNumber) {
         sequences.remove(sequenceNumber);
     }
 }

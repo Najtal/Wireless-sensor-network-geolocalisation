@@ -75,7 +75,7 @@ public class Reader extends Thread {
                 System.out.print("Line: " + line + "\t");
                 String[] data = CliParser.parseIncomingLine(line);
 
-                RssiDTO rssi = CliParser.handleData(data, rawModel);
+                RssiDTO rssi = CliParser.handleData(data);
                 if (rssi != null) {
                     RawModel.INSTANCE.addRssi(rssi);
                 }

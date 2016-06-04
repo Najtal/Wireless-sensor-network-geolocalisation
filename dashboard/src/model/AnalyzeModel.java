@@ -29,7 +29,7 @@ public class AnalyzeModel {
         this.lastPositionIndex = -1;
     }
 
-    public void addBlindPosition(PositionDouble blindPosition, int sequenceNumber) {
+    public synchronized void addBlindPosition(PositionDouble blindPosition, int sequenceNumber) {
         positionsMap.put(sequenceNumber, blindPosition);
         regSequences.add(sequenceNumber);
         Collections.sort(regSequences);

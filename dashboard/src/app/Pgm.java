@@ -50,13 +50,6 @@ public class Pgm {
 		this.moteReader = new MoteReader(rawModel);
 		Log.logFine("Init CLI reader ok");
 
-		/*
-		// Init initializer : Is trigged by the RawModel, if sequence data filled,
-		// 		It analyze the raw data to the Analyzed model
-		this.llsh = LinearLeastSquareHandler.INSTANCE;
-		Log.logFine("Init Linear Least Square Handler ok");
-		*/
-
 		// Set frame visible when everything is launched
 		this.frame.setVisible(true);
 	}
