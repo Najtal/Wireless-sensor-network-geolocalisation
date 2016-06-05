@@ -32,22 +32,16 @@ public class AnchorModel {
         }
     }
 
-    public void removeAnchor(AnchorDTO anchor) {
-        if (!anchors.contains(anchor) && !anchorIdMap.containsKey(anchor.getId())) {
-            anchors.remove(anchor);
-            anchorIdMap.remove(anchor.getId());
-        }
-    }
 
     public AnchorDTO getAnchorById(int id) {
         return anchorIdMap.get(id);
     }
 
-    public AnchorDTO getAnchorByPositionFirstToLast(int pos) {
+    public AnchorDTO getAnchorByOrder(int pos) {
         return anchors.get(pos);
     }
 
-    public List<AnchorDTO> getAnchorBy() {
+    public List<AnchorDTO> getAnchorList() {
         return anchors;
     }
 

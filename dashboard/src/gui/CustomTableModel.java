@@ -3,9 +3,6 @@ package gui;
 import model.AnchorModel;
 import ucc.AnchorDTO;
 
-import java.io.File;
-import java.util.Date;
-
 import javax.swing.table.AbstractTableModel;
 
 /**
@@ -39,7 +36,7 @@ public class CustomTableModel extends AbstractTableModel {
 	 * Returns the motes of the network
  	 */
 	public int getRowCount() {
-		return anchorModel.getAnchorBy().size();
+		return anchorModel.getAnchorList().size();
 	}
 
 	// Returns the name of the given column index
@@ -54,7 +51,7 @@ public class CustomTableModel extends AbstractTableModel {
 	// Returns the value of each cell
 	public Object getValueAt(int row, int col) {
 
-		AnchorDTO anchor = anchorModel.getAnchorByPositionFirstToLast(row);
+		AnchorDTO anchor = anchorModel.getAnchorByOrder(row);
 
 		TableColumn tableColumn = TableColumn.fromIndex(col);
 		switch (tableColumn) {

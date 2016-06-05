@@ -90,7 +90,7 @@ public class Canvas extends JPanel {
 
         // Draw the Anchors
         g.setColor(gm.getAnchorColor());
-        for (AnchorDTO anchor : gm.getAm().getAnchorBy()) {
+        for (AnchorDTO anchor : gm.getAm().getAnchorList()) {
 
             if (anchor.getPosx() == 0 && anchor.getPosy() == 0) {
                 g.setColor(gm.getGwColor());

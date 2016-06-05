@@ -67,7 +67,7 @@ public class LinearLeastSquareHandler {
 
                 rm.removeSequence(sequenceNumber);
 
-                Log.logInfo("ARD DONE seqno: " + sequenceNumber + " POS: " + blindPosition.getX()+"x"+blindPosition.getY());
+                Log.logWarning("ARD DONE seqno: " + sequenceNumber + " POS: " + blindPosition.getX()+"x"+blindPosition.getY());
             }
         };
 

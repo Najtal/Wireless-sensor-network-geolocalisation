@@ -1,6 +1,7 @@
 package model;
 
 import app.AppContext;
+import util.Log;
 import util.PositionDouble;
 
 import java.awt.event.ActionListener;
@@ -19,6 +20,10 @@ public class AnalyzeModel {
     private ArrayList<Long> regTimePositions;
     private PositionDouble lastPosition;
 
+    private int nbRssiAt1m;
+    private double sumRssiAt1m;
+    private double lastRssiAt1m;
+
     private ActionListener alGui;
 
     /**
@@ -27,6 +32,9 @@ public class AnalyzeModel {
     private AnalyzeModel() {
         this.positionsMap = new HashMap<>();
         this.regTimePositions = new ArrayList<>();
+        this.nbRssiAt1m = 1;
+        this.sumRssiAt1m = Integer.parseInt(AppContext.INSTANCE.getProperty("receivedRssiAt1m"));
+        this.lastRssiAt1m = sumRssiAt1m;
     }
 
     public synchronized void addBlindPosition(PositionDouble blindPosition, int sequenceNumber) {
@@ -70,5 +78,17 @@ public class AnalyzeModel {
 
         int devider = Math.min(nbPos, AVG_POSITIONS);
         return  new PositionDouble(avgPosX / devider, avgPosY / devider);
+    }
+
+    public void addAARssiAt1m(double rssiAt1mFromAnchors) {
+        Log.logSevere("new rssiReceived at 1m: " + rssiAt1mFromAnchors);
+        nbRssiAt1m++;
+        sumRssiAt1m += rssiAt1mFromAnchors;
+        lastRssiAt1m = rssiAt1mFromAnchors/nbRssiAt1m;
+        Log.logSevere("new lastRssiAt1m: " + lastRssiAt1m + " from: " + nbRssiAt1m);
+    }
+
+    public double getLastRssiAt1m() {
+        return lastRssiAt1m;
     }
 }
