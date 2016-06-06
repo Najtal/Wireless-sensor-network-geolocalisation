@@ -139,6 +139,7 @@ public class Frame extends JFrame implements ChangeListener, ActionListener {
 
         // Init panes
         sideOptionPane = new JPanel(new BorderLayout());
+        sideOptionPane.setMinimumSize(new Dimension(250, 300));
         menuPane = new JPanel(new GridLayout(3, 4));
         menuPane.setBorder(BorderFactory.createEmptyBorder(5,20,5,20));
         menuPane.setAlignmentX(Component.RIGHT_ALIGNMENT);
