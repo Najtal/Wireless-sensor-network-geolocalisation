@@ -78,8 +78,6 @@ public class Reader extends Thread {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-
-
                 }
 
                 if (!line.startsWith("OUT")) continue;
@@ -93,8 +91,6 @@ public class Reader extends Thread {
 
                 i--;
             }
-
-
 
         } catch (IOException e) {
             e.printStackTrace();

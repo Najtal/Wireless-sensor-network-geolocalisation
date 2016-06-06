@@ -43,6 +43,7 @@ public class AnalyzeModel {
         regTimePositions.add(nanoTime);
         Collections.sort(regTimePositions);
         lastPosition = blindPosition;
+        Log.logFine("New position : seqno:"+sequenceNumber+" x:"+blindPosition.getX() + " y:"+blindPosition.getY());
         triggerGui();
     }
 
@@ -77,15 +78,13 @@ public class AnalyzeModel {
         }
 
         int devider = Math.min(nbPos, AVG_POSITIONS);
-        return  new PositionDouble(avgPosX / devider, avgPosY / devider);
+        return new PositionDouble(avgPosX / devider, avgPosY / devider);
     }
 
     public void addAARssiAt1m(double rssiAt1mFromAnchors) {
-        Log.logSevere("new rssiReceived at 1m: " + rssiAt1mFromAnchors);
         nbRssiAt1m++;
         sumRssiAt1m += rssiAt1mFromAnchors;
         lastRssiAt1m = rssiAt1mFromAnchors/nbRssiAt1m;
-        Log.logSevere("new lastRssiAt1m: " + lastRssiAt1m + " from: " + nbRssiAt1m);
     }
 
     public double getLastRssiAt1m() {
