@@ -1,0 +1,10 @@
+
+
+# Static with 4 motes
+java -jar dashboard.jar in_s5.properties < in_s7_s.txt
+
+# Static with 5 motes
+java -jar dashboard.jar in_s8.properties < in_s8_s.txt
+
+# Moving with 5 motes
+java -jar dashboard.jar in_s8.properties < in_s8_m.txt

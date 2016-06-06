@@ -48,6 +48,7 @@ public final class Main {
             new Pgm();
         } catch (Exception e) {
             String errMsg = "Error while loading the app";
+            System.out.println(errMsg + " : " + e.getMessage());
             JOptionPane.showMessageDialog(null, errMsg+"\n", "Fatal Error !", JOptionPane.ERROR_MESSAGE);
             AppContext.INSTANCE.getLogger().log(Level.SEVERE,errMsg + ": "+ e.toString());
         }
