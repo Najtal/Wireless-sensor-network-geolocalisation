@@ -39,18 +39,18 @@ public class CliParser {
                 AnchorDTO aB = AnchorModel.INSTANCE.getAnchorById(Integer.parseInt(data[3].split(":")[1]));
 
                 if (aA != null && aB != null) {
-
+                    /*
                     Log.logSevere("RSSI: " + Integer.parseInt(data[4].split(":")[1]) + " -> " + Math.abs(Integer.parseInt(data[4].split(":")[1])+OFFSET));
                     Log.logSevere("ANCHOR1 X:" + AnchorModel.INSTANCE.getAnchorById(Integer.parseInt(data[2].split(":")[1])).getPosx()
                             + " Y:" + AnchorModel.INSTANCE.getAnchorById(Integer.parseInt(data[2].split(":")[1])).getPosy());
                     Log.logSevere("ANCHOR2 X:" + AnchorModel.INSTANCE.getAnchorById(Integer.parseInt(data[3].split(":")[1])).getPosx()
                             + " Y:" + AnchorModel.INSTANCE.getAnchorById(Integer.parseInt(data[3].split(":")[1])).getPosy());
                     Log.logSevere("DISTANCE : " + AnchorUCC.getDistanceBtwAnchors(aA, aB));
-
+                    */
                     double newRssiAt1m = AnchorUCC.getRssiAt1mFromAnchors(
                             Integer.parseInt(data[4].split(":")[1])+OFFSET, aA, aB);
 
-                    Log.logSevere("new RSSI : " + newRssiAt1m);
+                    // Log.logSevere("new RSSI : " + newRssiAt1m);
 
                     AnalyzeModel.INSTANCE.addAARssiAt1m((newRssiAt1m));
                 }
