@@ -1,3 +1,4 @@
+
 # Wireless-sensor-network-geolocalisation
 A Contiki based Z1-mote system linked to a dashboard that allow you to track moving-motes real position.
 
@@ -63,10 +64,14 @@ guiSizeHeight=600
 guiSizeMinimumWidth=600
 guiSizeMinimumHeight=300
 
-* mockupRSSI : If you want to mockup RSSI
-* waitBeforeAnalyze : seconds to wait before analyzing a new sequence
-* receivedRssiAt1m : The received Rssi at 1 meter (should be negative)
+* mockupRSSI : Define which type of input you want in the system
+* waitBeforeAnalyze : seconds to wait before analyzing a new received sequence (see mote code param for more details)
+* receivedRssiAt1m : The received Rssi at 1 meter
 * propagationCstOfPathLossExp : The propagation constant of path loss exp (=2 in open space)
+* offset : The mote RSSI offset
+* useBArssi : Use Blind-to-Anchor measurements [true, false]
+* useABrssi : Use Anchor-to-Blind measurements [true, false]
+* avgPosition : The amount of last position taken in account with AVG option
 
 ### Configuration to run mote
 
@@ -99,18 +104,20 @@ The gateway should be started with the below commands to link the dashboard to t
 
 Then the network will build, start communicating and looking for a blind mote. The process can take up to two minutes before showing an output.
 
+(see repository ./dashboard/out/artifacts/dashboard_jar for testing files)
+
 
 Launch program with file saved outputs
 
 ```
-java -jar dashboard.jar < in_sx.txt
+java -jar dashboard.jar [propertyfile.prop] < in_sx.txt
 or
 java Main -cp/commons-math3-3.6.1.jar:. < cjout.txt
 ```
 
 Launch program by using a mote in a real network
 ```
-java -jar dashboard.jar < ~/contiki/tools/sky/serialdump-linux -b115200 /dev/ttyUSB0
+java -jar dashboard.jar [propertyfile.prop] < ~/contiki/tools/sky/serialdump-linux -b115200 /dev/ttyUSB0
 or
 java Main -cp/commons-math3-3.6.1.jar:. < ~/contiki/tools/sky/serialdump-linux -b115200 /dev/ttyUSB0
 ```
