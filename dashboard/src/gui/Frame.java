@@ -78,8 +78,8 @@ public class Frame extends JFrame implements ChangeListener, ActionListener {
                 Integer.parseInt(AppContext.INSTANCE.getProperty("guiSizeMinimumWidth")),
                 Integer.parseInt(AppContext.INSTANCE.getProperty("guiSizeMinimumHeight"))));
 
-        ImageIcon icon = new ImageIcon(getClass().getResource("/icon.png"));
-        this.setIconImage(icon.getImage());
+//        ImageIcon icon = new ImageIcon(getClass().getResource("icon.png"));
+//        this.setIconImage(icon.getImage());
         this.setLocationRelativeTo(null);
 
         // Close operations

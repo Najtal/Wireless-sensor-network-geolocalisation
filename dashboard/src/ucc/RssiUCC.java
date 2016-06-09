@@ -21,6 +21,6 @@ public interface RssiUCC {
             rssiAt1m = AnalyzeModel.INSTANCE.getLastRssiAt1m();
         }
 
-        return Math.pow(10, (rssi-rssiAt1m) / (10*PROPAGATION_CST_OF_PATHLOSS_EXP) );
+        return Math.pow(10, -1 * (rssi - rssiAt1m) / (10*PROPAGATION_CST_OF_PATHLOSS_EXP) );
     }
 }
