@@ -1,0 +1,57 @@
+00:00.385 OUT,type:DATA_BA,tx:7,rx:1,rssi:-63,movement:0,seqno:233
+00:00.387 OUT,type:DATA_AB,tx:1,rx:7,rssi:-63,seqno:12
+00:00.388 OUT,type:DATA_AB,tx:27,rx:7,rssi:-55,seqno:12
+00:00.389 OUT,type:DATA_AB,tx:32,rx:7,rssi:-51,seqno:12
+00:00.390 OUT,type:DATA_AB,tx:21,rx:7,rssi:-62,seqno:12
+00:02.383 ////////////////////////// OUT,type:DATA_BA,tx:7,rx:1,rssi:-63,movement:0,seqno:234
+00:02.384 ////////////////////////// OUT,type:DATA_AB,tx:1,rx:7,rssi:-63,seqno:11
+00:02.385 ////////////////////////// OUT,type:DATA_AB,tx:27,rx:7,rssi:-55,seqno:12
+00:02.386 ////////////////////////// OUT,type:DATA_AB,tx:32,rx:7,rssi:-51,seqno:12
+00:02.387 ////////////////////////// ////////////////////////// ////////////////////////// //////////////////////////OUT,type:DATA_AB,tx:21,rx:7,rssi:-63,seqno:12
+00:04.364 ////////////////////////// OUT,type:DATA_BA,tx:7,rx:1,rssi:-64,movement:0,seqno:235
+00:04.387 ////////////////////////// OUT,type:DATA_AB,tx:1,rx:7,rssi:-64,seqno:11
+00:04.388 ////////////////////////// OUT,type:DATA_AB,tx:27,rx:7,rssi:-66,seqno:12
+00:04.389 ////////////////////////// OUT,type:DATA_AB,tx:32,rx:7,rssi:-78,seqno:12
+00:04.392 ////////////////////////// OUT,type:DATA_AB,tx:21,rx:7,rssi:-63,seqno:12
+00:05.002 OUT,type:DATA_AA,tx:1,rx:21,rssi:-56,seqno:12
+00:05.003 OUT,type:DATA_AA,tx:27,rx:21,rssi:-65,seqno:12
+00:05.004 OUT,type:DATA_AA,tx:32,rx:21,rssi:-64,seqno:12
+00:05.005 OUT,type:DATA_AA,tx:7,rx:21,rssi:-62,seqno:12
+00:05.024 ////////////////////////// OUT,type:DATA_AB,tx:1,rx:7,rssi:-64,seqno:11
+00:05.026 ////////////////////////// OUT,type:DATA_AB,tx:27,rx:7,rssi:-66,seqno:12
+00:05.030 ////////////////////////// OUT,type:DATA_AB,tx:32,rx:7,rssi:-56,seqno:12
+00:05.033 ////////////////////////// OUT,type:DATA_AB,tx:21,rx:7,rssi:-63,seqno:12
+00:05.034 ////////////////////////// OUT,type:DATA_BA,tx:7,rx:21,rssi:-63,movement:0,seqno:232
+00:05.035 OUT,type:DATA_BA,tx:7,rx:21,rssi:-62,movement:0,seqno:233
+00:05.039 ////////////////////////// OUT,type:DATA_BA,tx:7,rx:21,rssi:-64,movement:0,seqno:234
+00:05.063 ////////////////////////// OUT,type:DATA_BA,tx:7,rx:21,rssi:-63,movement:0,seqno:235
+00:05.154 OUT,type:DATA_AA,tx:1,rx:27,rssi:-64,seqno:12
+00:05.154 OUT,type:DATA_AA,tx:32,rx:27,rssi:-56,seqno:12
+00:05.155 OUT,type:DATA_AA,tx:7,rx:27,rssi:-55,seqno:12
+00:05.169 OUT,type:DATA_AA,tx:21,rx:27,rssi:-65,seqno:12
+00:05.170 ////////////////////////// OUT,type:DATA_AB,tx:1,rx:7,rssi:-64,seqno:11
+00:05.170 ////////////////////////// OUT,type:DATA_AB,tx:27,rx:7,rssi:-66,seqno:12
+00:05.179 ////////////////////////// OUT,type:DATA_AB,tx:32,rx:7,rssi:-78,seqno:12
+00:05.180 ////////////////////////// OUT,type:DATA_AB,tx:21,rx:7,rssi:-63,seqno:12
+00:05.185 OUT,type:DATA_BA,tx:7,rx:27,rssi:-55,movement:0,seqno:233
+00:05.196 ////////////////////////// OUT,type:DATA_BA,tx:7,rx:27,rssi:-70,movement:0,seqno:232
+00:05.214 ////////////////////////// OUT,type:DATA_BA,tx:7,rx:27,rssi:-67,movement:0,seqno:234
+00:05.215 ////////////////////////// OUT,type:DATA_BA,tx:7,rx:27,rssi:-68,movement:0,seqno:235
+00:05.630 OUT,type:DATA_AA,tx:1,rx:32,rssi:-65,seqno:12
+00:05.632 OUT,type:DATA_AA,tx:27,rx:32,rssi:-56,seqno:12
+00:05.633 OUT,type:DATA_AA,tx:7,rx:32,rssi:-51,seqno:12
+00:05.634 OUT,type:DATA_AA,tx:21,rx:32,rssi:-64,seqno:12
+00:05.648 ////////////////////////// OUT,type:DATA_AB,tx:1,rx:7,rssi:-64,seqno:11
+00:05.652 ////////////////////////// OUT,type:DATA_AB,tx:27,rx:7,rssi:-66,seqno:12
+00:05.653 ////////////////////////// OUT,type:DATA_AB,tx:32,rx:7,rssi:-78,seqno:12
+00:05.655 ////////////////////////// OUT,type:DATA_AB,tx:21,rx:7,rssi:-63,seqno:12
+00:05.657 ////////////////////////// OUT,type:DATA_BA,tx:7,rx:32,rssi:-72,movement:0,seqno:232
+00:05.664 OUT,type:DATA_BA,tx:7,rx:32,rssi:-51,movement:0,seqno:233
+00:05.669 ////////////////////////// OUT,type:DATA_BA,tx:7,rx:32,rssi:-74,movement:0,seqno:234
+00:05.690 ////////////////////////// OUT,type:DATA_BA,tx:7,rx:32,rssi:-75,movement:0,seqno:235
+00:06.384 ////////////////////////// OUT,type:DATA_BA,tx:7,rx:1,rssi:-65,movement:0,seqno:236
+00:06.385 ////////////////////////// OUT,type:DATA_AB,tx:1,rx:7,rssi:-64,seqno:11
+00:06.386 ////////////////////////// OUT,type:DATA_AB,tx:27,rx:7,rssi:-66,seqno:12
+00:06.387 ////////////////////////// OUT,type:DATA_AB,tx:32,rx:7,rssi:-78,seqno:12
+00:06.388 ////////////////////////// OUT,type:DATA_AB,tx:21,rx:7,rssi:-63,seqno:12
+00:06.653 ////////////////////////// OUT,type:FREQ,seqno:141,freq:18,grace:1000

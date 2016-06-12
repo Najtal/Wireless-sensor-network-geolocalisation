@@ -6,13 +6,10 @@ import model.AnalyzeModel;
 import model.AnchorModel;
 import model.RawModel;
 import model.RawModelSequence;
-import org.apache.commons.math3.fitting.leastsquares.LeastSquaresOptimizer;
 import org.apache.commons.math3.fitting.leastsquares.LevenbergMarquardtOptimizer;
-import org.apache.commons.math3.linear.RealVector;
 import ucc.AnchorDTO;
 import ucc.RssiDTO;
 import util.Log;
-import util.Position;
 import util.PositionDouble;
 
 import java.util.ArrayList;
@@ -25,6 +22,8 @@ public class LinearLeastSquareHandler {
 
     //public static final LinearLeastSquareHandler INSTANCE = new LinearLeastSquareHandler();
     public static final int TIME_TO_WAIT_AT_START = 1000*Integer.parseInt(AppContext.INSTANCE.getProperty("waitBeforeAnalyze"));
+    public static final int MAX_NB_RSSI = Math.min(3,Integer.parseInt(AppContext.INSTANCE.getProperty("numberMaxRSSI")));
+
 
     /**
      * Create a thread that read the raw values and compute the blind position
@@ -61,6 +60,21 @@ public class LinearLeastSquareHandler {
                 if (measurements.size() < 3) {
                     return;
                 }
+
+                if (MAX_NB_RSSI < measurements.size()) {
+                    measurements.sort((r1, r2) -> {
+                        if (r1.getRssi() > r2.getRssi()) {
+                            return 1;
+                        } else {
+                            return -1;
+                        }
+                    });
+
+                    for (int i=measurements.size()-1; i>=MAX_NB_RSSI ;i--) {
+                        measurements.remove(i);
+                    }
+                }
+
                 PositionDouble blindPosition = getPositionFromRSSI(anchors, measurements);
 
                 am.addBlindPosition(blindPosition, sequenceNumber);
