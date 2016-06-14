@@ -17,7 +17,8 @@ import util.Log;
  */
 public class CliParser {
 
-    private static final int OFFSET = Integer.parseInt(AppContext.INSTANCE.getProperty("offset"));
+    //private static final int OFFSET = Integer.parseInt(AppContext.INSTANCE.getProperty("offset"));
+    private static final int OFFSET = 0;
     private static final boolean USE_BA_RSSI = Boolean.parseBoolean(AppContext.INSTANCE.getProperty("useBArssi"));
     private static final boolean USE_AB_RSSI = Boolean.parseBoolean(AppContext.INSTANCE.getProperty("useABrssi"));
 

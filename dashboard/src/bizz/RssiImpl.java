@@ -26,7 +26,11 @@ public class RssiImpl extends BizzObjectImpl implements Rssi {
 		super();
 		this.from = from;
 		this.to = to;
+<<<<<<< HEAD
 		this.rssi = rssi;
+=======
+		this.rssi = (rssi);
+>>>>>>> phoenix
 		this.type = type;
 		this.distanceMeters = RssiUCC.getDistanceFromRssi(this.rssi);
 		this.sequenceNo = sequenceNo;
@@ -72,7 +76,12 @@ public class RssiImpl extends BizzObjectImpl implements Rssi {
 	@Override
 	public void setRssi(int rssi) {
 		increaseVersion();
+<<<<<<< HEAD
 		this.rssi = rssi;
+=======
+//		this.rssi = Math.abs(rssi);
+		this.rssi = (rssi);
+>>>>>>> phoenix
 		this.distanceMeters = RssiUCC.getDistanceFromRssi(rssi);
 	}
 

@@ -2,6 +2,7 @@ package app;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
@@ -50,6 +51,8 @@ class AppContextImpl implements AppContext {
 		try {
 			input = new FileInputStream(context);
 			props.load(input);
+//			InputStream is = getClass().getResourceAsStream("prod.properties");
+//			props.load(is);
 		} catch (IOException e) {
 			throw new FatalException("Cannot load the prop file", e);
 		}

@@ -11,6 +11,7 @@ public interface RssiUCC {
 
     int RECEIVED_RSSI_AT_1M = Integer.parseInt(AppContext.INSTANCE.getProperty("receivedRssiAt1m"));
     double PROPAGATION_CST_OF_PATHLOSS_EXP = Double.parseDouble(AppContext.INSTANCE.getProperty("propagationCstOfPathLossExp"));
+    double OFFSET = Double.parseDouble(AppContext.INSTANCE.getProperty("offset"));
     boolean USE_AVG_RSSI_AT_1M = Boolean.parseBoolean(AppContext.INSTANCE.getProperty("useAvgRssiAt1m"));
 
     static double getDistanceFromRssi(int rssi) {
@@ -21,6 +22,6 @@ public interface RssiUCC {
             rssiAt1m = AnalyzeModel.INSTANCE.getLastRssiAt1m();
         }
 
-        return Math.pow(10, (rssi-rssiAt1m) / (10*PROPAGATION_CST_OF_PATHLOSS_EXP) );
+        return Math.pow(10, -1 * (rssi - OFFSET) / (10*PROPAGATION_CST_OF_PATHLOSS_EXP) );
     }
 }
