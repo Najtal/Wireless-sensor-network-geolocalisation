@@ -49,7 +49,7 @@ public class CliParser {
                     Log.logSevere("DISTANCE : " + AnchorUCC.getDistanceBtwAnchors(aA, aB));
                     */
                     double newRssiAt1m = AnchorUCC.getRssiAt1mFromAnchors(
-                            (int)(Integer.parseInt(data[4].split(":")[1])+aA.getOffset()), aA, aB);
+                            (int)(Integer.parseInt(data[4].split(":")[1])+aB.getOffset()), aA, aB);
 
                     // Log.logSevere("new RSSI : " + newRssiAt1m);
 
@@ -69,20 +69,20 @@ public class CliParser {
 
             case "DATA_AB" : // Measurement anchor to blind
                 if (!USE_AB_RSSI) return null;
-                int rssi = (int)AnchorModel.INSTANCE.getAnchorById(Integer.parseInt(data[2].split(":")[1])).getOffset();
                 return BizzFactory.INSTANCE.createRssi(
                         Integer.parseInt(data[2].split(":")[1]),
                         Integer.parseInt(data[3].split(":")[1]),
-                        Integer.parseInt(data[4].split(":")[1])+rssi,
+                        (int)(Integer.parseInt(data[4].split(":")[1])+BLIND_OFFSET),
                         Integer.parseInt(data[5].split(":")[1]),
                         RssiType.ANCHOR_TO_BLIND);
 
             case "DATA_BA" : // Measurement blind to anchor
                 if (!USE_BA_RSSI) return null;
+                int rssi = (int)AnchorModel.INSTANCE.getAnchorById(Integer.parseInt(data[2].split(":")[1])).getOffset();
                 return BizzFactory.INSTANCE.createRssi(
                         Integer.parseInt(data[3].split(":")[1]),
                         Integer.parseInt(data[2].split(":")[1]),
-                        (int)(Integer.parseInt(data[4].split(":")[1])+BLIND_OFFSET),
+                        (int)(Integer.parseInt(data[4].split(":")[1])+rssi),
                         Integer.parseInt(data[6].split(":")[1]),
                         RssiType.ANCHOR_TO_BLIND);
 
