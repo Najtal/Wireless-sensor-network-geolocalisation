@@ -2,15 +2,12 @@ package dataReader;
 
 import app.AppContext;
 import bizz.BizzFactory;
-import bizz.Rssi;
 import constant.RssiType;
 import model.AnalyzeModel;
 import model.AnchorModel;
-import model.RawModel;
 import ucc.AnchorDTO;
 import ucc.AnchorUCC;
 import ucc.RssiDTO;
-import util.Log;
 
 /**
  * Created by jvdur on 10/05/2016.
@@ -21,6 +18,9 @@ public class CliParser {
     private static final int OFFSET = 0;
     private static final boolean USE_BA_RSSI = Boolean.parseBoolean(AppContext.INSTANCE.getProperty("useBArssi"));
     private static final boolean USE_AB_RSSI = Boolean.parseBoolean(AppContext.INSTANCE.getProperty("useABrssi"));
+
+    private static final double BLIND_OFFSET = Double.parseDouble(AppContext.INSTANCE.getProperty("blindOffset"));
+
 
     public static String[] parseIncomingLine(String line) {
 
@@ -49,7 +49,7 @@ public class CliParser {
                     Log.logSevere("DISTANCE : " + AnchorUCC.getDistanceBtwAnchors(aA, aB));
                     */
                     double newRssiAt1m = AnchorUCC.getRssiAt1mFromAnchors(
-                            Integer.parseInt(data[4].split(":")[1])+OFFSET, aA, aB);
+                            (int)(Integer.parseInt(data[4].split(":")[1])+aA.getOffset()), aA, aB);
 
                     // Log.logSevere("new RSSI : " + newRssiAt1m);
 
@@ -69,10 +69,11 @@ public class CliParser {
 
             case "DATA_AB" : // Measurement anchor to blind
                 if (!USE_AB_RSSI) return null;
+                int rssi = (int)AnchorModel.INSTANCE.getAnchorById(Integer.parseInt(data[2].split(":")[1])).getOffset();
                 return BizzFactory.INSTANCE.createRssi(
                         Integer.parseInt(data[2].split(":")[1]),
                         Integer.parseInt(data[3].split(":")[1]),
-                        Integer.parseInt(data[4].split(":")[1])+OFFSET,
+                        Integer.parseInt(data[4].split(":")[1])+rssi,
                         Integer.parseInt(data[5].split(":")[1]),
                         RssiType.ANCHOR_TO_BLIND);
 
@@ -81,7 +82,7 @@ public class CliParser {
                 return BizzFactory.INSTANCE.createRssi(
                         Integer.parseInt(data[3].split(":")[1]),
                         Integer.parseInt(data[2].split(":")[1]),
-                        Integer.parseInt(data[4].split(":")[1])+OFFSET,
+                        (int)(Integer.parseInt(data[4].split(":")[1])+BLIND_OFFSET),
                         Integer.parseInt(data[6].split(":")[1]),
                         RssiType.ANCHOR_TO_BLIND);
 

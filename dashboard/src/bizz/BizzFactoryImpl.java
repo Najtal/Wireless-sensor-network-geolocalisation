@@ -1,8 +1,6 @@
 package bizz;
 
 import constant.RssiType;
-import sun.plugin.javascript.navig.Anchor;
-import ucc.AnchorDTO;
 
 /**
  * Class generating bizz objects
@@ -41,8 +39,8 @@ public class BizzFactoryImpl implements BizzFactory {
 	}
 
 	@Override
-	public Anchors createAnchor(int id, int posx, int posy) {
-		return new AnchorsImpl(id, posx, posy);
+	public Anchors createAnchor(int id, int posx, int posy, double offset) {
+		return new AnchorsImpl(id, posx, posy, offset);
 	}
 
 	@Override

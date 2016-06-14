@@ -31,7 +31,7 @@ public interface BizzFactory {
 	 * @param posy It's Y position
      * @return
      */
-	AnchorDTO createAnchor(int id, int posx, int posy);
+	AnchorDTO createAnchor(int id, int posx, int posy, double offset);
 
 	AnchorDTO createAnchor();
 

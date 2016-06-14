@@ -13,7 +13,8 @@ public class AnchorReader {
 
         // CREATE GATEWAY
         int idGW = Integer.parseInt(AppContext.INSTANCE.getProperty("anchor0Id"));
-        am.addAnchor(BizzFactory.INSTANCE.createAnchor(idGW,0,0));
+        double offsetGW = Double.parseDouble(AppContext.INSTANCE.getProperty("anchor0Offset"));
+        am.addAnchor(BizzFactory.INSTANCE.createAnchor(idGW,0,0,offsetGW));
 
         // CREATE ANCHORS
         int nbAnchore = Integer.parseInt(AppContext.INSTANCE.getProperty("nbAnchors"));
@@ -21,7 +22,8 @@ public class AnchorReader {
             int id = Integer.parseInt(AppContext.INSTANCE.getProperty("anchor"+i+"Id"));
             int posx = Integer.parseInt(AppContext.INSTANCE.getProperty("anchor"+i+"x"));
             int posy = Integer.parseInt(AppContext.INSTANCE.getProperty("anchor"+i+"y"));
-            am.addAnchor(BizzFactory.INSTANCE.createAnchor(id, posx, posy));
+            double offset = Double.parseDouble(AppContext.INSTANCE.getProperty("anchor"+i+"Offset"));
+            am.addAnchor(BizzFactory.INSTANCE.createAnchor(id, posx, posy, offset));
         }
 
     }

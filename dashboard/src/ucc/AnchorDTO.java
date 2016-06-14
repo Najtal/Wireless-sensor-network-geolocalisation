@@ -23,4 +23,6 @@ public interface AnchorDTO {
 
     public void setId(int id);
 
+    public double getOffset();
+
 }
