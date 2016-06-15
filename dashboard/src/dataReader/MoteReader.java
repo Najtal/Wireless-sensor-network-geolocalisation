@@ -3,14 +3,8 @@ package dataReader;
 import app.AppContext;
 import bizz.BizzFactory;
 import constant.RssiType;
-import exception.MoteReaderException;
-import model.AnchorModel;
 import model.RawModel;
 import util.Log;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 
 /**
  * Created by jvdur on 09/05/2016.
@@ -56,9 +50,9 @@ public class MoteReader {
 
                 Log.logInfo("Mockup RSSI START 1");
 
-                RawModel.INSTANCE.addRssi(BizzFactory.INSTANCE.createRssi(0,6,-14,1, RssiType.ANCHOR_TO_BLIND));
-                RawModel.INSTANCE.addRssi(BizzFactory.INSTANCE.createRssi(1,6,-20,1, RssiType.ANCHOR_TO_BLIND));
-                RawModel.INSTANCE.addRssi(BizzFactory.INSTANCE.createRssi(2,6,-14,1, RssiType.ANCHOR_TO_BLIND));
+                RawModel.INSTANCE.addRssi(BizzFactory.INSTANCE.createRssi(0,6,-14,1, RssiType.ANCHOR_TO_BLIND,1));
+                RawModel.INSTANCE.addRssi(BizzFactory.INSTANCE.createRssi(1,6,-20,1, RssiType.ANCHOR_TO_BLIND,1));
+                RawModel.INSTANCE.addRssi(BizzFactory.INSTANCE.createRssi(2,6,-14,1, RssiType.ANCHOR_TO_BLIND,1));
 
                 try {
                     this.sleep(3000);
@@ -68,9 +62,9 @@ public class MoteReader {
 
                 Log.logInfo("Mockup RSSI START 2");
 
-                RawModel.INSTANCE.addRssi(BizzFactory.INSTANCE.createRssi(3,6,-14,2, RssiType.ANCHOR_TO_BLIND));
-                RawModel.INSTANCE.addRssi(BizzFactory.INSTANCE.createRssi(4,6,-20,2, RssiType.ANCHOR_TO_BLIND));
-                RawModel.INSTANCE.addRssi(BizzFactory.INSTANCE.createRssi(2,6,-14,2, RssiType.ANCHOR_TO_BLIND));
+                RawModel.INSTANCE.addRssi(BizzFactory.INSTANCE.createRssi(3,6,-14,2, RssiType.ANCHOR_TO_BLIND,1));
+                RawModel.INSTANCE.addRssi(BizzFactory.INSTANCE.createRssi(4,6,-20,2, RssiType.ANCHOR_TO_BLIND,1));
+                RawModel.INSTANCE.addRssi(BizzFactory.INSTANCE.createRssi(2,6,-14,2, RssiType.ANCHOR_TO_BLIND,1));
 
                 try {
                     this.sleep(3000);
@@ -80,9 +74,9 @@ public class MoteReader {
 
                 Log.logInfo("Mockup RSSI START 3");
 
-                RawModel.INSTANCE.addRssi(BizzFactory.INSTANCE.createRssi(1,6,-14,3, RssiType.ANCHOR_TO_BLIND));
-                RawModel.INSTANCE.addRssi(BizzFactory.INSTANCE.createRssi(3,6,-20,3, RssiType.ANCHOR_TO_BLIND));
-                RawModel.INSTANCE.addRssi(BizzFactory.INSTANCE.createRssi(5,6,-14,3, RssiType.ANCHOR_TO_BLIND));
+                RawModel.INSTANCE.addRssi(BizzFactory.INSTANCE.createRssi(1,6,-14,3, RssiType.ANCHOR_TO_BLIND,1));
+                RawModel.INSTANCE.addRssi(BizzFactory.INSTANCE.createRssi(3,6,-20,3, RssiType.ANCHOR_TO_BLIND,1));
+                RawModel.INSTANCE.addRssi(BizzFactory.INSTANCE.createRssi(5,6,-14,3, RssiType.ANCHOR_TO_BLIND,1));
 
 
                 try {
@@ -93,9 +87,9 @@ public class MoteReader {
 
                 Log.logInfo("Mockup RSSI START 3");
 
-                RawModel.INSTANCE.addRssi(BizzFactory.INSTANCE.createRssi(0,6,-14,4, RssiType.ANCHOR_TO_BLIND));
-                RawModel.INSTANCE.addRssi(BizzFactory.INSTANCE.createRssi(1,6,-20,4, RssiType.ANCHOR_TO_BLIND));
-                RawModel.INSTANCE.addRssi(BizzFactory.INSTANCE.createRssi(2,6,-14,4, RssiType.ANCHOR_TO_BLIND));
+                RawModel.INSTANCE.addRssi(BizzFactory.INSTANCE.createRssi(0,6,-14,4, RssiType.ANCHOR_TO_BLIND,1));
+                RawModel.INSTANCE.addRssi(BizzFactory.INSTANCE.createRssi(1,6,-20,4, RssiType.ANCHOR_TO_BLIND,1));
+                RawModel.INSTANCE.addRssi(BizzFactory.INSTANCE.createRssi(2,6,-14,4, RssiType.ANCHOR_TO_BLIND,1));
 
             }
         };

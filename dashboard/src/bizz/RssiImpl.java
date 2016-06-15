@@ -22,17 +22,13 @@ public class RssiImpl extends BizzObjectImpl implements Rssi {
 	 * @param to which mote received it
      * @param rssi at what strength did the receiver mote get the message
      */
-	public RssiImpl(final int from, final int to, final int rssi, final int sequenceNo, RssiType type) {
+	public RssiImpl(final int from, final int to, final int rssi, final int sequenceNo, RssiType type, double alpha) {
 		super();
 		this.from = from;
 		this.to = to;
-<<<<<<< HEAD
-		this.rssi = rssi;
-=======
-		this.rssi = (rssi);
->>>>>>> phoenix
 		this.type = type;
-		this.distanceMeters = RssiUCC.getDistanceFromRssi(this.rssi);
+		this.rssi = rssi;
+		this.distanceMeters = RssiUCC.getDistanceFromRssi(this.rssi, alpha);
 		this.sequenceNo = sequenceNo;
 	}
 
@@ -76,13 +72,8 @@ public class RssiImpl extends BizzObjectImpl implements Rssi {
 	@Override
 	public void setRssi(int rssi) {
 		increaseVersion();
-<<<<<<< HEAD
 		this.rssi = rssi;
-=======
-//		this.rssi = Math.abs(rssi);
-		this.rssi = (rssi);
->>>>>>> phoenix
-		this.distanceMeters = RssiUCC.getDistanceFromRssi(rssi);
+		//this.distanceMeters = RssiUCC.getDistanceFromRssi(rssi, alpha);
 	}
 
 	@Override

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_dashboard" default="compile.module.dashboard">
+  <dirname property="module.dashboard.basedir" file="${ant.file.module_dashboard}"/>
+  
+  <property name="module.jdk.home.dashboard" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.dashboard" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.dashboard" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.dashboard" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="dashboard.output.dir" value="${module.dashboard.basedir}/out/production/dashboard"/>
+  <property name="dashboard.testoutput.dir" value="${module.dashboard.basedir}/out/test/dashboard"/>
+  
+  <path id="dashboard.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="dashboard.module.production.classpath">
+    <path refid="${module.jdk.classpath.dashboard}"/>
+    <path refid="library.commons-math3-3.6.1.classpath"/>
+  </path>
+  
+  <path id="dashboard.runtime.production.module.classpath">
+    <pathelement location="${dashboard.output.dir}"/>
+    <path refid="library.commons-math3-3.6.1.classpath"/>
+  </path>
+  
+  <path id="dashboard.module.classpath">
+    <path refid="${module.jdk.classpath.dashboard}"/>
+    <pathelement location="${dashboard.output.dir}"/>
+    <path refid="library.commons-math3-3.6.1.classpath"/>
+  </path>
+  
+  <path id="dashboard.runtime.module.classpath">
+    <pathelement location="${dashboard.testoutput.dir}"/>
+    <pathelement location="${dashboard.output.dir}"/>
+    <path refid="library.commons-math3-3.6.1.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.dashboard">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.dashboard">
+    <patternset refid="excluded.from.module.dashboard"/>
+  </patternset>
+  
+  <path id="dashboard.module.sourcepath">
+    <dirset dir="${module.dashboard.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.dashboard" depends="compile.module.dashboard.production,compile.module.dashboard.tests" description="Compile module dashboard"/>
+  
+  <target name="compile.module.dashboard.production" depends="register.custom.compilers" description="Compile module dashboard; production classes">
+    <mkdir dir="${dashboard.output.dir}"/>
+    <javac2 destdir="${dashboard.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.dashboard}/javac">
+      <compilerarg line="${compiler.args.dashboard}"/>
+      <bootclasspath refid="dashboard.module.bootclasspath"/>
+      <classpath refid="dashboard.module.production.classpath"/>
+      <src refid="dashboard.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.dashboard"/>
+    </javac2>
+    
+    <copy todir="${dashboard.output.dir}">
+      <fileset dir="${module.dashboard.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.dashboard.tests" depends="register.custom.compilers,compile.module.dashboard.production" description="compile module dashboard; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.dashboard" description="cleanup module">
+    <delete dir="${dashboard.output.dir}"/>
+    <delete dir="${dashboard.testoutput.dir}"/>
+  </target>
+</project>

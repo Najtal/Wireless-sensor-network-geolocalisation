@@ -29,8 +29,8 @@ public class BizzFactoryImpl implements BizzFactory {
 	 * RSSI bizz objects
 	 */
 	@Override
-	public Rssi createRssi(int from, int to, int rssi, int sequenceNo, RssiType type) {
-		return new RssiImpl(from, to, rssi, sequenceNo, type);
+	public Rssi createRssi(int from, int to, int rssi, int sequenceNo, RssiType type, double alpha) {
+		return new RssiImpl(from, to, rssi, sequenceNo, type, alpha);
 	}
 
 	@Override
@@ -39,8 +39,8 @@ public class BizzFactoryImpl implements BizzFactory {
 	}
 
 	@Override
-	public Anchors createAnchor(int id, int posx, int posy, double offset) {
-		return new AnchorsImpl(id, posx, posy, offset);
+	public Anchors createAnchor(int id, int posx, int posy, double offset, double alpha) {
+		return new AnchorsImpl(id, posx, posy, offset, alpha);
 	}
 
 	@Override

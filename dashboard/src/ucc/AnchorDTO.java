@@ -25,4 +25,5 @@ public interface AnchorDTO {
 
     public double getOffset();
 
+    double getAlpha();
 }

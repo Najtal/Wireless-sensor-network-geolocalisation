@@ -9,14 +9,16 @@ public class AnchorsImpl extends BizzObjectImpl implements Anchors {
 	private int posy;
 	private double offset;
 	private int batteryLvl;
+	private double alpha;
 
 
-	public AnchorsImpl(final int id, final int posx, final int posy, final double offset) {
+	public AnchorsImpl(final int id, final int posx, final int posy, final double offset, final double alpha) {
 		super();
 		this.id = id;
 		this.posx = posx;
 		this.posy = posy;
 		this.offset = offset;
+		this.alpha = alpha;
 		this.batteryLvl = -1;
 	}
 
@@ -68,5 +70,10 @@ public class AnchorsImpl extends BizzObjectImpl implements Anchors {
 
 	public double getOffset() {
 		return offset;
+	}
+
+	@Override
+	public double getAlpha() {
+		return alpha;
 	}
 }

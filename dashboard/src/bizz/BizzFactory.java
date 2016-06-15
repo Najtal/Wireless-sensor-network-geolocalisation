@@ -20,7 +20,7 @@ public interface BizzFactory {
 	 * @param rssi the RSSI value
      * @return
      */
-	RssiDTO createRssi(int from, int to, int rssi, int sequenceNo, RssiType type);
+	RssiDTO createRssi(int from, int to, int rssi, int sequenceNo, RssiType type, double alpha);
 
 	RssiDTO createRssi();
 
@@ -31,7 +31,7 @@ public interface BizzFactory {
 	 * @param posy It's Y position
      * @return
      */
-	AnchorDTO createAnchor(int id, int posx, int posy, double offset);
+	AnchorDTO createAnchor(int id, int posx, int posy, double offset, double alpha);
 
 	AnchorDTO createAnchor();
 

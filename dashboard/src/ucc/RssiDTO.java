@@ -1,7 +1,6 @@
 package ucc;
 
 
-import bizz.BizzObjectImpl;
 import constant.RssiType;
 
 /**

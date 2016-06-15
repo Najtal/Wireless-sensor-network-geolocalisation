@@ -20,6 +20,8 @@ public class CliParser {
     private static final boolean USE_AB_RSSI = Boolean.parseBoolean(AppContext.INSTANCE.getProperty("useABrssi"));
 
     private static final double BLIND_OFFSET = Double.parseDouble(AppContext.INSTANCE.getProperty("blindOffset"));
+    private static final double BLIND_ALPHA = Double.parseDouble(AppContext.INSTANCE.getProperty("blindAlpha"));
+
 
 
     public static String[] parseIncomingLine(String line) {
@@ -72,26 +74,20 @@ public class CliParser {
                 return BizzFactory.INSTANCE.createRssi(
                         Integer.parseInt(data[2].split(":")[1]),
                         Integer.parseInt(data[3].split(":")[1]),
-                        (int)(Integer.parseInt(data[4].split(":")[1])+BLIND_OFFSET),
+                        (int)(Integer.parseInt(data[4].split(":")[1])-BLIND_OFFSET),
                         Integer.parseInt(data[5].split(":")[1]),
-                        RssiType.ANCHOR_TO_BLIND);
+                        RssiType.ANCHOR_TO_BLIND, BLIND_ALPHA);
 
             case "DATA_BA" : // Measurement blind to anchor
                 if (!USE_BA_RSSI) return null;
-                int rssi = (int)AnchorModel.INSTANCE.getAnchorById(Integer.parseInt(data[2].split(":")[1])).getOffset();
+                double alpha = AnchorModel.INSTANCE.getAnchorById(Integer.parseInt(data[2].split(":")[1])).getAlpha();
+                double offset = AnchorModel.INSTANCE.getAnchorById(Integer.parseInt(data[2].split(":")[1])).getOffset();
                 return BizzFactory.INSTANCE.createRssi(
                         Integer.parseInt(data[3].split(":")[1]),
                         Integer.parseInt(data[2].split(":")[1]),
-                        (int)(Integer.parseInt(data[4].split(":")[1])+rssi),
+                        (int)(Integer.parseInt(data[4].split(":")[1])-offset),
                         Integer.parseInt(data[6].split(":")[1]),
-                        RssiType.ANCHOR_TO_BLIND);
-
-                /*return BizzFactory.INSTANCE.createRssi(
-                        Integer.parseInt(data[2].split(":")[1]),
-                        Integer.parseInt(data[3].split(":")[1]),
-                        Integer.parseInt(data[4].split(":")[1])+OFFSET,
-                        Integer.parseInt(data[6].split(":")[1]),
-                        RssiType.BLIND_TO_ANCHOR);*/
+                        RssiType.ANCHOR_TO_BLIND, alpha);
 
             case "SLEEP" :
                 break;
